@@ -1,0 +1,5 @@
+/CAP-Project/Library/*
+/CAP-Project/Logs/*
+/CAP-Project/Packages/*
+/CAP-Project/ProjectSettings/*
+/CAP-Project/UserSettings/*
