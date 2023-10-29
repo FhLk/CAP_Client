@@ -168,7 +168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameState: 0
-  SelectedPlayer: {fileID: 356089910834195267, guid: 1a1b054399a12964d9c49f3c98efd640, type: 3}
 --- !u!1 &283042811
 GameObject:
   m_ObjectHideFlags: 0

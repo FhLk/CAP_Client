@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BaseUnit : MonoBehaviour
 {
-    //public string UnitName;
+    public string UnitId;
     public HexagonTile OccupiedTile;
     public Faction Faction;
 }

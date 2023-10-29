@@ -1,24 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class UnitManager : MonoBehaviour
+public class Dice : MonoBehaviour
 {
-    public static UnitManager Instance;
-
+    [SerializeField] Text dice;
     private List<ScriptableUnit> _units;
     public BasePlayer SelectedPlayer;
 
     void Awake()
     {
-        Instance = this;
-
         _units = Resources.LoadAll<ScriptableUnit>("Units").ToList();
     }
+    public void OnButtonPress()
+    {
+        if (SelectedPlayer == null) 
+        {
+            SpawnPlayer();
+        }
+        int n = randomDice();
+        dice.text = n.ToString();
+        sendDice(n, SelectedPlayer);
 
-    public void SpawnPlayer()
+    }
+
+    private void SpawnPlayer()
     {
         var heroCount = 1;
 
@@ -26,10 +34,8 @@ public class UnitManager : MonoBehaviour
         {
             var randomPrefab = GetRandomUnit<BasePlayer>(Faction.Player);
             var spawnedPlayer = Instantiate(randomPrefab);
-            var randomSpawnTile = Board.Instance.GetPlayerSpawnTile();
 
             SetSelectedHero(spawnedPlayer);
-            randomSpawnTile.SetUnit(spawnedPlayer);
         }
 
     }
@@ -42,6 +48,18 @@ public class UnitManager : MonoBehaviour
     public void SetSelectedHero(BasePlayer player)
     {
         SelectedPlayer = player;
-        //MenuManager.Instance.ShowSelectedHero(hero);
+    }
+
+    private int randomDice()
+    {
+        int dice = Random.Range(1,7);
+        return dice;
+    }
+
+    private void sendDice(int dice,BasePlayer player)
+    {
+        Debug.Log(player.dice);
+        player.dice = dice;
+        Debug.Log(player.dice);
     }
 }
