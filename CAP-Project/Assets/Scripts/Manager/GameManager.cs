@@ -25,10 +25,11 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case GameState.GenerateBoard:
-                Board.Instance.generateBoard();
+                Board_Cell.Instance.generateBoard();
+                //Board.Instance.generateBoard();
                 break;
             case GameState.SpawnPlayer:
-                UnitManager.Instance.SpawnPlayer();
+                //UnitManager.Instance.SpawnPlayer();
                 break;
             case GameState.PlayerTurn:
                 //UnitManager.Instance.SetSelectedHero(SelectedPlayer);

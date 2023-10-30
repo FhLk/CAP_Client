@@ -20,10 +20,6 @@ public class Board : MonoBehaviour
     {
         Instance = this;
     }
-    void Start()
-    {
-        //generateBoard();
-    }
 
     public void generateBoard()
     {

@@ -35,7 +35,7 @@ public class HexagonTile : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (GameManager.Instance.GameState != GameState.PlayerTurn) return;
+        /*if (GameManager.Instance.GameState != GameState.PlayerTurn) return;
         if (OccupiedUnit == null)
         {
             if (UnitManager.Instance.SelectedPlayer != null)
@@ -45,7 +45,7 @@ public class HexagonTile : MonoBehaviour
 
             }
             UnitManager.Instance.SetSelectedHero((BasePlayer)OccupiedUnit);
-        }
+        }*/
 
     }
 

@@ -19,7 +19,7 @@ public class MouseManager : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Debug.Log("Target: " + hit.collider.gameObject.name);
-
+                //Board_Cell.Instance.DestroyHex(hit.collider.gameObject);
 
             }
 

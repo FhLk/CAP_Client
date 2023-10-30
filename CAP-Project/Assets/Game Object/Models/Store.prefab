@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6985524287965517987}
   - component: {fileID: 7276782005352481735}
   m_Layer: 0
-  m_Name: Hex
+  m_Name: Store
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,9 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e55350b268105044a92b87f24518cc0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TileName: Hex
-  _baseColor: {r: 0.8018868, g: 0.77853084, b: 0, a: 1}
-  _offsetColor: {r: 1, g: 1, b: 1, a: 1}
+  TileName: Store
+  _baseColor: {r: 0, g: 0.48235297, b: 0.058823533, a: 1}
+  _offsetColor: {r: 0, g: 0.48235297, b: 0.058823533, a: 1}
   _renderer: {fileID: 5636245727424672626}
   _highlight: {fileID: 8838343513939517540}
   _isWalkable: 1
@@ -166,6 +166,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6820432961347201563}
     m_Modifications:
+    - target: {fileID: 589760296983731537, guid: b2608ec2fe67c344ebbdc5b570c9ce86, type: 3}
+      propertyPath: m_Color.b
+      value: 0.20825002
+      objectReference: {fileID: 0}
+    - target: {fileID: 589760296983731537, guid: b2608ec2fe67c344ebbdc5b570c9ce86, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6415094
+      objectReference: {fileID: 0}
+    - target: {fileID: 589760296983731537, guid: b2608ec2fe67c344ebbdc5b570c9ce86, type: 3}
+      propertyPath: m_Color.r
+      value: 0.009077947
+      objectReference: {fileID: 0}
     - target: {fileID: 589760296983731537, guid: b2608ec2fe67c344ebbdc5b570c9ce86, type: 3}
       propertyPath: m_SortingLayer
       value: 0
