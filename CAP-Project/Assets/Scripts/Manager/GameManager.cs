@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public GameState GameState;
-    //public BasePlayer SelectedPlayer;
+    public BasePlayer SelectedPlayer;
 
     void Awake()
     {
@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
                 //UnitManager.Instance.SpawnPlayer();
                 break;
             case GameState.PlayerTurn:
-                //UnitManager.Instance.SetSelectedHero(SelectedPlayer);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);

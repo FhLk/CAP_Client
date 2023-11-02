@@ -59,6 +59,7 @@ public class Dice : MonoBehaviour
     private void sendDice(int dice,BasePlayer player)
     {
         Debug.Log(player.dice);
+        Debug.Log("Name");
         player.dice = dice;
         Debug.Log(player.dice);
     }

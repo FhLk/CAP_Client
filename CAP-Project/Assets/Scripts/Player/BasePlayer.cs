@@ -5,6 +5,6 @@ using UnityEngine;
 public class BasePlayer : BaseUnit
 {
     public string id;
-    public string name;
+    public string playerName;
     public int dice = 0;
 }
