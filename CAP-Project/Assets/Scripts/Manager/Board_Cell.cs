@@ -1,11 +1,7 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.Burst.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Analytics;
-using UnityEngine.Rendering;
 
 public class Board_Cell : MonoBehaviour
 {
@@ -29,8 +25,6 @@ public class Board_Cell : MonoBehaviour
     float xOffset = 0.95f;
     float yOffset = 0.8f;
 
-    // Start is called before the first frame update
-
     void Awake()
     {
         Instance = this;
@@ -39,6 +33,7 @@ public class Board_Cell : MonoBehaviour
     public void generateBoard()
     {
         _tiles = new Dictionary<Vector2, HexagonTile>();
+        HexagonTile[,] initBoard = new HexagonTile[width, height];
         int countEvent = 0;
         int countLadder = 0;
         bool haveStore = false;
@@ -50,10 +45,6 @@ public class Board_Cell : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                if (countLadder == 6  && countEvent == 6 && haveFinal && haveStart && haveStore)
-                {
-                    isCondition = true;
-                }
                 int isDestroy = Random.Range(0, 5);
 
                 if (isDestroy != 0)
@@ -71,7 +62,7 @@ public class Board_Cell : MonoBehaviour
                     }
                     if (isEvent != 0)
                     {
-                        CreateTile(x, y, xPos, yOffset, "Hex_", hexPrefab, ref _tiles);
+                        initBoard[x, y] = CreateTile(x, y, xPos, yOffset, "Hex_", hexPrefab, ref _tiles);
                     }
                     else
                     {
@@ -80,50 +71,84 @@ public class Board_Cell : MonoBehaviour
                             if (countEvent < 6)
                             {
                                 countEvent++;
-                                CreateTile(x, y, xPos, yOffset, "Event_", eventPrefab, ref _tiles);
+                                initBoard[x, y] = CreateTile(x, y, xPos, yOffset, "Event_", eventPrefab, ref _tiles);
                             }
                             else if (countLadder < 6 && isLadder == 0)
                             {
                                 countLadder++;
-                                CreateTile(x, y, xPos, yOffset, "Ladder_", ladderPrefab, ref _tiles);
+                                initBoard[x, y] = CreateTile(x, y, xPos, yOffset, "Ladder_", ladderPrefab, ref _tiles);
                             }
                         }
                         else
                         {
                             if (isStore == 5 && !haveStore)
                             {
-                                CreateTile(x, y, xPos, yOffset, "Store_", storePrefab, ref _tiles);
+                                initBoard[x, y] = CreateTile(x, y, xPos, yOffset, "Store_", storePrefab, ref _tiles);
                                 haveStore = true;
                             }
                             else if (isStart == 5 && !haveStart)
                             {
-                                CreateTile(x, y, xPos, yOffset, "Start_", startPrefab, ref _tiles);
+                                initBoard[x, y] = CreateTile(x, y, xPos, yOffset, "Start_", startPrefab, ref _tiles);
                                 haveStart = true;
                             }
                             else if (isFinal == 5 && !haveFinal)
                             {
-                                CreateTile(x, y, xPos, yOffset, "Final_", startPrefab, ref _tiles);
+                                initBoard[x, y] = CreateTile(x, y, xPos, yOffset, "Final_", startPrefab, ref _tiles);
                                 haveFinal = true;
                             }
                             else
                             {
-                                CreateTile(x, y, xPos, yOffset, "Hex_", hexPrefab, ref _tiles);
+                                initBoard[x, y] = CreateTile(x, y, xPos, yOffset, "Hex_", hexPrefab, ref _tiles);
                             }
                         }
 
                     }
                 }
+                if (countLadder == 6 && countEvent == 6 && haveFinal && haveStart && haveStore)
+                {
+                    isCondition = true;
+                }
             }
         }
         validateBoard(isCondition);
-        _cam.transform.position = new Vector3((float)width / 2.05f - 0.5f, (float)height / 2.5f - 0.5f, -10);
+        if (isCondition)
+        {
+            setNeighbors(initBoard);
+            _cam.transform.position = new Vector3((float)width / 2.05f - 0.5f, (float)height / 2.5f - 0.5f, -10);
+        }
+    }
+
+    private void setNeighbors(HexagonTile[,] board)
+    {
+        foreach (HexagonTile cell in board)
+        {
+            if (cell == null) continue;
+            //down
+            cell.addNeighbors(cell.x, cell.y - 1,board);
+            //up
+            cell.addNeighbors(cell.x, cell.y + 1, board);
+            //left
+            cell.addNeighbors(cell.x - 1, cell.y, board);
+            //right
+            cell.addNeighbors(cell.x + 1, cell.y, board);
+            if (cell.y % 2 == 0)
+            {
+                cell.addNeighbors(cell.x + 1, cell.y - 1, board);
+                cell.addNeighbors(cell.x + 1, cell.y + 1, board);
+                
+            }
+            else
+            {
+                cell.addNeighbors(cell.x - 1, cell.y - 1, board);
+                cell.addNeighbors(cell.x - 1, cell.y + 1, board);
+            }
+        }
     }
 
     private void validateBoard(bool isCondition)
     {
         if (!isCondition)
         {
-            Debug.Log("wow");
             foreach (Transform cell in BOARD.transform)
             {
                 GameObject.Destroy(cell.gameObject);
@@ -132,9 +157,11 @@ public class Board_Cell : MonoBehaviour
         }
     }
 
-    private void CreateTile(int x, int y, float xPos, float yOffset, string namePrefix, HexagonTile prefab, ref Dictionary<Vector2, HexagonTile> tiles)
+    private HexagonTile CreateTile(int x, int y, float xPos, float yOffset, string namePrefix, HexagonTile prefab, ref Dictionary<Vector2, HexagonTile> tiles)
     {
         HexagonTile hex_go = Instantiate(prefab, new Vector3(xPos, y * yOffset, (float)y / 10), Quaternion.identity);
+        hex_go.x = x;   
+        hex_go.y = y;
         string typeTiled = hex_go.GetComponent<HexagonTile>().TileName;
         if (typeTiled == "Event")
         {
@@ -151,6 +178,7 @@ public class Board_Cell : MonoBehaviour
         hex_go.name = namePrefix + x + "_" + y;
         tiles[new Vector2(xPos, y * yOffset)] = hex_go.GetComponent<HexagonTile>();
         hex_go.transform.SetParent(this.transform);
+        return hex_go;
     }
 
     public HexagonTile GetPlayerSpawnTile()

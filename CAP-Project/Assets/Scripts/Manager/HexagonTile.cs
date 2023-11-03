@@ -11,6 +11,9 @@ public class HexagonTile : MonoBehaviour
     [SerializeField] protected SpriteRenderer _renderer;
     [SerializeField] private GameObject _highlight;
     [SerializeField] private bool _isWalkable;
+    public List<HexagonTile> neighbors = new List<HexagonTile>();
+    public int x;
+    public int y;
 
     public BaseUnit OccupiedUnit;
     public bool Walkable => _isWalkable && OccupiedUnit == null;
@@ -19,18 +22,6 @@ public class HexagonTile : MonoBehaviour
     public void Init(bool isOffset)
     {
         _renderer.color = isOffset ? _offsetColor : _baseColor;
-    }
-
-    void OnMouseEnter()
-    {
-       // _highlight.SetActive(true);
-        //MenuManager.Instance.ShowTileInfo(this);
-    }
-
-    void OnMouseExit()
-    {
-        //_highlight.SetActive(false);
-        //MenuManager.Instance.ShowTileInfo(null);
     }
 
     void OnMouseDown()
@@ -55,5 +46,17 @@ public class HexagonTile : MonoBehaviour
         unit.transform.position = transform.position;
         OccupiedUnit = unit;
         unit.OccupiedTile = this;
+    }
+
+    public void addNeighbors(int x, int y, HexagonTile[,] board)
+    {
+        if (x < Board_Cell.Instance.width && x >= 0 && y < Board_Cell.Instance.height && y >= 0)
+        {
+            var cell = board[x, y];
+            if (cell != null)
+            {
+                neighbors.Add(cell);
+            }
+        }
     }
 }
