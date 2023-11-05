@@ -14,7 +14,6 @@ public class Board : MonoBehaviour
 
     float xOffset = 0.95f;
     float yOffset = 0.8f;
-    // Start is called before the first frame update
 
     void Awake()
     {
