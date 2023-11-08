@@ -26,11 +26,10 @@ public class GameManager : MonoBehaviour
         {
             case GameState.GenerateBoard:
                 Board_Cell.Instance.generateBoard();
-                //Board_Cell.Instance.setNeighbors();
                 //Board.Instance.generateBoard();
                 break;
             case GameState.SpawnPlayer:
-                //UnitManager.Instance.SpawnPlayer();
+                UnitManager.Instance.SpawnPlayer();
                 break;
             case GameState.PlayerTurn:
                 break;

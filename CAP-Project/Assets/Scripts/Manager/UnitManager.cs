@@ -26,10 +26,11 @@ public class UnitManager : MonoBehaviour
         {
             var randomPrefab = GetRandomUnit<BasePlayer>(Faction.Player);
             var spawnedPlayer = Instantiate(randomPrefab);
-            var randomSpawnTile = Board.Instance.GetPlayerSpawnTile();
+            var randomSpawnTile = Board_Cell.Instance.GetPlayerSpawnTile();
 
-            SetSelectedHero(spawnedPlayer);
+            SetSelectedPlayer(spawnedPlayer);
             randomSpawnTile.SetUnit(spawnedPlayer);
+            //spawnedPlayer.shadeTileFromPlayer(spawnedPlayer.OccupiedTile);
         }
 
     }
@@ -39,9 +40,10 @@ public class UnitManager : MonoBehaviour
         return (T)_units.Where(u => u.Faction == faction).OrderBy(o => Random.value).First().UnitPrefab;
     }
 
-    public void SetSelectedHero(BasePlayer player)
+    public void SetSelectedPlayer(BasePlayer player)
     {
         SelectedPlayer = player;
+        MouseManager.Instance.PLAYER = player;
         //MenuManager.Instance.ShowSelectedHero(hero);
     }
 }

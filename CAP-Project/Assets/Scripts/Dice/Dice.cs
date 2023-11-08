@@ -6,48 +6,23 @@ using UnityEngine.UI;
 
 public class Dice : MonoBehaviour
 {
-    [SerializeField] Text dice;
-    private List<ScriptableUnit> _units;
+    public static Dice Instance;
+    [SerializeField] public Text dice;
     public BasePlayer SelectedPlayer;
 
     void Awake()
     {
-        _units = Resources.LoadAll<ScriptableUnit>("Units").ToList();
+        Instance = this;
     }
+
     public void OnButtonPress()
     {
-        if (SelectedPlayer == null) 
-        {
-            SpawnPlayer();
-        }
+        SelectedPlayer = UnitManager.Instance.SelectedPlayer;
+        SelectedPlayer.resetTile(SelectedPlayer.set);
         int n = randomDice();
-        dice.text = n.ToString();
+        dice.text = $"Dice ({n.ToString()})";
         sendDice(n, SelectedPlayer);
-
-    }
-
-    private void SpawnPlayer()
-    {
-        var heroCount = 1;
-
-        for (int i = 0; i < heroCount; i++)
-        {
-            var randomPrefab = GetRandomUnit<BasePlayer>(Faction.Player);
-            var spawnedPlayer = Instantiate(randomPrefab);
-
-            SetSelectedHero(spawnedPlayer);
-        }
-
-    }
-
-    private T GetRandomUnit<T>(Faction faction) where T : BaseUnit
-    {
-        return (T)_units.Where(u => u.Faction == faction).OrderBy(o => Random.value).First().UnitPrefab;
-    }
-
-    public void SetSelectedHero(BasePlayer player)
-    {
-        SelectedPlayer = player;
+        SelectedPlayer.shadeTileFromPlayer(SelectedPlayer.OccupiedTile);
     }
 
     private int randomDice()
@@ -58,9 +33,6 @@ public class Dice : MonoBehaviour
 
     private void sendDice(int dice,BasePlayer player)
     {
-        Debug.Log(player.dice);
-        Debug.Log("Name");
         player.dice = dice;
-        Debug.Log(player.dice);
     }
 }

@@ -93,7 +93,7 @@ public class Board_Cell : MonoBehaviour
                             }
                             else if (isFinal == 5 && !haveFinal)
                             {
-                                initBoard[x, y] = CreateTile(x, y, xPos, yOffset, "Final_", startPrefab, ref _tiles);
+                                initBoard[x, y] = CreateTile(x, y, xPos, yOffset, "Final_", finalPrefab, ref _tiles);
                                 haveFinal = true;
                             }
                             else
@@ -115,6 +115,8 @@ public class Board_Cell : MonoBehaviour
         {
             setNeighbors(initBoard);
             _cam.transform.position = new Vector3((float)width / 2.05f - 0.5f, (float)height / 2.5f - 0.5f, -10);
+            GameManager.Instance.ChangeState(GameState.SpawnPlayer);
+            GameManager.Instance.ChangeState(GameState.PlayerTurn);
         }
     }
 
@@ -183,7 +185,7 @@ public class Board_Cell : MonoBehaviour
 
     public HexagonTile GetPlayerSpawnTile()
     {
-        return _tiles.Where(t => t.Key.x < width && t.Value.Walkable).OrderBy(t => Random.value).First().Value;
+        return _tiles.Where(t => t.Value.TileName == "Start").First().Value;
     }
 
     public HexagonTile GetTileAtPosition(Vector2 pos)

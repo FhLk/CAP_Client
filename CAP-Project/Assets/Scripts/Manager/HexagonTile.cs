@@ -3,20 +3,24 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class HexagonTile : MonoBehaviour
 {
     public string TileName;
+    public int TileType;
     [SerializeField] private Color _baseColor, _offsetColor;
     [SerializeField] protected SpriteRenderer _renderer;
+    [SerializeField] public Text _textDice;
     [SerializeField] private GameObject _highlight;
-    [SerializeField] private bool _isWalkable;
+    public bool _isWalkable;
     public List<HexagonTile> neighbors = new List<HexagonTile>();
     public int x;
     public int y;
 
     public BaseUnit OccupiedUnit;
     public bool Walkable => _isWalkable && OccupiedUnit == null;
+    private int countWalk = 1;
 
 
     public void Init(bool isOffset)
@@ -27,17 +31,24 @@ public class HexagonTile : MonoBehaviour
     void OnMouseDown()
     {
         if (GameManager.Instance.GameState != GameState.PlayerTurn) return;
-        if (OccupiedUnit == null)
+        if (OccupiedUnit == null && this._isWalkable)
         {
             if (UnitManager.Instance.SelectedPlayer != null)
             {
+                Debug.Log(countWalk++);
+                UnitManager.Instance.SelectedPlayer.playerMove();
+                UnitManager.Instance.SelectedPlayer.resetTile(UnitManager.Instance.SelectedPlayer.set);
                 SetUnit(UnitManager.Instance.SelectedPlayer);
-                UnitManager.Instance.SetSelectedHero(null);
+                UnitManager.Instance.SetSelectedPlayer(null);
 
             }
-            UnitManager.Instance.SetSelectedHero((BasePlayer)OccupiedUnit);
-        }
+            UnitManager.Instance.SetSelectedPlayer((BasePlayer)OccupiedUnit);
+            if (UnitManager.Instance.SelectedPlayer.dice != 0)
+            {
+                UnitManager.Instance.SelectedPlayer.shadeTileFromPlayer(UnitManager.Instance.SelectedPlayer.OccupiedTile);
+            }
 
+        }
     }
 
     public void SetUnit(BaseUnit unit)
@@ -58,5 +69,14 @@ public class HexagonTile : MonoBehaviour
                 neighbors.Add(cell);
             }
         }
+    }
+
+    public void change(Color color)
+    {
+        _renderer.color = color;
+    }    
+    public void change(int walk)
+    {
+        _textDice.text = walk.ToString();
     }
 }

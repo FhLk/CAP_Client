@@ -1,13 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MouseManager : MonoBehaviour
 {
-    
-    // Start is called before the first frame update
-    void Start()
+    public static MouseManager Instance;
+    [SerializeField] private GameObject BOARD;
+    [SerializeField] public BaseUnit PLAYER;
+
+    void Awake()
     {
+        Instance = this;
+    }
+    public void onResetBoard()
+    {
+        foreach (Transform cell in BOARD.transform)
+        {
+            GameObject.Destroy(cell.gameObject);
+        }
+        GameObject.Destroy(PLAYER.gameObject);
+        Board_Cell.Instance.generateBoard();
     }
 
     // Update is called once per frame
@@ -19,8 +32,6 @@ public class MouseManager : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Debug.Log("Target: " + hit.collider.gameObject.name);
-                //Board_Cell.Instance.DestroyHex(hit.collider.gameObject);
-
             }
 
         }

@@ -100,11 +100,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TileName: Event
+  TileType: 3
   _baseColor: {r: 0, g: 0.34901962, b: 0.46274513, a: 1}
   _offsetColor: {r: 0, g: 0.34901962, b: 0.46274513, a: 1}
   _renderer: {fileID: 2366991891081195486}
+  _textDice: {fileID: 7025121576699123482}
   _highlight: {fileID: 1461087865501138120}
-  _isWalkable: 1
+  _isWalkable: 0
+  neighbors: []
+  x: 0
+  y: 0
   OccupiedUnit: {fileID: 0}
 --- !u!212 &4478271711715563417
 SpriteRenderer:
@@ -254,3 +259,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1258386203984430524, guid: b2608ec2fe67c344ebbdc5b570c9ce86, type: 3}
   m_PrefabInstance: {fileID: 2951548014709699215}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7025121576699123482 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5298554859934623125, guid: b2608ec2fe67c344ebbdc5b570c9ce86, type: 3}
+  m_PrefabInstance: {fileID: 2951548014709699215}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
