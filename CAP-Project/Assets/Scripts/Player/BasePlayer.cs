@@ -35,7 +35,8 @@ public class BasePlayer : BaseUnit
         {
             if (n.TileType == 1 || n.TileType == 2) { n.change(Color.red); }
             else if (n.TileType == 3) { n.change(new Color(0f, 0.3690929f, 1f)); }
-            else if (n.TileType == 4) { n.change(new Color(0.8345884f, 0f, 0.9150943f)); }
+            else if (n.TileType == 4) { n.change(new Color(0.009077947f, 0.6415094f, 0.20825f)); }
+            else if(n.TileType == 5) { n.change(new Color(0.8345884f,0f, 0.9150943f)); }
             else { n.change(Color.white); }
             n._isWalkable = false;
             n._textDice.text = "";
