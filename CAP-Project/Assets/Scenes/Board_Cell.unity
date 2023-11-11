@@ -309,7 +309,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -677,16 +677,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d53471b089662794e8785dffc6e350a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BOARD: {fileID: 1599675834}
   hexPrefab: {fileID: 6985524287965517987, guid: 51501e954d77813409c83960666a0b33, type: 3}
   eventPrefab: {fileID: 1158799040408667098, guid: c8c0620e6fb04594084f4e5ee2812940, type: 3}
   startPrefab: {fileID: 6985524287965517987, guid: 062b949cb209b084ea1a2360fd14f1ab, type: 3}
   finalPrefab: {fileID: 6985524287965517987, guid: c6074644078c0f548859ac11a3c928ac, type: 3}
   storePrefab: {fileID: 6985524287965517987, guid: 35904cbfa6362314ea25d97a0c21f000, type: 3}
   ladderPrefab: {fileID: 6985524287965517987, guid: c4e1fbb92bcd49d4bb81d8182f244076, type: 3}
+  TestPrefab: {fileID: 6985524287965517987, guid: b80e41b291379c748b61aad4bb9ce5ba, type: 3}
   _cam: {fileID: 686800965}
-  width: 18
-  height: 11
+  width: 21
+  height: 14
 --- !u!1 &1957135573
 GameObject:
   m_ObjectHideFlags: 0

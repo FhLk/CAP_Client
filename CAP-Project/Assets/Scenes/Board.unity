@@ -198,6 +198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f33f9593130ceb14da1a8f1a44922066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BOARD: {fileID: 0}
+  PLAYER: {fileID: 0}
 --- !u!4 &350175769
 Transform:
   m_ObjectHideFlags: 0
@@ -463,6 +465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hexPrefab: {fileID: 6985524287965517987, guid: 51501e954d77813409c83960666a0b33, type: 3}
+  TestPrefab: {fileID: 6985524287965517987, guid: b80e41b291379c748b61aad4bb9ce5ba, type: 3}
   _cam: {fileID: 686800965}
   width: 18
   height: 11
