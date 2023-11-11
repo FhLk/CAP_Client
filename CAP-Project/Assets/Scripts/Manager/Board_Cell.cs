@@ -34,11 +34,52 @@ public class Board_Cell : MonoBehaviour
     {
         _tiles = new Dictionary<Vector2, HexagonTile>();
         HexagonTile[,] initBoard = new HexagonTile[width, height];
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                initBoard[x, y] = hexPrefab;
+            }
+        }
+        initBoard = removeCell(initBoard);
+        generateTile(initBoard);
+        setNeighbors(initBoard);
+        GameManager.Instance.ChangeState(GameState.SpawnPlayer);
+        GameManager.Instance.ChangeState(GameState.PlayerTurn);
+        _cam.transform.position = new Vector3((float)width / 2.05f - 0.5f, (float)height / 2.5f - 0.5f, -10);
+    }
+
+    private HexagonTile[,] removeCell(HexagonTile[,] board)
+    {
         int totalTiles = width * height;
         int tileToDestroy = (int)(totalTiles * 0.25);
-        bool isCondition = false;
-        int countCell = 0;
 
+        // เก็บตำแหน่งของ tiles ที่จะถูกลบ
+        List<(int, int)> tilesToRemove = new List<(int, int)>();
+
+        // สุ่มและจัดเก็บตำแหน่งของ tiles ที่จะถูกลบ
+        while (tilesToRemove.Count < tileToDestroy)
+        {
+            int x = Random.Range(0, this.width);
+            int y = Random.Range(0, this.height);
+
+            // ตรวจสอบว่าตำแหน่งนี้ยังไม่ถูกเลือก
+            if (!tilesToRemove.Contains((x, y)))
+            {
+                tilesToRemove.Add((x, y));
+            }
+        }
+
+        // ลบ tiles ที่ถูกสุ่มออกจาก board
+        foreach (var (x, y) in tilesToRemove)
+        {
+            board[x, y] = null; // หรือวิธีการลบที่เหมาะสมกับโค้ดของคุณ
+        }
+        return board;
+    }
+
+    private void generateTile(HexagonTile[,] board)
+    {
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
@@ -48,15 +89,12 @@ public class Board_Cell : MonoBehaviour
                 {
                     xPos += xOffset / 2f;
                 }
-                initBoard[x, y] = CreateTile(x, y, xPos, yOffset, "Hex_", hexPrefab, ref _tiles);
+                if (board[x, y] != null)
+                {
+                    board[x, y] = CreateTile(x, y, xPos, yOffset, "Hex_", hexPrefab, ref _tiles);
+                }
             }
         }
-        //validateBoard(isCondition);
-        setNeighbors(initBoard);
-        _cam.transform.position = new Vector3((float)width / 2.05f - 0.5f, (float)height / 2.5f - 0.5f, -10);
-        GameManager.Instance.ChangeState(GameState.SpawnPlayer);
-        GameManager.Instance.ChangeState(GameState.PlayerTurn);
-     
     }
 
 
@@ -64,7 +102,7 @@ public class Board_Cell : MonoBehaviour
     private void setNeighbors(HexagonTile[,] board)
     {
         foreach (HexagonTile cell in board)
-        {
+        { 
             if (cell == null) continue;
             //down
             cell.addNeighbors(cell.x, cell.y - 1, board);
@@ -88,37 +126,11 @@ public class Board_Cell : MonoBehaviour
         }
     }
 
-    private void validateBoard(bool isCondition)
-    {
-        if (!isCondition)
-        {
-            foreach (Transform cell in this.transform)
-            {
-                GameObject.Destroy(cell.gameObject);
-            }
-            generateBoard();
-        }
-    }
-
     private HexagonTile CreateTile(int x, int y, float xPos, float yOffset, string namePrefix, HexagonTile prefab, ref Dictionary<Vector2, HexagonTile> tiles)
     {
         HexagonTile hex_go = Instantiate(prefab, new Vector3(xPos, y * yOffset, (float)y / 10), Quaternion.identity);
-        //hex_go.GetComponent;
         hex_go.x = x;
         hex_go.y = y;
-        string typeTiled = hex_go.GetComponent<HexagonTile>().TileName;
-        if (typeTiled == "Event")
-        {
-            listEvent.Add(hex_go);
-        }
-        else if (typeTiled == "Start" || typeTiled == "Final")
-        {
-            listStart_Final.Add(hex_go);
-        }
-        else
-        {
-            listHex.Add(hex_go);
-        }
         hex_go.name = namePrefix + x + "_" + y;
         tiles[new Vector2(xPos, y * yOffset)] = hex_go.GetComponent<HexagonTile>();
         hex_go.transform.SetParent(this.transform);
@@ -127,7 +139,8 @@ public class Board_Cell : MonoBehaviour
 
     public HexagonTile GetPlayerSpawnTile()
     {
-        return _tiles.Where(t => t.Value.TileName == "Start").First().Value;
+        return _tiles.Where(t => t.Key.x < width ).OrderBy(t => Random.value).First().Value;
+        //return _tiles.Where(t => t.Value.TileName == "Start").First().Value;
     }
 
     public HexagonTile GetTileAtPosition(Vector2 pos)
