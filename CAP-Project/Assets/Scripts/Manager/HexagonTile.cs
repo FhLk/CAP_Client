@@ -17,7 +17,9 @@ public class HexagonTile : MonoBehaviour
     public List<HexagonTile> neighbors = new List<HexagonTile>();
     public int x;
     public int y;
-
+    public float xPos;
+    public float yOffset;
+    public HashSet<HexagonTile> setStart = new HashSet<HexagonTile>();
     public BaseUnit OccupiedUnit;
     public bool Walkable => _isWalkable && OccupiedUnit == null;
     private int countWalk = 1;
@@ -26,6 +28,14 @@ public class HexagonTile : MonoBehaviour
     public void Init(bool isOffset)
     {
         _renderer.color = isOffset ? _offsetColor : _baseColor;
+    }
+
+    private void Start()
+    {
+        if(this.TileType == 1)
+        {
+            //this.shadeTileFromStart(this);
+        }
     }
 
     void OnMouseDown()
@@ -64,7 +74,7 @@ public class HexagonTile : MonoBehaviour
         if (x < Board_Cell.Instance.width && x >= 0 && y < Board_Cell.Instance.height && y >= 0)
         {
             var cell = board[x, y];
-            if (cell != null)
+            if (cell != null && !neighbors.Contains(cell))
             {
                 neighbors.Add(cell);
             }
@@ -74,9 +84,41 @@ public class HexagonTile : MonoBehaviour
     public void change(Color color)
     {
         _renderer.color = color;
-    }    
+    }
     public void change(int walk)
     {
         _textDice.text = walk.ToString();
+    }
+    public void shadeTileFromStart(HexagonTile tile)
+    {
+        if (tile != null)
+        {
+            int countCircle = 0;
+            setStart.Clear();
+            setStart.Add(tile);
+            foreach (HexagonTile n in tile.neighbors)
+            {
+                //n.change(Color.yellow);
+                setStart.Add(n);
+            }
+            countCircle++;
+            while (countCircle <= 10)
+            {
+                List<HexagonTile> nextCircleTiles = new List<HexagonTile>();
+                foreach (HexagonTile n in setStart)
+                {
+                    foreach (HexagonTile neighbor in n.neighbors)
+                    {
+                        if (!setStart.Contains(neighbor) && !nextCircleTiles.Contains(neighbor))
+                        {
+                            nextCircleTiles.Add(neighbor);
+                            //neighbor.change(Color.yellow);
+                        }
+                    }
+                }
+                setStart.AddRange(nextCircleTiles);
+                countCircle++;
+            }
+        }
     }
 }

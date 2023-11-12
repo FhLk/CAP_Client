@@ -108,8 +108,8 @@ MonoBehaviour:
   _highlight: {fileID: 8838343513939517540}
   _isWalkable: 0
   neighbors: []
-  x: 0
-  y: 0
+  x: 20
+  y: 13
   OccupiedUnit: {fileID: 0}
 --- !u!212 &7276782005352481735
 SpriteRenderer:

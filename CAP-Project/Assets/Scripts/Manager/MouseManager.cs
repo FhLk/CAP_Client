@@ -21,6 +21,7 @@ public class MouseManager : MonoBehaviour
         }
         GameObject.Destroy(PLAYER.gameObject);
         Board_Cell.Instance.generateBoard();
+        Dice.Instance.dice.text = $"Dice ({0.ToString()})";
     }
 
     // Update is called once per frame
