@@ -26,11 +26,10 @@ public class UnitManager : MonoBehaviour
         {
             var randomPrefab = GetRandomUnit<BasePlayer>(Faction.Player);
             var spawnedPlayer = Instantiate(randomPrefab);
-            var randomSpawnTile = Board_Cell.Instance.GetPlayerSpawnTile();
+            HexagonTile startTile = Board_Cell.Instance.GetPlayerSpawnTile();
 
             SetSelectedPlayer(spawnedPlayer);
-            randomSpawnTile.SetUnit(spawnedPlayer);
-            //spawnedPlayer.shadeTileFromPlayer(spawnedPlayer.OccupiedTile);
+            startTile.SetUnit(spawnedPlayer);
         }
 
     }

@@ -15,11 +15,11 @@ public class MouseManager : MonoBehaviour
     }
     public void onResetBoard()
     {
+        GameObject.Destroy(PLAYER.gameObject);
         foreach (Transform cell in BOARD.transform)
         {
             GameObject.Destroy(cell.gameObject);
         }
-        GameObject.Destroy(PLAYER.gameObject);
         Board_Cell.Instance.generateBoard();
         Dice.Instance.dice.text = $"Dice ({0.ToString()})";
     }

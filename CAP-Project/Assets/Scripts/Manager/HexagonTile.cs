@@ -22,20 +22,10 @@ public class HexagonTile : MonoBehaviour
     public HashSet<HexagonTile> setStart = new HashSet<HexagonTile>();
     public BaseUnit OccupiedUnit;
     public bool Walkable => _isWalkable && OccupiedUnit == null;
-    private int countWalk = 1;
-
 
     public void Init(bool isOffset)
     {
         _renderer.color = isOffset ? _offsetColor : _baseColor;
-    }
-
-    private void Start()
-    {
-        if(this.TileType == 1)
-        {
-            //this.shadeTileFromStart(this);
-        }
     }
 
     void OnMouseDown()
@@ -45,7 +35,6 @@ public class HexagonTile : MonoBehaviour
         {
             if (UnitManager.Instance.SelectedPlayer != null)
             {
-                Debug.Log(countWalk++);
                 UnitManager.Instance.SelectedPlayer.playerMove();
                 UnitManager.Instance.SelectedPlayer.resetTile(UnitManager.Instance.SelectedPlayer.set);
                 SetUnit(UnitManager.Instance.SelectedPlayer);
@@ -57,7 +46,10 @@ public class HexagonTile : MonoBehaviour
             {
                 UnitManager.Instance.SelectedPlayer.shadeTileFromPlayer(UnitManager.Instance.SelectedPlayer.OccupiedTile);
             }
-
+            if(OccupiedUnit.OccupiedTile.TileType == 2)
+            {
+                Debug.Log("wow");
+            }
         }
     }
 
@@ -89,7 +81,7 @@ public class HexagonTile : MonoBehaviour
     {
         _textDice.text = walk.ToString();
     }
-    public void shadeTileFromStart(HexagonTile tile)
+    public void shadeTileFromTile(HexagonTile tile, int r)
     {
         if (tile != null)
         {
@@ -98,11 +90,11 @@ public class HexagonTile : MonoBehaviour
             setStart.Add(tile);
             foreach (HexagonTile n in tile.neighbors)
             {
-                //n.change(Color.yellow);
                 setStart.Add(n);
+                //n.change(Color.gray);
             }
             countCircle++;
-            while (countCircle <= 10)
+            while (countCircle < r)
             {
                 List<HexagonTile> nextCircleTiles = new List<HexagonTile>();
                 foreach (HexagonTile n in setStart)
@@ -111,8 +103,8 @@ public class HexagonTile : MonoBehaviour
                     {
                         if (!setStart.Contains(neighbor) && !nextCircleTiles.Contains(neighbor))
                         {
+                            //neighbor.change(Color.gray);
                             nextCircleTiles.Add(neighbor);
-                            //neighbor.change(Color.yellow);
                         }
                     }
                 }
