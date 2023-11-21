@@ -7,7 +7,7 @@ using UnityEngine;
 public class Board_Cell : MonoBehaviour
 {
     public static Board_Cell Instance;
-    public Dictionary<Vector2, HexagonTile> _tiles;
+    public Dictionary<string, HexagonTile> _tiles;
     [SerializeField] private HexagonTile hexPrefab;
     [SerializeField] private HexagonTile eventPrefab;
     [SerializeField] private HexagonTile startPrefab;
@@ -31,7 +31,7 @@ public class Board_Cell : MonoBehaviour
 
     public void generateBoard()
     {
-        this._tiles = new Dictionary<Vector2, HexagonTile>();
+        this._tiles = new Dictionary<string, HexagonTile>();
         HexagonTile[,] initBoard = new HexagonTile[width, height];
         for (int x = 0; x < width; x++)
         {
@@ -50,9 +50,10 @@ public class Board_Cell : MonoBehaviour
         initBoard = defindeStartCell(initBoard);
         defindeEventCell(initBoard);
 
-        _cam.transform.position = new Vector3((float)width / 2.05f - 0.5f, (float)height / 2.5f - 0.5f, -10);
+        _cam.transform.position = new Vector3((float)width / 2.05f - 0.5f, (float)height / 2.5f - 1.0f, -10);
         GameManager.Instance.ChangeState(GameState.SpawnPlayer);
         GameManager.Instance.ChangeState(GameState.PlayerTurn);
+
     }
 
     private HexagonTile[,] removeCell(HexagonTile[,] board)
@@ -85,7 +86,6 @@ public class Board_Cell : MonoBehaviour
 
     private HexagonTile[,] defindeStartCell(HexagonTile[,] board)
     {
-        // เก็บตำแหน่งของ tiles ที่จะถูกลบ
         int x = Random.Range(0, this.width);
         int y = Random.Range(0, this.height);
         int countCell = 0;
@@ -123,6 +123,21 @@ public class Board_Cell : MonoBehaviour
         return board;
     }
 
+    private bool validateBoard(HexagonTile[,] board)
+    {
+        foreach (HexagonTile tile in board)
+        {
+            if (tile != null)
+            {
+                if (tile.TileType == 1 || tile.TileType == 2)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     private HexagonTile[,] defindeEventCell(HexagonTile[,] board)
     {
         int totalEvent = 6;
@@ -136,7 +151,6 @@ public class Board_Cell : MonoBehaviour
             {
                 if (board[x, y].TileType != 1 || board[x, y].TileType != 2)
                 {
-                    //tilesToEvent.Add((x, y));
                     tilesToEvent.Add(board[x, y]);
                     neighbors = board[x, y].neighbors;
                     for (int i = tilesToEvent.Count - 1; i >= 0; i--)
@@ -154,7 +168,7 @@ public class Board_Cell : MonoBehaviour
         {
             Destroy(tile.gameObject);
             board[tile.x, tile.y] = CreateTile(tile.x, tile.y, tile.xPos, tile.yOffset, "Event_", eventPrefab);
-            updateNeighbor(tile, board);
+            updateNeighbor(board[tile.x, tile.y], board);
             tile.shadeTileFromTile(tile, 2);
         }
         return board;
@@ -248,7 +262,7 @@ public class Board_Cell : MonoBehaviour
         hex_go.xPos = xPos;
         hex_go.yOffset = yOffset;
         hex_go.name = namePrefix + x + "_" + y;
-        this._tiles[new Vector2(xPos, y * yOffset)] = hex_go.GetComponent<HexagonTile>();
+        this._tiles[hex_go.name] = hex_go;
         hex_go.transform.SetParent(this.transform);
         return hex_go;
     }
@@ -259,6 +273,8 @@ public class Board_Cell : MonoBehaviour
 
         if (spawnTile == null)
         {
+            Debug.Log("wow");
+            MouseManager.Instance.onResetBoard();
             foreach (Transform tile in this.transform)
             {
                if(tile.gameObject.GetComponent<HexagonTile>().TileType == 1)
@@ -268,5 +284,6 @@ public class Board_Cell : MonoBehaviour
             }
         }
         return spawnTile;
+        //return this._tiles.FirstOrDefault(t => t.Value.TileType == 1).Value;
     }
 }

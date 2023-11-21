@@ -1,28 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Dice : MonoBehaviour
 {
     public static Dice Instance;
-    [SerializeField] public Text dice;
+    private List<Sprite> _diced;
+
     public BasePlayer SelectedPlayer;
+    public Image faceDice;
+    private Dictionary<int, Sprite> _dic = new Dictionary<int, Sprite>();
 
     void Awake()
     {
         Instance = this;
     }
 
+    void Start()
+    {
+        _diced = Resources.LoadAll<Sprite>("Dice").ToList();
+        for (int i = 0; i < _diced.Count; i++)
+        {
+            _dic.Add(i + 1, _diced[i]);
+        }
+    }
+
     public void OnButtonPress()
     {
         SelectedPlayer = UnitManager.Instance.SelectedPlayer;
-        SelectedPlayer.resetTile(SelectedPlayer.set);
-        int n = randomDice();
-        dice.text = $"Dice ({n.ToString()})";
-        sendDice(n, SelectedPlayer);
-        SelectedPlayer.shadeTileFromPlayer(SelectedPlayer.OccupiedTile);
+        if (SelectedPlayer.dice == 0)
+        {
+            SelectedPlayer.resetTile(SelectedPlayer.set);
+            int n = randomDice();
+            faceDice.GetComponent<Image>().sprite = _dic[n];
+            sendDice(n, SelectedPlayer);
+            SelectedPlayer.shadeTileFromPlayer(SelectedPlayer.OccupiedTile);
+        }
     }
 
     private int randomDice()

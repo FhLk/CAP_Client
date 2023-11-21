@@ -15,13 +15,12 @@ public class MouseManager : MonoBehaviour
     }
     public void onResetBoard()
     {
-        GameObject.Destroy(PLAYER.gameObject);
+        Destroy(PLAYER.gameObject);
         foreach (Transform cell in BOARD.transform)
         {
             GameObject.Destroy(cell.gameObject);
         }
         Board_Cell.Instance.generateBoard();
-        Dice.Instance.dice.text = $"Dice ({0.ToString()})";
     }
 
     // Update is called once per frame

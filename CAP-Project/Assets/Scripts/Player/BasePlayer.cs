@@ -21,8 +21,8 @@ public class BasePlayer : BaseUnit
             set.Add(tile);
             foreach (HexagonTile n in tile.neighbors)
             {
-                //n.change(Color.yellow);
-                n.change(countWalk);
+                n.change(Color.yellow);
+                //n.change(countWalk);
                 n._isWalkable = true;
                 set.Add(n);
             }
@@ -49,8 +49,7 @@ public class BasePlayer : BaseUnit
         this.dice -= 1;
         if(this.dice == 0)
         {
-            countWalk = 1;
-            Dice.Instance.dice.text = $"Dice ({this.dice.ToString()})";
+            GameManager.Instance.ChangeState(GameState.NextPlayerTurn);
         }
     }
 }

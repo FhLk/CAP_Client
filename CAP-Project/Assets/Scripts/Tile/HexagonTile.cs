@@ -46,17 +46,15 @@ public class HexagonTile : MonoBehaviour
             {
                 UnitManager.Instance.SelectedPlayer.shadeTileFromPlayer(UnitManager.Instance.SelectedPlayer.OccupiedTile);
             }
-            if(OccupiedUnit.OccupiedTile.TileType == 2)
-            {
-                Debug.Log("wow");
-            }
         }
     }
 
     public void SetUnit(BaseUnit unit)
     {
         if (unit.OccupiedTile != null) unit.OccupiedTile.OccupiedUnit = null;
-        unit.transform.position = transform.position;
+        //unit.transform.position = transform.position;
+        unit.transform.position = new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z);
+        //unit.transform.position.Set(transform.position.x,transform.position.y + 0.05f,transform.position.z);
         OccupiedUnit = unit;
         unit.OccupiedTile = this;
     }
@@ -91,7 +89,6 @@ public class HexagonTile : MonoBehaviour
             foreach (HexagonTile n in tile.neighbors)
             {
                 setStart.Add(n);
-                //n.change(Color.gray);
             }
             countCircle++;
             while (countCircle < r)
