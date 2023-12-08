@@ -1,13 +1,23 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneManger : MonoBehaviour
 {
-    public void MainMenu()
+    [SerializeField] private GameObject sound;
+    [SerializeField] private Sprite unmute;
+    [SerializeField] private Sprite mute;
+
+    public void Main()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Main");
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
     public void Game()
@@ -28,5 +38,17 @@ public class SceneManger : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+    }
+
+    public void soundOnOff()
+    {
+        if(this.sound.GetComponent<Image>().sprite.name == "Unmute")
+        {
+            this.sound.GetComponent<Image> ().sprite = mute;
+        }
+        else
+        {
+            this.sound.GetComponent<Image>().sprite = unmute;
+        }
     }
 }

@@ -39,7 +39,6 @@ public class BasePlayer : BaseUnit
             else if(n.TileType == 5) { n.change(new Color(0.8345884f,0f, 0.9150943f)); }
             else { n.change(Color.white); }
             n._isWalkable = false;
-            n._textDice.text = "";
         }
     }
 

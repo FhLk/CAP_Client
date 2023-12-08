@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
@@ -11,7 +12,6 @@ public class HexagonTile : MonoBehaviour
     public int TileType;
     [SerializeField] private Color _baseColor, _offsetColor;
     [SerializeField] protected SpriteRenderer _renderer;
-    [SerializeField] public Text _textDice;
     [SerializeField] private GameObject _highlight;
     public bool _isWalkable;
     public List<HexagonTile> neighbors = new List<HexagonTile>();
@@ -39,9 +39,12 @@ public class HexagonTile : MonoBehaviour
                 UnitManager.Instance.SelectedPlayer.resetTile(UnitManager.Instance.SelectedPlayer.set);
                 SetUnit(UnitManager.Instance.SelectedPlayer);
                 UnitManager.Instance.SetSelectedPlayer(null);
-
             }
             UnitManager.Instance.SetSelectedPlayer((BasePlayer)OccupiedUnit);
+            if(UnitManager.Instance.SelectedPlayer.OccupiedTile.TileType == 2)
+            {
+                SceneManager.LoadScene("End");
+            }
             if (UnitManager.Instance.SelectedPlayer.dice != 0)
             {
                 UnitManager.Instance.SelectedPlayer.shadeTileFromPlayer(UnitManager.Instance.SelectedPlayer.OccupiedTile);
@@ -74,10 +77,6 @@ public class HexagonTile : MonoBehaviour
     public void change(Color color)
     {
         _renderer.color = color;
-    }
-    public void change(int walk)
-    {
-        _textDice.text = walk.ToString();
     }
     public void shadeTileFromTile(HexagonTile tile, int r)
     {

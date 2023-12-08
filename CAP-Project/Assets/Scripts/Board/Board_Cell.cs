@@ -21,7 +21,7 @@ public class Board_Cell : MonoBehaviour
     public int width;
     public int height;
 
-    float xOffset = 0.95f;
+    float xOffset = 1f;
     float yOffset = 0.8f;
 
     void Awake()
@@ -50,7 +50,7 @@ public class Board_Cell : MonoBehaviour
         initBoard = defindeStartCell(initBoard);
         defindeEventCell(initBoard);
 
-        _cam.transform.position = new Vector3((float)width / 2.05f - 0.5f, (float)height / 2.5f - 1.0f, -10);
+        _cam.transform.position = new Vector3((float)width / 1.958f - 0.5f, (float)height / 2.5f - 1.0f, -10);
         GameManager.Instance.ChangeState(GameState.SpawnPlayer);
         GameManager.Instance.ChangeState(GameState.PlayerTurn);
 
@@ -94,7 +94,7 @@ public class Board_Cell : MonoBehaviour
             Destroy(board[x, y].gameObject);
             board[x, y] = CreateTile(x, y, board[x, y].xPos, board[x, y].yOffset, "Start_", startPrefab);
             updateNeighbor(board[x, y], board);
-            board[x, y].shadeTileFromTile(board[x, y], 10);
+            board[x, y].shadeTileFromTile(board[x, y], 15);
             foreach (HexagonTile tile in board)
             {
                 if (!board[x, y].setStart.Contains(tile) && tile != null)
@@ -121,21 +121,6 @@ public class Board_Cell : MonoBehaviour
             defindeStartCell(board);
         }
         return board;
-    }
-
-    private bool validateBoard(HexagonTile[,] board)
-    {
-        foreach (HexagonTile tile in board)
-        {
-            if (tile != null)
-            {
-                if (tile.TileType == 1 || tile.TileType == 2)
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
     }
 
     private HexagonTile[,] defindeEventCell(HexagonTile[,] board)
@@ -273,7 +258,6 @@ public class Board_Cell : MonoBehaviour
 
         if (spawnTile == null)
         {
-            Debug.Log("wow");
             MouseManager.Instance.onResetBoard();
             foreach (Transform tile in this.transform)
             {
