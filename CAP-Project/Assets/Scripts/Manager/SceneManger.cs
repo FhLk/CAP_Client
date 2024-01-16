@@ -9,6 +9,7 @@ public class SceneManger : MonoBehaviour
     [SerializeField] private GameObject sound;
     [SerializeField] private Sprite unmute;
     [SerializeField] private Sprite mute;
+    [SerializeField] private GameObject LIST;
 
     public void Main()
     {
@@ -22,7 +23,19 @@ public class SceneManger : MonoBehaviour
 
     public void Game()
     {
-        SceneManager.LoadScene("Board_Cell");
+        Transform[] childs = { LIST.transform.GetChild(1), LIST.transform.GetChild(2), LIST.transform.GetChild(3) };
+        List<GameObject> list = new List<GameObject>();
+        foreach (Transform child in childs)
+        {
+            if (child.childCount != 0)
+            {
+                list.Add(child.gameObject);
+            }
+        }
+        if (list.Count == 3)
+        {
+            SceneManager.LoadScene("Board_Cell");
+        }
     }
 
     public void Lobby()
@@ -42,12 +55,14 @@ public class SceneManger : MonoBehaviour
 
     public void soundOnOff()
     {
-        if(this.sound.GetComponent<Image>().sprite.name == "Unmute")
+        if(this.sound.GetComponent<SpriteRenderer>().sprite.name == "Unmute")
         {
-            this.sound.GetComponent<Image> ().sprite = mute;
+            this.sound.GetComponent<SpriteRenderer> ().sprite = mute;
+            this.sound.GetComponent<Image>().sprite = mute;
         }
         else
         {
+            this.sound.GetComponent<SpriteRenderer>().sprite = unmute;
             this.sound.GetComponent<Image>().sprite = unmute;
         }
     }
