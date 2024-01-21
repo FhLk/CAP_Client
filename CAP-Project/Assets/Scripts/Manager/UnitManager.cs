@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -8,41 +11,39 @@ public class UnitManager : MonoBehaviour
 {
     public static UnitManager Instance;
 
-    private List<ScriptableUnit> _units;
     public BasePlayer SelectedPlayer;
+
+    [SerializeField] public GameObject _playerList;
+    private HashSet<BasePlayer> players = new HashSet<BasePlayer>();
 
     void Awake()
     {
         Instance = this;
-
-        _units = Resources.LoadAll<ScriptableUnit>("Units").ToList();
     }
 
     public void SpawnPlayer()
     {
-        var heroCount = 1;
+        int playerCount = 4;
 
-        for (int i = 0; i < heroCount; i++)
+        for (int i = 0; i < playerCount; i++)
         {
-            var randomPrefab = GetRandomUnit<BasePlayer>(Faction.Player);
-            var spawnedPlayer = Instantiate(randomPrefab);
-            HexagonTile startTile = Board_Cell.Instance.GetPlayerSpawnTile();
-
-            SetSelectedPlayer(spawnedPlayer);
-            startTile.SetUnit(spawnedPlayer);
+            Transform child = _playerList.transform.GetChild(i);
+            if (child != null)
+            {
+                child.gameObject.SetActive(true);
+                players.Add(child.GetComponent<BasePlayer>());
+            }
         }
 
-    }
-
-    private T GetRandomUnit<T>(Faction faction) where T : BaseUnit
-    {
-        return (T)_units.Where(u => u.Faction == faction).OrderBy(o => Random.value).First().UnitPrefab;
+        SetSelectedPlayer(players.First<BasePlayer>());
     }
 
     public void SetSelectedPlayer(BasePlayer player)
     {
         SelectedPlayer = player;
         MouseManager.Instance.PLAYER = player;
-        //MenuManager.Instance.ShowSelectedHero(hero);
+        Dice.Instance.SelectedPlayer = player;
+        GameManager.Instance.SelectedPlayer = player;
+        UIManager.Instance.SelectedPlayer = player;
     }
 }

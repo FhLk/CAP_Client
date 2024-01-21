@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public BasePlayer SelectedPlayer;
     private Text _round;
     private int _r = 0;
+    private int _player = 1;
 
     void Awake()
     {
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case GameState.GenerateBoard:
+                _player = 1;
                 Board_Cell.Instance.generateBoard();
                 break;
             case GameState.SpawnPlayer:
@@ -37,8 +39,16 @@ public class GameManager : MonoBehaviour
                 UnitManager.Instance.SpawnPlayer();
                 break;
             case GameState.PlayerTurn:
+                UIManager.Instance.showTurnOfWho(_player);
                 break;
             case GameState.NextPlayerTurn:
+                _player++;
+                if(_player == 5)
+                {
+                    _player = 1;
+                }
+                Transform nextPlayer = UnitManager.Instance._playerList.transform.GetChild(_player-1);
+                UnitManager.Instance.SetSelectedPlayer(nextPlayer.GetComponent<BasePlayer>());
                 _r++;
                 _round.text = $"Round {_r}";
                 ChangeState(GameState.PlayerTurn);

@@ -1,37 +1,52 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using static UnityEditorInternal.ReorderableList;
 
 public class HexagonTile : MonoBehaviour
 {
     public string TileName;
     public int TileType;
-    [SerializeField] private Color _baseColor, _offsetColor;
-    [SerializeField] protected SpriteRenderer _renderer;
-    [SerializeField] private GameObject _highlight;
-    public bool _isWalkable;
+    [SerializeField] protected SpriteRenderer _exit;
+    [SerializeField] protected SpriteRenderer _hover;
     public List<HexagonTile> neighbors = new List<HexagonTile>();
     public int x;
     public int y;
     public float xPos;
     public float yOffset;
     public HashSet<HexagonTile> setStart = new HashSet<HexagonTile>();
-    public BaseUnit OccupiedUnit;
-    public bool Walkable => _isWalkable && OccupiedUnit == null;
 
-    public void Init(bool isOffset)
+    void OnMouseOver()
     {
-        _renderer.color = isOffset ? _offsetColor : _baseColor;
+        if (this.TileType == 0)
+        {
+            this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = _hover.sprite;
+        }
+        
+    }
+
+    void OnMouseExit()
+    {
+        if (this.TileType == 0)
+        {
+            this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = _exit.sprite;
+        }
     }
 
     void OnMouseDown()
     {
         if (GameManager.Instance.GameState != GameState.PlayerTurn) return;
-        if (OccupiedUnit == null && this._isWalkable)
+        if (Dice.Instance.value != -1)
+        {
+            UnitManager.Instance.SelectedPlayer.playerClick();
+            GameObject.Destroy(gameObject);
+        }
+        //Destroy(this);
+        /*if (OccupiedUnit == null)
         {
             if (UnitManager.Instance.SelectedPlayer != null)
             {
@@ -49,17 +64,17 @@ public class HexagonTile : MonoBehaviour
             {
                 UnitManager.Instance.SelectedPlayer.shadeTileFromPlayer(UnitManager.Instance.SelectedPlayer.OccupiedTile);
             }
-        }
+        }*/
     }
 
     public void SetUnit(BaseUnit unit)
     {
-        if (unit.OccupiedTile != null) unit.OccupiedTile.OccupiedUnit = null;
+        /*if (unit.OccupiedTile != null) unit.OccupiedTile.OccupiedUnit = null;
         //unit.transform.position = transform.position;
         unit.transform.position = new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z);
         //unit.transform.position.Set(transform.position.x,transform.position.y + 0.05f,transform.position.z);
         OccupiedUnit = unit;
-        unit.OccupiedTile = this;
+        unit.OccupiedTile = this;*/
     }
 
     public void addNeighbors(int x, int y, HexagonTile[,] board)
@@ -74,10 +89,6 @@ public class HexagonTile : MonoBehaviour
         }
     }
 
-    public void change(Color color)
-    {
-        _renderer.color = color;
-    }
     public void shadeTileFromTile(HexagonTile tile, int r)
     {
         if (tile != null)
@@ -97,9 +108,11 @@ public class HexagonTile : MonoBehaviour
                 {
                     foreach (HexagonTile neighbor in n.neighbors)
                     {
+                        //neighbor.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
+                        nextCircleTiles.Add(neighbor);
                         if (!setStart.Contains(neighbor) && !nextCircleTiles.Contains(neighbor))
                         {
-                            //neighbor.change(Color.gray);
+                            //neighbor.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
                             nextCircleTiles.Add(neighbor);
                         }
                     }

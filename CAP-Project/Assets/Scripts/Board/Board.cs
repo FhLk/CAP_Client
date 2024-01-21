@@ -62,7 +62,7 @@ public class Board : MonoBehaviour
 
                     hex_go.name = "Hex_" + x + "_" + y;
                     var isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);
-                    hex_go.Init(isOffset);
+                    //hex_go.Init(isOffset);
 
                     _tiles[new Vector2(xPos, y * yOffset)] = hex_go;
 
@@ -81,7 +81,7 @@ public class Board : MonoBehaviour
 
                     hex_go.name = "Hex_" + x + "_" + y;
                     var isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);
-                    hex_go.Init(isOffset);
+                    //hex_go.Init(isOffset);
 
                     _tiles[new Vector2(xPos, y * yOffset)] = hex_go;
 
@@ -106,11 +106,6 @@ public class Board : MonoBehaviour
             GameManager.Instance.ChangeState(GameState.SpawnPlayer);
             GameManager.Instance.ChangeState(GameState.PlayerTurn);
         }
-    }
-
-    public HexagonTile GetPlayerSpawnTile()
-    {
-        return _tiles.Where(t => t.Key.x < width && t.Value.Walkable).OrderBy(t => Random.value).First().Value;
     }
 
     public HexagonTile GetTileAtPosition(Vector2 pos)

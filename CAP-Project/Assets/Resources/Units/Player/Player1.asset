@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Player1
   m_EditorClassIdentifier: 
   Faction: 0
-  UnitPrefab: {fileID: 356089910834195267, guid: 1a1b054399a12964d9c49f3c98efd640, type: 3}
+  UnitPrefab: {fileID: -9179947960325073459, guid: bcd1793fb82fd0d48a42d212e0010e9f, type: 3}

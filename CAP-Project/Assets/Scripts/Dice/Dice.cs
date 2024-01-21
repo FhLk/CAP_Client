@@ -10,6 +10,7 @@ public class Dice : MonoBehaviour
 {
     public static Dice Instance;
     private List<Sprite> _diced;
+    [SerializeField] public int value = -1;
 
     public BasePlayer SelectedPlayer;
     public Image faceDice;
@@ -34,11 +35,10 @@ public class Dice : MonoBehaviour
         SelectedPlayer = UnitManager.Instance.SelectedPlayer;
         if (SelectedPlayer.dice == 0)
         {
-            SelectedPlayer.resetTile(SelectedPlayer.set);
             int n = randomDice();
             faceDice.GetComponent<Image>().sprite = _dic[n];
             sendDice(n, SelectedPlayer);
-            SelectedPlayer.shadeTileFromPlayer(SelectedPlayer.OccupiedTile);
+            this.value = n;
         }
     }
 
