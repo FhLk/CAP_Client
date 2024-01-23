@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,8 +12,9 @@ public class HexagonTile : MonoBehaviour
 {
     public string TileName;
     public int TileType;
-    [SerializeField] protected SpriteRenderer _exit;
-    [SerializeField] protected SpriteRenderer _hover;
+    private List<Sprite> _recoures;
+    private Dictionary<int, Sprite> _cellDefault = new Dictionary<int, Sprite>();
+    private Dictionary<int, Sprite> _cellHover = new Dictionary<int, Sprite>();
     public List<HexagonTile> neighbors = new List<HexagonTile>();
     public int x;
     public int y;
@@ -20,21 +22,28 @@ public class HexagonTile : MonoBehaviour
     public float yOffset;
     public HashSet<HexagonTile> setStart = new HashSet<HexagonTile>();
 
+    void Awake()
+    {
+        _recoures = Resources.LoadAll<Sprite>("Cell-Type-Default").ToList();
+        for (int i = 0; i < _recoures.Count; i++)
+        {
+            _cellDefault.Add(i, _recoures[i]);
+        }
+        _recoures = Resources.LoadAll<Sprite>("Cell-Type-Hover").ToList();
+        for (int i = 0; i < _recoures.Count; i++)
+        {
+            _cellHover.Add(i, _recoures[i]);
+        }
+    }
+
     void OnMouseOver()
     {
-        if (this.TileType == 0)
-        {
-            this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = _hover.sprite;
-        }
-        
+        this.transform.GetComponent<SpriteRenderer>().sprite = _cellHover[this.TileType] ;
     }
 
     void OnMouseExit()
     {
-        if (this.TileType == 0)
-        {
-            this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = _exit.sprite;
-        }
+        this.transform.GetComponent<SpriteRenderer>().sprite = _cellDefault[this.TileType];
     }
 
     void OnMouseDown()
@@ -75,6 +84,32 @@ public class HexagonTile : MonoBehaviour
         //unit.transform.position.Set(transform.position.x,transform.position.y + 0.05f,transform.position.z);
         OccupiedUnit = unit;
         unit.OccupiedTile = this;*/
+    }
+
+    public string setName(int t)
+    {
+        if (t == 1)
+        {
+            return "Bomb_";
+        }
+        else if (t == 2)
+        {
+            return "Event_";
+        }
+        else if (t == 3)
+        {
+            return "Reset_";
+        }
+        else if (t == 4)
+        {
+            return "Heart_";
+        }
+        return "Hex_";
+    }
+
+    public void setPrefab(int t)
+    {
+        this.transform.GetComponent<SpriteRenderer>().sprite = _cellDefault[t];
     }
 
     public void addNeighbors(int x, int y, HexagonTile[,] board)

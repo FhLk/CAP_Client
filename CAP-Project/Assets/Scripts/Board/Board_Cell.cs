@@ -9,13 +9,16 @@ public class Board_Cell : MonoBehaviour
     public static Board_Cell Instance;
     public Dictionary<string, HexagonTile> _tiles;
     [SerializeField] private HexagonTile hexPrefab;
-    [SerializeField] private HexagonTile bombPrefab;
     [SerializeField] private Transform _cam;
-    [SerializeField] private float percentage;
+    [SerializeField] private int numBombs;
+    [SerializeField] private int numEvents;
+    [SerializeField] private int numResets;
+    [SerializeField] private int numHearts;
 
     public int width;
     public int height;
     private HexagonTile[,] board;
+    private int[] cellTypes = { 0,1,2,3,4,5 };
 
     float xOffset = 1f;
     float yOffset = 0.8f;
@@ -38,17 +41,27 @@ public class Board_Cell : MonoBehaviour
                 {
                     xPos += xOffset / 2f;
                 }
-                initBoard[x, y] = CreateTile(x, y, xPos, yOffset, "Hex_", hexPrefab);
+                initBoard[x, y] = CreateTile(x, y, xPos, yOffset, "Hex_",0);
             }
         }
         setNeighbors(initBoard);
-        defindeBombCell(initBoard);
+        initBoard = stateDefind(initBoard);
 
         _cam.transform.position = new Vector3((float)width / 1.958f - 0.5f, (float)height / 2.5f - 1.0f, -10);
 
         GameManager.Instance.ChangeState(GameState.SpawnPlayer);
         GameManager.Instance.ChangeState(GameState.PlayerTurn);
         board = initBoard;
+    }
+
+    private HexagonTile[,] stateDefind(HexagonTile[,] initBoard)
+    {
+        HexagonTile[,] board = initBoard;
+        board = defindeCell(board, numBombs, 1);
+        board = defindeCell(board, numEvents, 2);
+        board = defindeCell(board, numResets, 3);
+        board = defindeCell(board, numHearts, 4);
+        return board;
     }
 
     public void removeCell(HexagonTile cell)
@@ -62,74 +75,48 @@ public class Board_Cell : MonoBehaviour
         }
     }
 
-    private HexagonTile[,] defindeBombCell(HexagonTile[,] board)
+    private HexagonTile[,] defindeCell(HexagonTile[,] board, int count,int type)
     {
-        int totalEvent = 0;
-        List<HexagonTile> tilesToEvent = new List<HexagonTile>();
+        int total = count;
+        List<HexagonTile> tilesToItem = new List<HexagonTile>();
         List<HexagonTile> neighbors = new List<HexagonTile>();
-        while (tilesToEvent.Count < totalEvent)
-        {
-            int x = Random.Range(0, this.width);
-            int y = Random.Range(0, this.height);
-            if (!tilesToEvent.Contains(board[x, y]) && board[x, y] != null)
-            {
-                if (board[x, y].TileType != 1 || board[x, y].TileType != 2)
-                {
-                    tilesToEvent.Add(board[x, y]);
-                    neighbors = board[x, y].neighbors;
-                    for (int i = tilesToEvent.Count - 1; i >= 0; i--)
-                    {
-                        HexagonTile cell = tilesToEvent[i];
-                        if (neighbors.Contains(cell))
-                        {
-                            tilesToEvent.RemoveAt(i);
-                        }
-                    }
-                }
-            }
-        }
-        foreach (HexagonTile tile in tilesToEvent)
-        {
-            Destroy(tile.gameObject);
-            board[tile.x, tile.y] = CreateTile(tile.x, tile.y, tile.xPos, tile.yOffset, "Bomb_", bombPrefab);
-            updateNeighbor(board[tile.x, tile.y], board);
-            //tile.shadeTileFromTile(tile, 2);
-        }
-        return board;
-    }
+        List<HexagonTile> listTile = new List<HexagonTile>();
 
-    public HexagonTile[,] defindeBoomCell(int bomb)
-    {
-        int totalEvent = bomb;
-        List<HexagonTile> tilesToEvent = new List<HexagonTile>();
-        List<HexagonTile> neighbors = new List<HexagonTile>();
-        while (tilesToEvent.Count < totalEvent)
+        foreach (HexagonTile hex in board)
         {
-            int x = 0;
-            int y = 0;
-            if (!tilesToEvent.Contains(board[x, y]) && board[x, y] != null)
+            if (hex.TileType == 0)
             {
-                if (board[x, y].TileType != 1 || board[x, y].TileType != 2)
+                listTile.Add(hex);
+            }
+        } 
+        while (tilesToItem.Count < total)
+        {
+            if (listTile.Count <= (this.width * this.height)){
+                HexagonTile randomHex = listTile[Random.Range(0, listTile.Count)];
+                listTile.Remove(randomHex);
+                if (!tilesToItem.Contains(randomHex) && randomHex != null)
                 {
-                    tilesToEvent.Add(board[x, y]);
-                    neighbors = board[x, y].neighbors;
-                    for (int i = tilesToEvent.Count - 1; i >= 0; i--)
+                    if (randomHex.TileType == 0)
                     {
-                        HexagonTile cell = tilesToEvent[i];
-                        if (neighbors.Contains(cell))
+                        tilesToItem.Add(randomHex);
+                        neighbors = randomHex.neighbors;
+                        for (int i = tilesToItem.Count - 1; i >= 0; i--)
                         {
-                            tilesToEvent.RemoveAt(i);
+                            HexagonTile cell = tilesToItem[i];
+                            if (neighbors.Contains(cell))
+                            {
+                                tilesToItem.RemoveAt(i);
+                            }
                         }
                     }
                 }
             }
         }
-        foreach (HexagonTile tile in tilesToEvent)
+        foreach (HexagonTile tile in tilesToItem)
         {
             Destroy(tile.gameObject);
-            board[tile.x, tile.y] = CreateTile(tile.x, tile.y, tile.xPos, tile.yOffset, "Bomb_", bombPrefab);
+            board[tile.x, tile.y] = CreateTile(tile.x, tile.y, tile.xPos, tile.yOffset, board[tile.x, tile.y].setName(type), type);
             updateNeighbor(board[tile.x, tile.y], board);
-            tile.shadeTileFromTile(tile, 2);
         }
         return board;
     }
@@ -207,14 +194,17 @@ public class Board_Cell : MonoBehaviour
         }
     }
 
-    private HexagonTile CreateTile(int x, int y, float xPos, float yOffset, string namePrefix, HexagonTile prefab)
+    private HexagonTile CreateTile(int x, int y, float xPos, float yOffset, string namePrefix, int type)
     {
-        HexagonTile hex_go = Instantiate(prefab, new Vector3(xPos, y * yOffset, (float)y / 10), Quaternion.identity);
+        HexagonTile hex_go = Instantiate(hexPrefab, new Vector3(xPos, y * yOffset, (float)y / 10), Quaternion.identity);
         hex_go.x = x;
         hex_go.y = y;
         hex_go.xPos = xPos;
         hex_go.yOffset = yOffset;
         hex_go.name = namePrefix + x + "_" + y;
+        hex_go.TileType = type;
+        hex_go.TileName = namePrefix;
+        hex_go.setPrefab(type);
         this._tiles[hex_go.name] = hex_go;
         hex_go.transform.SetParent(this.transform);
         return hex_go;

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -33,13 +33,14 @@ public class Dice : MonoBehaviour
     public void OnButtonPress()
     {
         SelectedPlayer = UnitManager.Instance.SelectedPlayer;
-        if (SelectedPlayer.dice == 0)
-        {
-            int n = randomDice();
-            faceDice.GetComponent<Image>().sprite = _dic[n];
-            sendDice(n, SelectedPlayer);
-            this.value = n;
-        }
+        StartCoroutine(ShowRandomNumber());
+        //if (SelectedPlayer.dice == 0)
+        //{
+        //int n = randomDice();
+        //faceDice.GetComponent<Image>().sprite = _dic[n];
+        //sendDice(n, SelectedPlayer);
+        //this.value = n;
+        //}
     }
 
     private int randomDice()
@@ -52,4 +53,19 @@ public class Dice : MonoBehaviour
     {
         player.dice = dice;
     }
+    IEnumerator ShowRandomNumber()
+    {
+        // แสดงเลขสุ่มชั่วคราว
+        for (int i = 0; i < 30; i++)
+        {
+            int randomNumber = Random.Range(1, 7);
+            faceDice.GetComponent<Image>().sprite = _dic[randomNumber];
+            yield return new WaitForSeconds(0.05f);
+        }
+        int n = randomDice();
+        faceDice.GetComponent<Image>().sprite = _dic[n];
+        sendDice(n, SelectedPlayer);
+        this.value = n;
+    }
 }
+

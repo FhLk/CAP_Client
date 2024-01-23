@@ -8,7 +8,6 @@ public class MouseManager : MonoBehaviour
     public static MouseManager Instance;
     [SerializeField] private GameObject BOARD;
     [SerializeField] public BaseUnit PLAYER;
-    private int genBomb = 0;
     void Awake()
     {
         Instance = this;
@@ -23,13 +22,6 @@ public class MouseManager : MonoBehaviour
         Dice.Instance.value = -1;
         UnitManager.Instance.SelectedPlayer.dice = 0;
         UIManager.Instance.showTurnOfWho(1);
-        this.genBomb = 0;
-    }
-
-    public void onGenerateBomb()
-    {
-        this.genBomb++;
-        Board_Cell.Instance.defindeBoomCell(1);
     }
 
     // Update is called once per frame
