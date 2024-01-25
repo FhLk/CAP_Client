@@ -46,4 +46,22 @@ public class UnitManager : MonoBehaviour
         GameManager.Instance.SelectedPlayer = player;
         UIManager.Instance.SelectedPlayer = player;
     }
+
+    public void IncreaseHeart()
+    {
+        SelectedPlayer.increaseHearts();
+    }
+
+    public void DncreaseHeart()
+    {
+        SelectedPlayer.decreaseHearts();
+    }
+
+    public void resetAllPlayer()
+    {
+        foreach (var item in players)
+        {
+            item.resetPlayer();
+        };
+    }
 }

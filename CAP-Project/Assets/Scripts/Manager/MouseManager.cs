@@ -7,7 +7,7 @@ public class MouseManager : MonoBehaviour
 {
     public static MouseManager Instance;
     [SerializeField] private GameObject BOARD;
-    [SerializeField] public BaseUnit PLAYER;
+    [SerializeField] public BasePlayer PLAYER;
     void Awake()
     {
         Instance = this;
@@ -18,10 +18,10 @@ public class MouseManager : MonoBehaviour
         {
             GameObject.Destroy(cell.gameObject);
         }
-        GameManager.Instance.ChangeState(GameState.GenerateBoard);
         Dice.Instance.value = -1;
-        UnitManager.Instance.SelectedPlayer.dice = 0;
+        UnitManager.Instance.resetAllPlayer();
         UIManager.Instance.showTurnOfWho(1);
+        GameManager.Instance.ChangeState(GameState.GenerateBoard);
     }
 
     // Update is called once per frame
