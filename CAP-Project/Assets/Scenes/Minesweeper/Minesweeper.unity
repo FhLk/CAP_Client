@@ -809,7 +809,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1263151936}
         m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
-        m_MethodName: DncreaseHeart
+        m_MethodName: DecreaseHeart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1427,7 +1427,8 @@ MonoBehaviour:
   numBombs: 10
   numEvents: 10
   numResets: 0
-  numHearts: 0
+  numHearts: 10
+  numSheilds: 5
   width: 29
   height: 15
 --- !u!1001 &1915792074

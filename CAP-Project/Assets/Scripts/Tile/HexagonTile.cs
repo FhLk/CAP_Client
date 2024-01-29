@@ -21,9 +21,11 @@ public class HexagonTile : MonoBehaviour
     public float xPos;
     public float yOffset;
     public HashSet<HexagonTile> setStart = new HashSet<HexagonTile>();
+    public bool isActive;
 
     void Awake()
     {
+        isActive = true;
         _recoures = Resources.LoadAll<Sprite>("Cell-Type-Default").ToList();
         for (int i = 0; i < _recoures.Count; i++)
         {
@@ -49,10 +51,34 @@ public class HexagonTile : MonoBehaviour
     void OnMouseDown()
     {
         if (GameManager.Instance.GameState != GameState.PlayerTurn) return;
-        if (Dice.Instance.value != -1)
+        if (Dice.Instance.value != -1 && this.isActive)
         {
+            if (this.TileType == 1)
+            {
+                isActive = false;
+                UnitManager.Instance.DecreaseHeart();
+            }
+            else if(this.TileType == 2)
+            {
+                //content of event
+            }
+            else if (this.TileType == 3)
+            {
+                UnitManager.Instance.IncreaseHeart();
+            }
+            else if (this.TileType == 4)
+            {
+                MouseManager.Instance.onResetBoard();
+            }
+            else if (this.TileType == 5)
+            {
+                UnitManager.Instance.ActiveSheild();
+            }
+            if (this.TileType != 1)
+            {
+                GameObject.Destroy(gameObject);
+            }
             UnitManager.Instance.SelectedPlayer.playerClick();
-            GameObject.Destroy(gameObject);
         }
         //Destroy(this);
         /*if (OccupiedUnit == null)
@@ -98,11 +124,11 @@ public class HexagonTile : MonoBehaviour
         }
         else if (t == 3)
         {
-            return "Reset_";
+            return "Heart_";
         }
         else if (t == 4)
         {
-            return "Heart_";
+            return "Reset_";
         }
         return "Hex_";
     }

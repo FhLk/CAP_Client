@@ -14,6 +14,7 @@ public class Board_Cell : MonoBehaviour
     [SerializeField] private int numEvents;
     [SerializeField] private int numResets;
     [SerializeField] private int numHearts;
+    [SerializeField] private int numSheilds;
 
     public int width;
     public int height;
@@ -58,9 +59,10 @@ public class Board_Cell : MonoBehaviour
     {
         HexagonTile[,] board = initBoard;
         board = defindeCell(board, numBombs, 1);
-        board = defindeCell(board, numEvents, 2);
-        board = defindeCell(board, numResets, 3);
-        board = defindeCell(board, numHearts, 4);
+        //board = defindeCell(board, numEvents, 2);
+        board = defindeCell(board, numHearts, 3);
+        board = defindeCell(board, numResets, 4);
+        board = defindeCell(board, numSheilds, 5);
         return board;
     }
 

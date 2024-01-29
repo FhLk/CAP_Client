@@ -52,9 +52,14 @@ public class UnitManager : MonoBehaviour
         SelectedPlayer.increaseHearts();
     }
 
-    public void DncreaseHeart()
+    public void DecreaseHeart()
     {
         SelectedPlayer.decreaseHearts();
+    }
+
+    public void ActiveSheild()
+    {
+        SelectedPlayer.activeSheild();
     }
 
     public void resetAllPlayer()

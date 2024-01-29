@@ -14,6 +14,7 @@ public class BasePlayer : BaseUnit
     public int maxShield = 1;
     public int hearts;
     [SerializeField] private GameObject _base;
+    public bool playerState;
     public bool shield;
 
     private void Awake()
@@ -72,6 +73,13 @@ public class BasePlayer : BaseUnit
                 this._base.transform.GetChild(this.hearts).gameObject.SetActive(false);
             }
         }
+    }
+
+    public void activeSheild()
+    {
+        this.shield = true;
+        this.hearts++;
+        this._base.transform.GetChild(3).gameObject.SetActive(true);
     }
 
     public void resetPlayer()
