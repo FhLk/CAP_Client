@@ -15,6 +15,7 @@ public class HexagonTile : MonoBehaviour
     private List<Sprite> _recoures;
     private Dictionary<int, Sprite> _cellDefault = new Dictionary<int, Sprite>();
     private Dictionary<int, Sprite> _cellHover = new Dictionary<int, Sprite>();
+    private Dictionary<int, Sprite> _cellDisable = new Dictionary<int, Sprite>();
     public List<HexagonTile> neighbors = new List<HexagonTile>();
     public int x;
     public int y;
@@ -22,10 +23,12 @@ public class HexagonTile : MonoBehaviour
     public float yOffset;
     public HashSet<HexagonTile> setStart = new HashSet<HexagonTile>();
     public bool isActive;
+    public bool isDisplay;
 
     void Awake()
     {
         isActive = true;
+        isDisplay = false;
         _recoures = Resources.LoadAll<Sprite>("Cell-Type-Default").ToList();
         for (int i = 0; i < _recoures.Count; i++)
         {
@@ -36,16 +39,43 @@ public class HexagonTile : MonoBehaviour
         {
             _cellHover.Add(i, _recoures[i]);
         }
+        _recoures = Resources.LoadAll<Sprite>("Cell-Type-Disable").ToList();
+        for (int i = 0; i < _recoures.Count; i++)
+        {
+            _cellDisable.Add(i, _recoures[i]);
+        }
     }
 
     void OnMouseOver()
     {
-        this.transform.GetComponent<SpriteRenderer>().sprite = _cellHover[this.TileType] ;
+        if (this.TileType == 1 && !isActive && isDisplay)
+        {
+            this.transform.GetComponent<SpriteRenderer>().sprite = _cellDisable[this.TileType];
+        }
+        else if (this.TileType != 1 && isActive && isDisplay)
+        {
+            this.transform.GetComponent<SpriteRenderer>().sprite = _cellHover[this.TileType];
+        }
+        else
+        {
+            this.transform.GetComponent<SpriteRenderer>().sprite = _cellHover[0];
+        }
     }
 
     void OnMouseExit()
     {
-        this.transform.GetComponent<SpriteRenderer>().sprite = _cellDefault[this.TileType];
+        if (this.TileType == 1 && !isActive && isDisplay)
+        {
+            this.transform.GetComponent<SpriteRenderer>().sprite = _cellDisable[this.TileType];
+        }
+        else if (this.TileType != 1 && isActive && isDisplay)
+        {
+            this.transform.GetComponent<SpriteRenderer>().sprite = _cellDefault[this.TileType];
+        }
+        else
+        {
+            this.transform.GetComponent<SpriteRenderer>().sprite = _cellDefault[0];
+        }
     }
 
     void OnMouseDown()
@@ -56,7 +86,9 @@ public class HexagonTile : MonoBehaviour
             if (this.TileType == 1)
             {
                 isActive = false;
+                isDisplay = true;
                 UnitManager.Instance.DecreaseHeart();
+                this.transform.GetComponent<SpriteRenderer>().sprite = _cellDisable[this.TileType];
             }
             else if(this.TileType == 2)
             {
