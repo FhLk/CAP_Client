@@ -1,19 +1,14 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp:
-    - Player
+    - BasePlayer
     - ScriptableUnit
     Assembly-CSharp.dll:
-    - Board_Cell
-    - ChooseColor
-    - ColorTile
-    - Dice
-    - GameManager
-    - HexagonTile
-    - MouseManager
-    - Player
+    - Data
+    - LobbyData
+    - PlayerAPI
     - SceneManger
-    - UnitManager
+    - WebsocketCLI
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Animation.Runtime.dll:
@@ -50,6 +45,10 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    UnityEngine.UI:
+    - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.Image
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -57,7 +56,6 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
-    - UnityEngine.UI.InputField
     - UnityEngine.UI.Text
   serializedClasses:
     Unity.TextMeshPro:
@@ -88,248 +86,18 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Button/ButtonClickedEvent
     - UnityEngine.UI.ColorBlock
     - UnityEngine.UI.FontData
-    - UnityEngine.UI.InputField/EndEditEvent
-    - UnityEngine.UI.InputField/OnChangeEvent
-    - UnityEngine.UI.InputField/SubmitEvent
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
     - UnityEngine.UI.Navigation
     - UnityEngine.UI.SpriteState
   methodsToPreserve:
   - assembly: Assembly-CSharp
     fullTypeName: SceneManger
-    methodName: soundOnOff
-  - assembly: Assembly-CSharp
-    fullTypeName: SceneManger
-    methodName: Menu
-  - assembly: Assembly-CSharp
-    fullTypeName: SceneManger
-    methodName: Exit
-  - assembly: Assembly-CSharp
-    fullTypeName: SceneManger
-    methodName: soundOnOff
-  - assembly: Assembly-CSharp
-    fullTypeName: SceneManger
-    methodName: Lobby
-  - assembly: Assembly-CSharp
-    fullTypeName: SceneManger
-    methodName: Lobby
-  - assembly: Assembly-CSharp
-    fullTypeName: SceneManger
-    methodName: Lobby
-  - assembly: Assembly-CSharp
-    fullTypeName: SceneManger
-    methodName: Lobby
-  - assembly: Assembly-CSharp
-    fullTypeName: SceneManger
-    methodName: Main
-  - assembly: Assembly-CSharp
-    fullTypeName: ChooseColor
-    methodName: selectColor
-  - assembly: Assembly-CSharp
-    fullTypeName: ChooseColor
-    methodName: selectColor
-  - assembly: Assembly-CSharp
-    fullTypeName: ChooseColor
-    methodName: selectColor
-  - assembly: Assembly-CSharp
-    fullTypeName: ChooseColor
-    methodName: selectColor
-  - assembly: Assembly-CSharp
-    fullTypeName: SceneManger
     methodName: Game
   - assembly: Assembly-CSharp
     fullTypeName: SceneManger
     methodName: Menu
-  - assembly: Assembly-CSharp
-    fullTypeName: Dice
-    methodName: OnButtonPress
-  - assembly: Assembly-CSharp
-    fullTypeName: SceneManger
-    methodName: Exit
-  - assembly: Assembly-CSharp
-    fullTypeName: MouseManager
-    methodName: onResetBoard
-  - assembly: Assembly-CSharp
-    fullTypeName: SceneManger
-    methodName: Lobby
-  - assembly: Assembly-CSharp
-    fullTypeName: SceneManger
-    methodName: Exit
   sceneClasses:
-    Assets/Scenes/Board_Cell.unity:
-    - Class: 1
-      Script: {instanceID: 0}
-    - Class: 4
-      Script: {instanceID: 0}
-    - Class: 20
-      Script: {instanceID: 0}
-    - Class: 21
-      Script: {instanceID: 0}
-    - Class: 28
-      Script: {instanceID: 0}
-    - Class: 48
-      Script: {instanceID: 0}
-    - Class: 60
-      Script: {instanceID: 0}
-    - Class: 81
-      Script: {instanceID: 0}
-    - Class: 104
-      Script: {instanceID: 0}
-    - Class: 114
-      Script: {instanceID: 1586}
-    - Class: 114
-      Script: {instanceID: 1588}
-    - Class: 114
-      Script: {instanceID: 1594}
-    - Class: 114
-      Script: {instanceID: 1672}
-    - Class: 114
-      Script: {instanceID: 3128}
-    - Class: 114
-      Script: {instanceID: 3212}
-    - Class: 114
-      Script: {instanceID: 3522}
-    - Class: 114
-      Script: {instanceID: 5648}
-    - Class: 114
-      Script: {instanceID: 8062}
-    - Class: 114
-      Script: {instanceID: 8262}
-    - Class: 114
-      Script: {instanceID: 8868}
-    - Class: 114
-      Script: {instanceID: 10208}
-    - Class: 114
-      Script: {instanceID: 10558}
-    - Class: 114
-      Script: {instanceID: 10660}
-    - Class: 115
-      Script: {instanceID: 0}
-    - Class: 128
-      Script: {instanceID: 0}
-    - Class: 157
-      Script: {instanceID: 0}
-    - Class: 196
-      Script: {instanceID: 0}
-    - Class: 212
-      Script: {instanceID: 0}
-    - Class: 213
-      Script: {instanceID: 0}
-    - Class: 222
-      Script: {instanceID: 0}
-    - Class: 223
-      Script: {instanceID: 0}
-    - Class: 224
-      Script: {instanceID: 0}
-    Assets/Scenes/End.unity:
-    - Class: 1
-      Script: {instanceID: 0}
-    - Class: 4
-      Script: {instanceID: 0}
-    - Class: 20
-      Script: {instanceID: 0}
-    - Class: 21
-      Script: {instanceID: 0}
-    - Class: 28
-      Script: {instanceID: 0}
-    - Class: 48
-      Script: {instanceID: 0}
-    - Class: 81
-      Script: {instanceID: 0}
-    - Class: 104
-      Script: {instanceID: 0}
-    - Class: 114
-      Script: {instanceID: 1586}
-    - Class: 114
-      Script: {instanceID: 1588}
-    - Class: 114
-      Script: {instanceID: 1594}
-    - Class: 114
-      Script: {instanceID: 3128}
-    - Class: 114
-      Script: {instanceID: 3212}
-    - Class: 114
-      Script: {instanceID: 3522}
-    - Class: 114
-      Script: {instanceID: 8062}
-    - Class: 114
-      Script: {instanceID: 8868}
-    - Class: 115
-      Script: {instanceID: 0}
-    - Class: 128
-      Script: {instanceID: 0}
-    - Class: 157
-      Script: {instanceID: 0}
-    - Class: 196
-      Script: {instanceID: 0}
-    - Class: 212
-      Script: {instanceID: 0}
-    - Class: 213
-      Script: {instanceID: 0}
-    - Class: 222
-      Script: {instanceID: 0}
-    - Class: 223
-      Script: {instanceID: 0}
-    - Class: 224
-      Script: {instanceID: 0}
     Assets/Scenes/Lobby.unity:
-    - Class: 1
-      Script: {instanceID: 0}
-    - Class: 4
-      Script: {instanceID: 0}
-    - Class: 20
-      Script: {instanceID: 0}
-    - Class: 21
-      Script: {instanceID: 0}
-    - Class: 28
-      Script: {instanceID: 0}
-    - Class: 48
-      Script: {instanceID: 0}
-    - Class: 81
-      Script: {instanceID: 0}
-    - Class: 104
-      Script: {instanceID: 0}
-    - Class: 114
-      Script: {instanceID: 1586}
-    - Class: 114
-      Script: {instanceID: 1588}
-    - Class: 114
-      Script: {instanceID: 1594}
-    - Class: 114
-      Script: {instanceID: 3128}
-    - Class: 114
-      Script: {instanceID: 3212}
-    - Class: 114
-      Script: {instanceID: 3522}
-    - Class: 114
-      Script: {instanceID: 3662}
-    - Class: 114
-      Script: {instanceID: 6354}
-    - Class: 114
-      Script: {instanceID: 8062}
-    - Class: 114
-      Script: {instanceID: 8868}
-    - Class: 114
-      Script: {instanceID: 11236}
-    - Class: 115
-      Script: {instanceID: 0}
-    - Class: 128
-      Script: {instanceID: 0}
-    - Class: 157
-      Script: {instanceID: 0}
-    - Class: 196
-      Script: {instanceID: 0}
-    - Class: 212
-      Script: {instanceID: 0}
-    - Class: 213
-      Script: {instanceID: 0}
-    - Class: 222
-      Script: {instanceID: 0}
-    - Class: 223
-      Script: {instanceID: 0}
-    - Class: 224
-      Script: {instanceID: 0}
-    Assets/Scenes/Main.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -349,86 +117,43 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1588}
+      Script: {instanceID: 1590}
     - Class: 114
       Script: {instanceID: 1594}
     - Class: 114
-      Script: {instanceID: 2550}
+      Script: {instanceID: 1598}
     - Class: 114
-      Script: {instanceID: 3128}
+      Script: {instanceID: 1600}
     - Class: 114
-      Script: {instanceID: 3212}
+      Script: {instanceID: 2562}
     - Class: 114
-      Script: {instanceID: 3522}
+      Script: {instanceID: 3226}
     - Class: 114
-      Script: {instanceID: 5376}
+      Script: {instanceID: 3536}
     - Class: 114
-      Script: {instanceID: 5548}
+      Script: {instanceID: 5404}
     - Class: 114
-      Script: {instanceID: 5966}
+      Script: {instanceID: 5580}
     - Class: 114
-      Script: {instanceID: 7108}
+      Script: {instanceID: 5998}
     - Class: 114
-      Script: {instanceID: 8062}
+      Script: {instanceID: 7154}
     - Class: 114
-      Script: {instanceID: 8406}
+      Script: {instanceID: 8462}
     - Class: 114
-      Script: {instanceID: 8868}
+      Script: {instanceID: 8928}
     - Class: 114
-      Script: {instanceID: 11236}
-    - Class: 115
-      Script: {instanceID: 0}
-    - Class: 128
-      Script: {instanceID: 0}
-    - Class: 157
-      Script: {instanceID: 0}
-    - Class: 196
-      Script: {instanceID: 0}
-    - Class: 212
-      Script: {instanceID: 0}
-    - Class: 213
-      Script: {instanceID: 0}
-    - Class: 222
-      Script: {instanceID: 0}
-    - Class: 223
-      Script: {instanceID: 0}
-    - Class: 224
-      Script: {instanceID: 0}
-    Assets/Scenes/Menu.unity:
-    - Class: 1
-      Script: {instanceID: 0}
-    - Class: 4
-      Script: {instanceID: 0}
-    - Class: 20
-      Script: {instanceID: 0}
-    - Class: 21
-      Script: {instanceID: 0}
-    - Class: 28
-      Script: {instanceID: 0}
-    - Class: 48
-      Script: {instanceID: 0}
-    - Class: 81
-      Script: {instanceID: 0}
-    - Class: 104
-      Script: {instanceID: 0}
+      Script: {instanceID: 11958}
     - Class: 114
-      Script: {instanceID: 1586}
+      Script: {instanceID: 11978}
     - Class: 114
-      Script: {instanceID: 1588}
+      Script: {instanceID: 11986}
     - Class: 114
-      Script: {instanceID: 1594}
+      Script: {instanceID: 11998}
     - Class: 114
-      Script: {instanceID: 3128}
+      Script: {instanceID: 12002}
     - Class: 114
-      Script: {instanceID: 3212}
-    - Class: 114
-      Script: {instanceID: 3522}
-    - Class: 114
-      Script: {instanceID: 3590}
-    - Class: 114
-      Script: {instanceID: 8062}
-    - Class: 114
-      Script: {instanceID: 8868}
+      Script: {instanceID: 12022}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -450,12 +175,6 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
-      Hash: 1ed846c1ed9d69c8c2fcff9a6896b04f
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: Text
-  - hash:
-      serializedVersion: 2
       Hash: 0b7995e6c59201aa9b4ad6a0aecb4621
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
@@ -466,6 +185,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: ContentSizeFitter
+  - hash:
+      serializedVersion: 2
+      Hash: 1ed846c1ed9d69c8c2fcff9a6896b04f
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: Text
   - hash:
       serializedVersion: 2
       Hash: 4f70d33f5d43fe632722bceaa2ca385f
@@ -480,16 +205,16 @@ ScriptsOnlyBuild:
     className: Image
   - hash:
       serializedVersion: 2
+      Hash: 6a356b04c25c0bb008c1b24bf8b0f996
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: CanvasScaler
+  - hash:
+      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UIElements
     className: PanelRaycaster
-  - hash:
-      serializedVersion: 2
-      Hash: c83a7fe7a8d96171a112093be339e212
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: MouseManager
   - hash:
       serializedVersion: 2
       Hash: 01bf6cc4f89c612b67e4917c31a0d32e
@@ -556,12 +281,6 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp
     namespaceName: TMPro.Examples
     className: SimpleScript
-  - hash:
-      serializedVersion: 2
-      Hash: 751e5bae2a317288c2ab58d66687092b
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: UIManager
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -634,12 +353,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnBecameVisibleMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 560128a2bf5e52caabbc92a0c271d466
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: SceneManger
   - hash:
       serializedVersion: 2
       Hash: 1bfcfbce150993e56fae19f40f3da27f
@@ -744,6 +457,12 @@ ScriptsOnlyBuild:
     className: LimbSolver2D
   - hash:
       serializedVersion: 2
+      Hash: b47c2a635978522f75f83d5c11eb11e2
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: ReqObject
+  - hash:
+      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -760,12 +479,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: TestResultRendererCallback
-  - hash:
-      serializedVersion: 2
-      Hash: 804823876e80735d49aadb598abb85ae
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: ColorTile
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -906,12 +619,6 @@ ScriptsOnlyBuild:
     className: UnityOnCollisionExit2DMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 751e5bae2a317288c2ab58d66687092b
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: PlayerManager
-  - hash:
-      serializedVersion: 2
       Hash: a9340df851e094f0e1a209d8b81aaedc
     assemblyName: Unity.2D.Tilemap.Extras
     namespaceName: UnityEngine.Tilemaps
@@ -1026,12 +733,6 @@ ScriptsOnlyBuild:
     className: CameraController
   - hash:
       serializedVersion: 2
-      Hash: f0927689db4214e568315fc82e487d35
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Dice
-  - hash:
-      serializedVersion: 2
       Hash: f6831ac80ec81c5d5b370c0ed0fee997
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -1102,12 +803,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.Animation.Runtime
     namespaceName: UnityEngine.U2D.Animation
     className: BufferManager
-  - hash:
-      serializedVersion: 2
-      Hash: 4c1ddb0e9dd88e249d0ceba1488b727a
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: ChooseColor
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -1326,12 +1021,6 @@ ScriptsOnlyBuild:
     className: LifecycleNotifier
   - hash:
       serializedVersion: 2
-      Hash: d152099756c99fe5bc6c2276d6b17b75
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: BasePlayer
-  - hash:
-      serializedVersion: 2
       Hash: f6831ac80ec81c5d5b370c0ed0fee997
     assemblyName: Unity.VisualScripting.State
     namespaceName: Unity.VisualScripting
@@ -1350,12 +1039,6 @@ ScriptsOnlyBuild:
     className: CoroutineExecutor
   - hash:
       serializedVersion: 2
-      Hash: 6a356b04c25c0bb008c1b24bf8b0f996
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: CanvasScaler
-  - hash:
-      serializedVersion: 2
       Hash: 925a889a282ea89c4d9bd41afd22e4c2
     assemblyName: Assembly-CSharp
     namespaceName: TMPro.Examples
@@ -1372,12 +1055,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: AspectRatioFitter
-  - hash:
-      serializedVersion: 2
-      Hash: 4a48cfb5a467bb68e9536f08a3e0f501
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: GameManager
   - hash:
       serializedVersion: 2
       Hash: 46ffbaea01259c5c7ee677afefd93ea8
@@ -1644,12 +1321,6 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
-      Hash: d8f4cc5964be14575274c57f6b39c243
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: UnitManager
-  - hash:
-      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -1672,18 +1343,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: ScrollRect
-  - hash:
-      serializedVersion: 2
-      Hash: 1e995d954affb861bbc578ce983cc525
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Board_Cell
-  - hash:
-      serializedVersion: 2
-      Hash: 19e04017e7d0d290c5644c4039c32199
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: HexagonTile
   - hash:
       serializedVersion: 2
       Hash: 826d70cde3b432cc20561321ec0e2fb3
@@ -1746,12 +1405,6 @@ ScriptsOnlyBuild:
     className: TMP_PhoneNumberValidator
   - hash:
       serializedVersion: 2
-      Hash: 213a43ac20c48a75ee3da45786fea456
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Board
-  - hash:
-      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: UnityEngine.Purchasing.Stores
     namespaceName: UnityEngine.Purchasing
@@ -1786,12 +1439,6 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp
     namespaceName: TMPro.Examples
     className: TeleType
-  - hash:
-      serializedVersion: 2
-      Hash: aa7a30145999ecbe01ff75db699648d2
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Player
   - hash:
       serializedVersion: 2
       Hash: 0b7995e6c59201aa9b4ad6a0aecb4621
@@ -1858,11 +1505,133 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Item
+  - hash:
+      serializedVersion: 2
+      Hash: b5f9e19e21a82c51e9a784ba5ec97968
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: UnitManager
+  - hash:
+      serializedVersion: 2
+      Hash: 31bf08f2f9bc8fafd6cb49c58b6056af
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: UIManager
+  - hash:
+      serializedVersion: 2
+      Hash: 5b0067d984b29efd6c254ee9a770efc0
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: MouseManager
+  - hash:
+      serializedVersion: 2
+      Hash: 5c1f7b8ba0d69e982837199bc3f53133
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: WebsocketCLI
+  - hash:
+      serializedVersion: 2
+      Hash: 051e283521d5d67db88a9c2661b9bc3a
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Dice
+  - hash:
+      serializedVersion: 2
+      Hash: 8dc0b76df91dc0cb8668887138632844
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: GetAPI
+  - hash:
+      serializedVersion: 2
+      Hash: dd98736024ea0946871f4d99a4291351
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Board_Cell
+  - hash:
+      serializedVersion: 2
+      Hash: f3b4e96d86ad8af16b7e039acddd1ea4
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: HexagonTile
+  - hash:
+      serializedVersion: 2
+      Hash: 1ff3647de8893f874dc2a2c28e7cefc9
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: LobbyData
+  - hash:
+      serializedVersion: 2
+      Hash: 213a43ac20c48a75ee3da45786fea456
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Board
+  - hash:
+      serializedVersion: 2
+      Hash: 6789aa46bdc7e2776f8e6af3a78ab288
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: PlayerAPI
+  - hash:
+      serializedVersion: 2
+      Hash: 4a48cfb5a467bb68e9536f08a3e0f501
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: GameManager
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: PlayerManager
+  - hash:
+      serializedVersion: 2
+      Hash: f3a55d006a95d6baad4cc7838228044e
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: BasePlayer
+  - hash:
+      serializedVersion: 2
+      Hash: 49f5875a244ef38211c2884459ffdbd4
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Data
+  - hash:
+      serializedVersion: 2
+      Hash: a912b9fac0695ab6e70e7c74559e3d2d
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: LobbyAPI
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: ChooseColor
+  - hash:
+      serializedVersion: 2
+      Hash: 249e2af299bef199e3f7e204eddf89de
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: PopupManager
+  - hash:
+      serializedVersion: 2
+      Hash: 804823876e80735d49aadb598abb85ae
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: ColorTile
+  - hash:
+      serializedVersion: 2
+      Hash: 77234d3bfd9603a4ab6ae644e462a8e7
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: SceneManger
   platform: 19
   scenePathNames:
-  - Assets/Scenes/Main.unity
-  - Assets/Scenes/Menu.unity
   - Assets/Scenes/Lobby.unity
-  - Assets/Scenes/Board_Cell.unity
-  - Assets/Scenes/End.unity
-  playerPath: D:/Hobby/CAP_Game_Test/CAP-Project-DEv.exe
+  playerPath: D:/Hobby/CAP_Game_Test_Lobby/CAP-Project-Dev.exe

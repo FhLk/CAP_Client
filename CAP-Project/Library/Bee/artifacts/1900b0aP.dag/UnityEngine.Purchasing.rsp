@@ -110,6 +110,7 @@
 -define:IAP_ANALYTICS_SERVICE_ENABLED_WITH_SERVICE_COMPONENT
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"Assets/Packages/WebSocketSharp-netstandard.1.0.1/lib/netstandard2.0/websocket-sharp.dll"
 -r:"D:/Unity/Editor/2022.3.12f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/mscorlib.dll"
 -r:"D:/Unity/Editor/2022.3.12f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/System.ComponentModel.Composition.dll"
 -r:"D:/Unity/Editor/2022.3.12f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/System.Core.dll"

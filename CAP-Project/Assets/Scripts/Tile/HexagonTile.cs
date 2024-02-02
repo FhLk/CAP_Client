@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
-using static UnityEditorInternal.ReorderableList;
 
 public class HexagonTile : MonoBehaviour
 {

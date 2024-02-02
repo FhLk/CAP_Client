@@ -118,6 +118,7 @@
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
 -define:UNITY_EDITOR_ONLY_COMPILATION
+-r:"Assets/Packages/WebSocketSharp-netstandard.1.0.1/lib/netstandard2.0/websocket-sharp.dll"
 -r:"D:/Unity/Editor/2022.3.12f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
 -r:"D:/Unity/Editor/2022.3.12f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"D:/Unity/Editor/2022.3.12f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
@@ -329,6 +330,7 @@
 -r:"D:/Unity/Editor/2022.3.12f1/Editor/Data/UnityReferenceAssemblies/unity-4.8-api/System.Transactions.dll"
 -r:"D:/Unity/Editor/2022.3.12f1/Editor/Data/UnityReferenceAssemblies/unity-4.8-api/System.Xml.dll"
 -r:"D:/Unity/Editor/2022.3.12f1/Editor/Data/UnityReferenceAssemblies/unity-4.8-api/System.Xml.Linq.dll"
+-r:"Library/PackageCache/com.github-glitchenzo.nugetforunity@7388d28922/Editor/PluginAPI/NuGetForUnity.PluginAPI.dll"
 -r:"Library/PackageCache/com.unity.analytics@3.8.1/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll"
 -r:"Library/PackageCache/com.unity.analytics@3.8.1/Unity.Analytics.Editor.dll"
 -r:"Library/PackageCache/com.unity.analytics@3.8.1/Unity.Analytics.Tracker.dll"

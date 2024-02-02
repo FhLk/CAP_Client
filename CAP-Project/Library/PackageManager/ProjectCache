@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638353991963870223
-    m_Hash: 1934899679
+      ticks: 638423558075156491
+    m_Hash: 3522422940
   m_LockFileStatus:
     m_FilePath: D:/Hobby/CAP_Client/CAP-Project/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638353991963930387
-    m_Hash: 722181961
+      ticks: 638423558075233304
+    m_Hash: 3406571217
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -22,6 +22,60 @@ m_LocalPackages:
 m_ProjectPath: D:/Hobby/CAP_Client/CAP-Project/Packages
 m_EditorVersion: 2022.3.12f1 (4fe6e059c7ef)
 m_ResolvedPackages:
+- packageId: com.github-glitchenzo.nugetforunity@https://github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity
+  testable: 0
+  isDirectDependency: 1
+  version: 4.0.2
+  source: 5
+  resolvedPath: D:\Hobby\CAP_Client\CAP-Project\Library\PackageCache\com.github-glitchenzo.nugetforunity@7388d28922
+  assetPath: Packages/com.github-glitchenzo.nugetforunity
+  name: com.github-glitchenzo.nugetforunity
+  displayName: NuGetForUnity
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: A NuGet Package Manager for Unity
+  status: 0
+  errors: []
+  versions:
+    all: []
+    compatible: []
+    recommended: 
+    deprecated: []
+  dependencies: []
+  resolvedDependencies: []
+  keywords:
+  - nuget
+  - unity
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: https://github.com/GlitchEnzo/NuGetForUnity
+  hasRepository: 0
+  repository:
+    type: 
+    url: 
+    revision: 
+    path: 
+  unityLifecycle:
+    version: 
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
 - packageId: com.unity.2d.sprite@1.0.0
   testable: 0
   isDirectDependency: 1
@@ -776,10 +830,12 @@ m_ResolvedPackages:
     - 3.0.24
     - 3.0.25
     - 3.0.26
+    - 3.0.27
     compatible:
     - 3.0.25
     - 3.0.26
-    recommended: 3.0.26
+    - 3.0.27
+    recommended: 3.0.27
     deprecated: []
   dependencies:
   - name: com.unity.ext.nunit
@@ -1201,6 +1257,10 @@ m_ResolvedPackages:
     - 1.3.7
     - 1.3.8
     - 1.3.9
+    - 1.4.0
+    - 1.4.1
+    - 1.4.2
+    - 1.4.3
     - 2.0.1-exp.1
     - 2.0.1-exp.2
     - 2.0.1-pre.12
@@ -1216,6 +1276,10 @@ m_ResolvedPackages:
     - 1.3.7
     - 1.3.8
     - 1.3.9
+    - 1.4.0
+    - 1.4.1
+    - 1.4.2
+    - 1.4.3
     - 2.0.1-exp.1
     - 2.0.1-exp.2
     - 2.0.1-pre.12
@@ -1384,25 +1448,29 @@ m_ResolvedPackages:
     - 3.0.4
     - 3.0.5
     - 3.0.6
+    - 3.0.7
     - 3.2.0-pre.1
     - 3.2.0-pre.2
     - 3.2.0-pre.3
     - 3.2.0-pre.4
     - 3.2.0-pre.5
     - 3.2.0-pre.6
+    - 3.2.0-pre.7
     - 4.0.0-pre.1
     - 4.0.0-pre.2
     compatible:
     - 3.0.6
+    - 3.0.7
     - 3.2.0-pre.1
     - 3.2.0-pre.2
     - 3.2.0-pre.3
     - 3.2.0-pre.4
     - 3.2.0-pre.5
     - 3.2.0-pre.6
+    - 3.2.0-pre.7
     - 4.0.0-pre.1
     - 4.0.0-pre.2
-    recommended: 3.0.6
+    recommended: 3.0.7
     deprecated: []
   dependencies:
   - name: com.unity.ugui
@@ -3903,9 +3971,13 @@ m_ResolvedPackages:
     - 1.10.1
     - 1.11.0
     - 1.12.0
+    - 1.12.1
+    - 1.12.2
     compatible:
     - 1.11.0
     - 1.12.0
+    - 1.12.1
+    - 1.12.2
     recommended: 1.11.0
     deprecated: []
   dependencies:
@@ -4066,6 +4138,8 @@ m_ResolvedPackages:
     - 7.0.10
     - 7.0.11
     - 7.0.12
+    - 7.0.13
+    - 7.1.0
     - 8.0.0-pre.3
     - 8.0.0-pre.4
     - 8.0.0
@@ -4081,14 +4155,17 @@ m_ResolvedPackages:
     - 9.0.2
     - 9.0.3
     - 9.0.4
+    - 9.1.0
     - 10.0.0-pre.1
     - 10.0.0-pre.2
     - 10.0.0
     - 10.0.1
     - 10.0.2
     - 10.0.3
+    - 10.1.0
     compatible:
     - 9.0.4
+    - 9.1.0
     recommended: 9.0.4
     deprecated: []
   dependencies:
@@ -4318,6 +4395,8 @@ m_ResolvedPackages:
     - 6.0.5
     - 6.0.6
     - 6.0.7
+    - 6.0.8
+    - 6.0.9
     - 7.0.0-pre.3
     - 7.0.0-pre.4
     - 7.0.0
@@ -4329,13 +4408,17 @@ m_ResolvedPackages:
     - 8.0.0
     - 8.0.1
     - 8.0.2
+    - 8.0.3
+    - 8.0.4
     - 9.0.0-pre.1
     - 9.0.0-pre.2
     - 9.0.0
     - 9.0.1
     compatible:
     - 8.0.2
-    recommended: 8.0.2
+    - 8.0.3
+    - 8.0.4
+    recommended: 8.0.4
     deprecated: []
   dependencies:
   - name: com.unity.2d.animation
@@ -4725,8 +4808,12 @@ m_ResolvedPackages:
     - 1.0.0-pre.4
     - 1.0.0
     - 1.0.1
+    - 1.1.0
+    - 1.1.1
     compatible:
     - 1.0.1
+    - 1.1.0
+    - 1.1.1
     recommended: 1.0.1
     deprecated: []
   dependencies:
@@ -4835,10 +4922,14 @@ m_ResolvedPackages:
     - 4.4.2
     - 5.0.0
     - 5.0.1
+    - 5.0.2
+    - 5.1.0
     compatible:
     - 5.0.0
     - 5.0.1
-    recommended: 5.0.1
+    - 5.0.2
+    - 5.1.0
+    recommended: 5.0.2
     deprecated: []
   dependencies:
   - name: com.unity.ugui
@@ -5025,6 +5116,7 @@ m_ResolvedPackages:
     - 6.0.4
     - 6.0.5
     - 6.0.6
+    - 6.0.7
     - 7.0.0-pre.3
     - 7.0.0-pre.4
     - 7.0.0
@@ -5035,14 +5127,17 @@ m_ResolvedPackages:
     - 8.0.0-pre.2
     - 8.0.0
     - 8.0.1
+    - 8.0.2
     - 9.0.0-pre.1
     - 9.0.0-pre.2
     - 9.0.0
     - 9.0.1
     - 9.0.2
+    - 9.0.3
     compatible:
     - 8.0.1
-    recommended: 8.0.1
+    - 8.0.2
+    recommended: 8.0.2
     deprecated: []
   dependencies:
   - name: com.unity.2d.sprite
@@ -5139,9 +5234,11 @@ m_ResolvedPackages:
     - 1.2.5
     - 1.2.6
     - 1.3.1
+    - 1.3.2
     compatible:
     - 1.2.6
     - 1.3.1
+    - 1.3.2
     recommended: 1.2.6
     deprecated: []
   dependencies: []
@@ -5255,6 +5352,8 @@ m_ResolvedPackages:
     - 2.2.1
     - 2.3.0-exp.1
     - 2.3.0-pre.3
+    - 2.4.0-exp.2
+    - 2.4.0-pre.2
     compatible:
     - 1.2.4
     - 1.3.1
@@ -5271,6 +5370,8 @@ m_ResolvedPackages:
     - 2.2.1
     - 2.3.0-exp.1
     - 2.3.0-pre.3
+    - 2.4.0-exp.2
+    - 2.4.0-pre.2
     recommended: 1.2.4
     deprecated: []
   dependencies:
@@ -5467,10 +5568,14 @@ m_ResolvedPackages:
     - 1.8.8
     - 1.8.9
     - 1.8.10
+    - 1.8.11
+    - 1.8.12
     compatible:
     - 1.8.9
     - 1.8.10
-    recommended: 1.8.10
+    - 1.8.11
+    - 1.8.12
+    recommended: 1.8.12
     deprecated: []
   dependencies:
   - name: com.unity.mathematics

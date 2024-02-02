@@ -88,7 +88,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3803737486278025216}
-  - component: {fileID: 2362008634133879633}
   - component: {fileID: 743518912234873209}
   - component: {fileID: 2270416401578139680}
   m_Layer: 0
@@ -117,25 +116,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0.71, y: 1.28}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2362008634133879633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3683986800794989924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78aea0c6f0a2c3749b6e5779a869daf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UnitId: 00
-  OccupiedTile: {fileID: 0}
-  Faction: 0
-  id: 
-  playerName: 
-  dice: 0
-  playerRenderer: {fileID: 743518912234873209}
 --- !u!212 &743518912234873209
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -208,6 +188,7 @@ GameObject:
   - component: {fileID: 134686475521763575}
   - component: {fileID: 2571701098717118506}
   - component: {fileID: 7794121444238234826}
+  - component: {fileID: -5086254864428315317}
   m_Layer: 0
   m_Name: pCell
   m_TagString: Untagged
@@ -326,3 +307,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-5086254864428315317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7896760495671515334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0773ef05126591048bc1fe19661a7330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 
+  Name: 

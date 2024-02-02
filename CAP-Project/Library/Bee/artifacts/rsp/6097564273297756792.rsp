@@ -1,3 +1,4 @@
+-a="D:\Hobby\CAP_Client\CAP-Project\Assets\Packages\WebSocketSharp-netstandard.1.0.1\lib\netstandard2.0\websocket-sharp.dll"
 -a="D:\Hobby\CAP_Client\CAP-Project\Library\ScriptAssemblies\Assembly-CSharp.dll"
 -a="D:\Hobby\CAP_Client\CAP-Project\Library\ScriptAssemblies\Purchasing.Common.dll"
 -a="D:\Hobby\CAP_Client\CAP-Project\Library\ScriptAssemblies\Unity.2D.Animation.Runtime.dll"
@@ -57,6 +58,7 @@
 -a="D:\Hobby\CAP_Client\CAP-Project\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll"
 -a="D:\Hobby\CAP_Client\CAP-Project\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll"
 -a="D:\Hobby\CAP_Client\CAP-Project\Library\PackageCache\com.unity.visualscripting@1.9.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll"
+-s="D:\Hobby\CAP_Client\CAP-Project\Assets\Packages\WebSocketSharp-netstandard.1.0.1\lib\netstandard2.0"
 -s="D:\Unity\Editor\2022.3.12f1\Editor\Data\Managed\UnityEngine"
 -s="D:\Unity\Editor\2022.3.12f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx"
 -s="D:\Unity\Editor\2022.3.12f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard"

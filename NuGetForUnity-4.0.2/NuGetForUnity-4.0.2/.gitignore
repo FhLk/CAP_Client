@@ -1,0 +1,6 @@
+/[Bb]in/
+
+*.log
+**/.idea
+
+src/NuGetForUnity/Editor/NuGetForUnity.csproj*
