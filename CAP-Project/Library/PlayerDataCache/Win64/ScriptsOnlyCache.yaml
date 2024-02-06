@@ -96,6 +96,9 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: SceneManger
     methodName: Menu
+  - assembly: Assembly-CSharp
+    fullTypeName: WebsocketCLI
+    methodName: addPlayer
   sceneClasses:
     Assets/Scenes/Lobby.unity:
     - Class: 1
@@ -119,41 +122,41 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1590}
     - Class: 114
-      Script: {instanceID: 1594}
+      Script: {instanceID: 1592}
     - Class: 114
       Script: {instanceID: 1598}
     - Class: 114
       Script: {instanceID: 1600}
     - Class: 114
-      Script: {instanceID: 2562}
+      Script: {instanceID: 2566}
     - Class: 114
-      Script: {instanceID: 3226}
+      Script: {instanceID: 3146}
     - Class: 114
-      Script: {instanceID: 3536}
+      Script: {instanceID: 3232}
     - Class: 114
-      Script: {instanceID: 5404}
+      Script: {instanceID: 3542}
     - Class: 114
-      Script: {instanceID: 5580}
+      Script: {instanceID: 5416}
     - Class: 114
-      Script: {instanceID: 5998}
+      Script: {instanceID: 5592}
     - Class: 114
-      Script: {instanceID: 7154}
+      Script: {instanceID: 6012}
     - Class: 114
-      Script: {instanceID: 8462}
+      Script: {instanceID: 6614}
     - Class: 114
-      Script: {instanceID: 8928}
+      Script: {instanceID: 7174}
     - Class: 114
-      Script: {instanceID: 11958}
+      Script: {instanceID: 7866}
     - Class: 114
-      Script: {instanceID: 11978}
+      Script: {instanceID: 8488}
     - Class: 114
-      Script: {instanceID: 11986}
+      Script: {instanceID: 8668}
     - Class: 114
-      Script: {instanceID: 11998}
+      Script: {instanceID: 8956}
     - Class: 114
-      Script: {instanceID: 12002}
+      Script: {instanceID: 10348}
     - Class: 114
-      Script: {instanceID: 12022}
+      Script: {instanceID: 10990}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -175,6 +178,12 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
+      Hash: 1ed846c1ed9d69c8c2fcff9a6896b04f
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: Text
+  - hash:
+      serializedVersion: 2
       Hash: 0b7995e6c59201aa9b4ad6a0aecb4621
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
@@ -185,12 +194,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: ContentSizeFitter
-  - hash:
-      serializedVersion: 2
-      Hash: 1ed846c1ed9d69c8c2fcff9a6896b04f
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: Text
   - hash:
       serializedVersion: 2
       Hash: 4f70d33f5d43fe632722bceaa2ca385f
@@ -215,6 +218,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UIElements
     className: PanelRaycaster
+  - hash:
+      serializedVersion: 2
+      Hash: 5b0067d984b29efd6c254ee9a770efc0
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: MouseManager
   - hash:
       serializedVersion: 2
       Hash: 01bf6cc4f89c612b67e4917c31a0d32e
@@ -281,6 +290,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp
     namespaceName: TMPro.Examples
     className: SimpleScript
+  - hash:
+      serializedVersion: 2
+      Hash: 31bf08f2f9bc8fafd6cb49c58b6056af
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: UIManager
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -353,6 +368,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnBecameVisibleMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 77234d3bfd9603a4ab6ae644e462a8e7
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: SceneManger
   - hash:
       serializedVersion: 2
       Hash: 1bfcfbce150993e56fae19f40f3da27f
@@ -481,6 +502,12 @@ ScriptsOnlyBuild:
     className: TestResultRendererCallback
   - hash:
       serializedVersion: 2
+      Hash: 804823876e80735d49aadb598abb85ae
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: ColorTile
+  - hash:
+      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -539,6 +566,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnTransformParentChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 249e2af299bef199e3f7e204eddf89de
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: PopupManager
   - hash:
       serializedVersion: 2
       Hash: f6831ac80ec81c5d5b370c0ed0fee997
@@ -617,6 +650,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnCollisionExit2DMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: PlayerManager
   - hash:
       serializedVersion: 2
       Hash: a9340df851e094f0e1a209d8b81aaedc
@@ -733,6 +772,12 @@ ScriptsOnlyBuild:
     className: CameraController
   - hash:
       serializedVersion: 2
+      Hash: 051e283521d5d67db88a9c2661b9bc3a
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Dice
+  - hash:
+      serializedVersion: 2
       Hash: f6831ac80ec81c5d5b370c0ed0fee997
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -807,6 +852,12 @@ ScriptsOnlyBuild:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: ChooseColor
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: Assembly-CSharp
     namespaceName: TMPro.Examples
     className: TMP_TextInfoDebugTool
   - hash:
@@ -827,6 +878,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: MacroScriptableObject
+  - hash:
+      serializedVersion: 2
+      Hash: 49f5875a244ef38211c2884459ffdbd4
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Data
   - hash:
       serializedVersion: 2
       Hash: 142264d9d6b0842e37d4aad2e8ff56d0
@@ -955,6 +1012,12 @@ ScriptsOnlyBuild:
     className: UnityOnTriggerExitMessageListener
   - hash:
       serializedVersion: 2
+      Hash: a912b9fac0695ab6e70e7c74559e3d2d
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: LobbyAPI
+  - hash:
+      serializedVersion: 2
       Hash: 1b4a83f2a2f1a4def12cdc9223cce72c
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
@@ -1021,6 +1084,12 @@ ScriptsOnlyBuild:
     className: LifecycleNotifier
   - hash:
       serializedVersion: 2
+      Hash: f3a55d006a95d6baad4cc7838228044e
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: BasePlayer
+  - hash:
+      serializedVersion: 2
       Hash: f6831ac80ec81c5d5b370c0ed0fee997
     assemblyName: Unity.VisualScripting.State
     namespaceName: Unity.VisualScripting
@@ -1031,6 +1100,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp
     namespaceName: TMPro.Examples
     className: Benchmark02
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Item
   - hash:
       serializedVersion: 2
       Hash: 27e64b6667a13cb51f415dbda9126782
@@ -1057,6 +1132,12 @@ ScriptsOnlyBuild:
     className: AspectRatioFitter
   - hash:
       serializedVersion: 2
+      Hash: 4a48cfb5a467bb68e9536f08a3e0f501
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: GameManager
+  - hash:
+      serializedVersion: 2
       Hash: 46ffbaea01259c5c7ee677afefd93ea8
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
@@ -1073,6 +1154,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.Purchasing.Stores
     namespaceName: UnityEngine.Purchasing.Extension
     className: UnityUtil
+  - hash:
+      serializedVersion: 2
+      Hash: 457b1fa8754f8dda2c937bdd22218512
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: LobbyData
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -1175,6 +1262,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.Purchasing.Codeless
     namespaceName: UnityEngine.Purchasing
     className: IAPButton
+  - hash:
+      serializedVersion: 2
+      Hash: 8dc0b76df91dc0cb8668887138632844
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: GetAPI
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -1321,6 +1414,18 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
+      Hash: b5f9e19e21a82c51e9a784ba5ec97968
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: UnitManager
+  - hash:
+      serializedVersion: 2
+      Hash: 0df6976023b1c800ced6779c5cf0fc68
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: WebsocketCLI
+  - hash:
+      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -1345,10 +1450,28 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
+      Hash: dd98736024ea0946871f4d99a4291351
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Board_Cell
+  - hash:
+      serializedVersion: 2
+      Hash: f3b4e96d86ad8af16b7e039acddd1ea4
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: HexagonTile
+  - hash:
+      serializedVersion: 2
       Hash: 826d70cde3b432cc20561321ec0e2fb3
     assemblyName: UnityEngine.XR.LegacyInputHelpers
     namespaceName: UnityEngine.XR.LegacyInputHelpers
     className: SwingArmModel
+  - hash:
+      serializedVersion: 2
+      Hash: 6789aa46bdc7e2776f8e6af3a78ab288
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: PlayerAPI
   - hash:
       serializedVersion: 2
       Hash: b9feaf08566c94891e9f5acc77282eda
@@ -1403,6 +1526,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp
     namespaceName: TMPro
     className: TMP_PhoneNumberValidator
+  - hash:
+      serializedVersion: 2
+      Hash: 213a43ac20c48a75ee3da45786fea456
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Board
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -1505,132 +1634,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 751e5bae2a317288c2ab58d66687092b
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Item
-  - hash:
-      serializedVersion: 2
-      Hash: b5f9e19e21a82c51e9a784ba5ec97968
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: UnitManager
-  - hash:
-      serializedVersion: 2
-      Hash: 31bf08f2f9bc8fafd6cb49c58b6056af
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: UIManager
-  - hash:
-      serializedVersion: 2
-      Hash: 5b0067d984b29efd6c254ee9a770efc0
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: MouseManager
-  - hash:
-      serializedVersion: 2
-      Hash: 5c1f7b8ba0d69e982837199bc3f53133
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: WebsocketCLI
-  - hash:
-      serializedVersion: 2
-      Hash: 051e283521d5d67db88a9c2661b9bc3a
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Dice
-  - hash:
-      serializedVersion: 2
-      Hash: 8dc0b76df91dc0cb8668887138632844
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: GetAPI
-  - hash:
-      serializedVersion: 2
-      Hash: dd98736024ea0946871f4d99a4291351
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Board_Cell
-  - hash:
-      serializedVersion: 2
-      Hash: f3b4e96d86ad8af16b7e039acddd1ea4
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: HexagonTile
-  - hash:
-      serializedVersion: 2
-      Hash: 1ff3647de8893f874dc2a2c28e7cefc9
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: LobbyData
-  - hash:
-      serializedVersion: 2
-      Hash: 213a43ac20c48a75ee3da45786fea456
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Board
-  - hash:
-      serializedVersion: 2
-      Hash: 6789aa46bdc7e2776f8e6af3a78ab288
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: PlayerAPI
-  - hash:
-      serializedVersion: 2
-      Hash: 4a48cfb5a467bb68e9536f08a3e0f501
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: GameManager
-  - hash:
-      serializedVersion: 2
-      Hash: 751e5bae2a317288c2ab58d66687092b
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: PlayerManager
-  - hash:
-      serializedVersion: 2
-      Hash: f3a55d006a95d6baad4cc7838228044e
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: BasePlayer
-  - hash:
-      serializedVersion: 2
-      Hash: 49f5875a244ef38211c2884459ffdbd4
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Data
-  - hash:
-      serializedVersion: 2
-      Hash: a912b9fac0695ab6e70e7c74559e3d2d
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: LobbyAPI
-  - hash:
-      serializedVersion: 2
-      Hash: 751e5bae2a317288c2ab58d66687092b
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: ChooseColor
-  - hash:
-      serializedVersion: 2
-      Hash: 249e2af299bef199e3f7e204eddf89de
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: PopupManager
-  - hash:
-      serializedVersion: 2
-      Hash: 804823876e80735d49aadb598abb85ae
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: ColorTile
-  - hash:
-      serializedVersion: 2
-      Hash: 77234d3bfd9603a4ab6ae644e462a8e7
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: SceneManger
   platform: 19
   scenePathNames:
   - Assets/Scenes/Lobby.unity

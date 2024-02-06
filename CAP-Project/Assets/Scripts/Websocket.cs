@@ -3,7 +3,9 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using WebSocketSharp;
 
 
@@ -46,12 +48,12 @@ public class WebsocketCLI : MonoBehaviour
 
     public static WebsocketCLI Instance;
     WebSocketMessage messageTo = new WebSocketMessage();
-    private WebSocket _websocket;
+    public WebSocket _websocket;
     [SerializeField] private string _url;
     [SerializeField] public string lobbyId;
-    [SerializeField] public PlayerAPI player;
-    Dictionary<string, object> dataReq = new Dictionary<string, object>();
-    Dictionary<string, object> playerData = new Dictionary<string, object>();
+    [SerializeField] public List<PlayerAPI> players;
+    private int index = 1;
+    public bool isFound;
 
     private void Awake()
     {
@@ -60,17 +62,45 @@ public class WebsocketCLI : MonoBehaviour
 
     void Start()
     {
-        _websocket = new WebSocket(_url + "?lobbyId=" + lobbyId);
+        if(SceneManager.GetActiveScene().name == "Lobby")
+        {
+            lobbyId = GenerateRandomID();
+            _websocket = new WebSocket(_url + "?lobbyId=" + lobbyId);
+            _websocket.OnOpen += OnOpen;
+            _websocket.OnMessage += OnMessage;
+            _websocket.Connect();
+        }
+    }
+
+    public void ConnectWebsocket(string id)
+    {
+        lobbyId = id;
+        if(_websocket != null)
+        {
+            _websocket.Close();
+        }
+        _websocket = new WebSocket(_url + "?lobbyId=" + id);
         _websocket.OnOpen += OnOpen;
         _websocket.OnMessage += OnMessage;
         _websocket.Connect();
+    }
 
+    public string GenerateRandomID()
+    {
+        return "123";
     }
 
     private void OnOpen(object sender, EventArgs e)
     {
         Debug.Log("Client connected");
-        reqData("00", lobbyId, player);
+        if (SceneManager.GetActiveScene().name == "Lobby")
+        {
+            reqData("00", lobbyId, players[0]);
+        }
+        else if(SceneManager.GetActiveScene().name == "Menu")
+        {
+            reqData("09", lobbyId, null);
+        }
         throw new NotImplementedException();
     }
     private void OnMessage(object socket, MessageEventArgs message)
@@ -88,11 +118,19 @@ public class WebsocketCLI : MonoBehaviour
             LobbyData.Instance.updateLobby(receiveData.lobby.players.Count);
             //lobby.updateLobby(receiveData.lobby.players.Count);
         }
+        else if(receiveData.type == "19")
+        {
+            Debug.Log("Lobby");
+            isFound = true;
+            _websocket.Close();
+        }
         return receiveData;
     }
 
     public void reqData(string type, string lobbyId, PlayerAPI player)
     {
+        Dictionary<string, object> dataReq = new Dictionary<string, object>();
+        Dictionary<string, object> playerData = new Dictionary<string, object>();
         if (type == "00")
         {
             dataReq.Add("type", type);
@@ -115,5 +153,31 @@ public class WebsocketCLI : MonoBehaviour
             string json = JsonConvert.SerializeObject(dataReq);
             _websocket.Send(json);
         }
+        else if (type == "09")
+        {
+            dataReq.Add("type", type);
+            dataReq.Add("lobbyId", lobbyId);
+
+            string json = JsonConvert.SerializeObject(dataReq);
+            _websocket.Send(json);
+        }
+    }
+
+    public void addPlayer()
+    {
+        if(index < 4)
+        {
+            reqData("10", lobbyId, players[index++]);
+        }
+
+    }
+
+    public void kickPlayer()
+    {
+        if (index > 1)
+        {
+            //reqData("10", lobbyId, players[index++]);
+        }
+
     }
 }

@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using Newtonsoft.Json;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using WebSocketSharp;
 
 public class SceneManger : MonoBehaviour
 {
@@ -10,6 +12,14 @@ public class SceneManger : MonoBehaviour
     [SerializeField] private Sprite unmute;
     [SerializeField] private Sprite mute;
     [SerializeField] private GameObject LIST;
+    [SerializeField] private InputField lobbyID;
+    [SerializeField] private string _url;
+
+    class ReceiveData
+    {
+        public string lobby { get; set; }
+        public string type { get; set; }
+    }
 
     public void Main()
     {
@@ -41,6 +51,30 @@ public class SceneManger : MonoBehaviour
     public void Lobby()
     {
         SceneManager.LoadScene("Lobby");
+    }
+
+    public void JoinLobby()
+    {
+        if (lobbyID.text != "")
+        {
+            WebsocketCLI.Instance.ConnectWebsocket(lobbyID.text);
+            Debug.Log(WebsocketCLI.Instance.isFound);
+            StartCoroutine(LoadSceneAsync());
+        }
+        else
+        {
+            Debug.Log("Please Enter Lobby ID.");
+        }
+    }
+
+    IEnumerator LoadSceneAsync()
+    {
+        yield return new WaitForSeconds(0.05f);
+        if (WebsocketCLI.Instance.isFound)
+        {
+            SceneManager.LoadScene("Lobby");
+        }
+        // ... (ทำงานเพิ่มเติมหลังจากโหลดเสร็จสิ้น)
     }
 
     public void LeaderBoard()
