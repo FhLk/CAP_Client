@@ -40,7 +40,4 @@ public class LobbyData : MonoBehaviour
         secondChild.gameObject.SetActive(true);
         secondChild.GetComponent<Text>().text = childToChange.gameObject.GetComponent<PlayerAPI>().name;
     }
-    public void updateLobby()
-    {
-    }
 }

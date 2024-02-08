@@ -13,7 +13,8 @@ public class SceneManger : MonoBehaviour
     [SerializeField] private Sprite mute;
     [SerializeField] private GameObject LIST;
     [SerializeField] private InputField lobbyID;
-    [SerializeField] private string _url;
+    [SerializeField] private WebsocketCLI _websocket;
+    public PlayerAction _action;
 
     class ReceiveData
     {
@@ -28,6 +29,8 @@ public class SceneManger : MonoBehaviour
 
     public void Menu()
     {
+        _action.isJoin = false;
+        _action.isHost = false;
         SceneManager.LoadScene("Menu");
     }
 
@@ -44,12 +47,14 @@ public class SceneManger : MonoBehaviour
         }
         if (list.Count == 3)
         {
-            SceneManager.LoadScene("Board_Cell");
+            SceneManager.LoadScene("Board_Cell", LoadSceneMode.Single);
         }
     }
 
     public void Lobby()
     {
+        _action.isHost = true;
+        _action.isJoin = false;
         SceneManager.LoadScene("Lobby");
     }
 
@@ -57,8 +62,8 @@ public class SceneManger : MonoBehaviour
     {
         if (lobbyID.text != "")
         {
-            WebsocketCLI.Instance.ConnectWebsocket(lobbyID.text);
-            Debug.Log(WebsocketCLI.Instance.isFound);
+            _action.isHost = false;
+            _action.isJoin = true;
             StartCoroutine(LoadSceneAsync());
         }
         else
@@ -69,8 +74,8 @@ public class SceneManger : MonoBehaviour
 
     IEnumerator LoadSceneAsync()
     {
-        yield return new WaitForSeconds(0.05f);
-        if (WebsocketCLI.Instance.isFound)
+        yield return new WaitForSeconds(1f);
+        if (_websocket.isFound)
         {
             SceneManager.LoadScene("Lobby");
         }

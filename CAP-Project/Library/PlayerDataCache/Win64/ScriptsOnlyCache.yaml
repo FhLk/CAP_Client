@@ -2,11 +2,14 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp:
     - BasePlayer
+    - PlayerAction
     - ScriptableUnit
     Assembly-CSharp.dll:
     - Data
     - LobbyData
     - PlayerAPI
+    - PlayerAction
+    - PopupManager
     - SceneManger
     - WebsocketCLI
     Unity.2D.Animation.Editor.dll:
@@ -56,6 +59,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.InputField
     - UnityEngine.UI.Text
   serializedClasses:
     Unity.TextMeshPro:
@@ -86,21 +90,97 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Button/ButtonClickedEvent
     - UnityEngine.UI.ColorBlock
     - UnityEngine.UI.FontData
+    - UnityEngine.UI.InputField/EndEditEvent
+    - UnityEngine.UI.InputField/OnChangeEvent
+    - UnityEngine.UI.InputField/SubmitEvent
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
     - UnityEngine.UI.Navigation
     - UnityEngine.UI.SpriteState
   methodsToPreserve:
   - assembly: Assembly-CSharp
     fullTypeName: SceneManger
+    methodName: Main
+  - assembly: Assembly-CSharp
+    fullTypeName: PopupManager
+    methodName: openWindow
+  - assembly: Assembly-CSharp
+    fullTypeName: SceneManger
+    methodName: JoinLobby
+  - assembly: Assembly-CSharp
+    fullTypeName: PopupManager
+    methodName: closeWindow
+  - assembly: Assembly-CSharp
+    fullTypeName: SceneManger
+    methodName: Lobby
+  - assembly: Assembly-CSharp
+    fullTypeName: SceneManger
     methodName: Game
   - assembly: Assembly-CSharp
     fullTypeName: SceneManger
     methodName: Menu
-  - assembly: Assembly-CSharp
-    fullTypeName: WebsocketCLI
-    methodName: addPlayer
   sceneClasses:
     Assets/Scenes/Lobby.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1590}
+    - Class: 114
+      Script: {instanceID: 1592}
+    - Class: 114
+      Script: {instanceID: 1598}
+    - Class: 114
+      Script: {instanceID: 1600}
+    - Class: 114
+      Script: {instanceID: 3146}
+    - Class: 114
+      Script: {instanceID: 3232}
+    - Class: 114
+      Script: {instanceID: 3542}
+    - Class: 114
+      Script: {instanceID: 6614}
+    - Class: 114
+      Script: {instanceID: 7160}
+    - Class: 114
+      Script: {instanceID: 8668}
+    - Class: 114
+      Script: {instanceID: 8956}
+    - Class: 114
+      Script: {instanceID: 10348}
+    - Class: 114
+      Script: {instanceID: 10990}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/Menu.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -136,13 +216,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3542}
     - Class: 114
+      Script: {instanceID: 3610}
+    - Class: 114
+      Script: {instanceID: 4224}
+    - Class: 114
       Script: {instanceID: 5416}
     - Class: 114
       Script: {instanceID: 5592}
     - Class: 114
       Script: {instanceID: 6012}
     - Class: 114
-      Script: {instanceID: 6614}
+      Script: {instanceID: 7160}
     - Class: 114
       Script: {instanceID: 7174}
     - Class: 114
@@ -150,13 +234,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 8488}
     - Class: 114
-      Script: {instanceID: 8668}
-    - Class: 114
       Script: {instanceID: 8956}
     - Class: 114
       Script: {instanceID: 10348}
-    - Class: 114
-      Script: {instanceID: 10990}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -370,7 +450,7 @@ ScriptsOnlyBuild:
     className: UnityOnBecameVisibleMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 77234d3bfd9603a4ab6ae644e462a8e7
+      Hash: 137d0f793f8bcd328c97a99e51d6cce8
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: SceneManger
@@ -1012,10 +1092,10 @@ ScriptsOnlyBuild:
     className: UnityOnTriggerExitMessageListener
   - hash:
       serializedVersion: 2
-      Hash: a912b9fac0695ab6e70e7c74559e3d2d
+      Hash: e49c63ffc1da7354747fd9e4a17e0d10
     assemblyName: Assembly-CSharp
     namespaceName: 
-    className: LobbyAPI
+    className: PlayerAction
   - hash:
       serializedVersion: 2
       Hash: 1b4a83f2a2f1a4def12cdc9223cce72c
@@ -1420,7 +1500,7 @@ ScriptsOnlyBuild:
     className: UnitManager
   - hash:
       serializedVersion: 2
-      Hash: 0df6976023b1c800ced6779c5cf0fc68
+      Hash: 0578a476573cd8b85e3a2b13ed2a1456
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: WebsocketCLI
@@ -1636,5 +1716,6 @@ ScriptsOnlyBuild:
     className: UnityOnSliderValueChangedMessageListener
   platform: 19
   scenePathNames:
+  - Assets/Scenes/Menu.unity
   - Assets/Scenes/Lobby.unity
-  playerPath: D:/Hobby/CAP_Game_Test_Lobby/CAP-Project-Dev.exe
+  playerPath: D:/Hobby/Game-Test-Lobby/CAP-Project-Dev.exe

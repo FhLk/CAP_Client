@@ -52,6 +52,7 @@ public class WebsocketCLI : MonoBehaviour
     [SerializeField] private string _url;
     [SerializeField] public string lobbyId;
     [SerializeField] public List<PlayerAPI> players;
+    public PlayerAction _action;
     private int index = 1;
     public bool isFound;
 
@@ -83,7 +84,7 @@ public class WebsocketCLI : MonoBehaviour
         _websocket.OnOpen += OnOpen;
         _websocket.OnMessage += OnMessage;
         _websocket.Connect();
-    }
+    }   
 
     public string GenerateRandomID()
     {
@@ -95,7 +96,15 @@ public class WebsocketCLI : MonoBehaviour
         Debug.Log("Client connected");
         if (SceneManager.GetActiveScene().name == "Lobby")
         {
-            reqData("00", lobbyId, players[0]);
+            if (_action.isHost)
+            {
+                reqData("00", lobbyId, players[0]);
+            }
+            else if(_action.isJoin)
+            {
+                Debug.Log("wow");
+                reqData("10", lobbyId, players[1]);
+            }
         }
         else if(SceneManager.GetActiveScene().name == "Menu")
         {
@@ -112,11 +121,11 @@ public class WebsocketCLI : MonoBehaviour
     private ReceiveData resData(string json)
     {
         ReceiveData receiveData = JsonConvert.DeserializeObject<ReceiveData>(json);
-        //Debug.Log(receiveData.type);
+        Debug.Log(receiveData.type);
         if (receiveData.type == "11")
         {
+            Debug.Log("Join");
             LobbyData.Instance.updateLobby(receiveData.lobby.players.Count);
-            //lobby.updateLobby(receiveData.lobby.players.Count);
         }
         else if(receiveData.type == "19")
         {

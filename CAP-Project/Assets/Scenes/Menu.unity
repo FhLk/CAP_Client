@@ -1390,7 +1390,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1121999555}
   - component: {fileID: 1121999554}
-  - component: {fileID: 1121999556}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -1415,7 +1414,8 @@ MonoBehaviour:
   mute: {fileID: 21300000, guid: 22186df611d8e2849b301675fc1cd745, type: 3}
   LIST: {fileID: 0}
   lobbyID: {fileID: 624398186}
-  _url: ws://localhost:8080/ws/lobby
+  _websocket: {fileID: 2000811956033337901, guid: 4a339a124d3f0bd4ab217bfece6083ac, type: 3}
+  _action: {fileID: 11400000, guid: a2dfda24c8ac15347bd938bbd83c38be, type: 2}
 --- !u!4 &1121999555
 Transform:
   m_ObjectHideFlags: 0
@@ -1431,22 +1431,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1121999556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1121999553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 746f3473c7116e64db5b496d9c848f51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _url: ws://localhost:8080/ws/lobby
-  lobbyId: 
-  players: []
-  isFound: 0
 --- !u!1 &1195052519
 GameObject:
   m_ObjectHideFlags: 0
