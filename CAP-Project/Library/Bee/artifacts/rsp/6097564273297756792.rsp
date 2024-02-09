@@ -1,6 +1,7 @@
 -a="D:\Hobby\CAP_Client\CAP-Project\Assets\Packages\WebSocketSharp-netstandard.1.0.1\lib\netstandard2.0\websocket-sharp.dll"
 -a="D:\Hobby\CAP_Client\CAP-Project\Library\ScriptAssemblies\Assembly-CSharp.dll"
 -a="D:\Hobby\CAP_Client\CAP-Project\Library\ScriptAssemblies\Purchasing.Common.dll"
+-a="D:\Hobby\CAP_Client\CAP-Project\Library\ScriptAssemblies\UniRx.dll"
 -a="D:\Hobby\CAP_Client\CAP-Project\Library\ScriptAssemblies\Unity.2D.Animation.Runtime.dll"
 -a="D:\Hobby\CAP_Client\CAP-Project\Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll"
 -a="D:\Hobby\CAP_Client\CAP-Project\Library\ScriptAssemblies\Unity.2D.IK.Runtime.dll"

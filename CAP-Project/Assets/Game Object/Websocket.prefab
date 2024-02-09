@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 746f3473c7116e64db5b496d9c848f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _url: ws://25.50.21.71:8080/ws/lobby
-  lobbyId: 
+  _url: ws://localhost:8080/ws/lobby
+  lobbyId: 123
   players:
   - {fileID: 0}
   - {fileID: 0}

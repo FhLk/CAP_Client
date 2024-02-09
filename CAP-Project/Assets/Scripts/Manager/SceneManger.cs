@@ -62,8 +62,9 @@ public class SceneManger : MonoBehaviour
     {
         if (lobbyID.text != "")
         {
-            _action.isHost = false;
-            _action.isJoin = true;
+            //_action.isHost = false;
+            //_action.isJoin = true;
+            _websocket.ConnectWebsocket(lobbyID.text);
             StartCoroutine(LoadSceneAsync());
         }
         else
@@ -77,6 +78,8 @@ public class SceneManger : MonoBehaviour
         yield return new WaitForSeconds(1f);
         if (_websocket.isFound)
         {
+            _action.isHost = false;
+            _action.isJoin = true;
             SceneManager.LoadScene("Lobby");
         }
         // ... (ทำงานเพิ่มเติมหลังจากโหลดเสร็จสิ้น)

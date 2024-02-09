@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlayerAction
   m_EditorClassIdentifier: 
   isHost: 0
-  isJoin: 1
+  isJoin: 0

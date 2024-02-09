@@ -303,6 +303,7 @@
 -r:"Library/PackageCache/com.unity.nuget.newtonsoft-json@3.2.1/Runtime/AOT/Newtonsoft.Json.dll"
 -r:"Library/PackageCache/com.unity.visualscripting@1.9.1/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
 -r:"Library/Bee/artifacts/1900b0aP.dag/Purchasing.Common.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aP.dag/UniRx.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aP.dag/Unity.2D.Animation.Runtime.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aP.dag/Unity.2D.Common.Runtime.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aP.dag/Unity.2D.IK.Runtime.ref.dll"

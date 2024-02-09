@@ -102,7 +102,6 @@ public class WebsocketCLI : MonoBehaviour
             }
             else if(_action.isJoin)
             {
-                Debug.Log("wow");
                 reqData("10", lobbyId, players[1]);
             }
         }
@@ -124,8 +123,8 @@ public class WebsocketCLI : MonoBehaviour
         Debug.Log(receiveData.type);
         if (receiveData.type == "11")
         {
-            Debug.Log("Join");
-            LobbyData.Instance.updateLobby(receiveData.lobby.players.Count);
+            Debug.Log(receiveData.lobby.players.Count);
+            LobbyData.Instance.UpdateLobby(receiveData.lobby.players.Count);
         }
         else if(receiveData.type == "19")
         {
@@ -177,15 +176,6 @@ public class WebsocketCLI : MonoBehaviour
         if(index < 4)
         {
             reqData("10", lobbyId, players[index++]);
-        }
-
-    }
-
-    public void kickPlayer()
-    {
-        if (index > 1)
-        {
-            //reqData("10", lobbyId, players[index++]);
         }
 
     }

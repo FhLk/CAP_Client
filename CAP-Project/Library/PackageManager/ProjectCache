@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638423558075156491
-    m_Hash: 3522422940
+      ticks: 638430163162048613
+    m_Hash: 3825634944
   m_LockFileStatus:
     m_FilePath: D:/Hobby/CAP_Client/CAP-Project/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638423558075233304
-    m_Hash: 3406571217
+      ticks: 638430163162103964
+    m_Hash: 4257927665
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -62,6 +62,58 @@ m_ResolvedPackages:
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: https://github.com/GlitchEnzo/NuGetForUnity
+  hasRepository: 0
+  repository:
+    type: 
+    url: 
+    revision: 
+    path: 
+  unityLifecycle:
+    version: 
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+- packageId: com.neuecc.unirx@https://github.com/neuecc/UniRx.git?path=Assets/Plugins/UniRx/Scripts
+  testable: 0
+  isDirectDependency: 1
+  version: 7.1.0
+  source: 5
+  resolvedPath: D:\Hobby\CAP_Client\CAP-Project\Library\PackageCache\com.neuecc.unirx@7cce378b3f
+  assetPath: Packages/com.neuecc.unirx
+  name: com.neuecc.unirx
+  displayName: UniRx
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: Reactive Extensions for Unity
+  status: 0
+  errors: []
+  versions:
+    all: []
+    compatible: []
+    recommended: 
+    deprecated: []
+  dependencies: []
+  resolvedDependencies: []
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: 
   hasRepository: 0
   repository:
     type: 
@@ -1456,6 +1508,7 @@ m_ResolvedPackages:
     - 3.2.0-pre.5
     - 3.2.0-pre.6
     - 3.2.0-pre.7
+    - 3.2.0-pre.8
     - 4.0.0-pre.1
     - 4.0.0-pre.2
     compatible:
@@ -1468,6 +1521,7 @@ m_ResolvedPackages:
     - 3.2.0-pre.5
     - 3.2.0-pre.6
     - 3.2.0-pre.7
+    - 3.2.0-pre.8
     - 4.0.0-pre.1
     - 4.0.0-pre.2
     recommended: 3.0.7

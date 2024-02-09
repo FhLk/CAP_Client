@@ -193,7 +193,8 @@
         185,
         186,
         187,
-        188
+        188,
+        189
       ],
       "OverwriteOutputs": false,
       "DebugActionIndex": 0
@@ -371,7 +372,7 @@
       "DisplayName": "Writing boot.config_tyr4.info",
       "ActionType": "WriteFile",
       "PayloadOffset": 83,
-      "PayloadLength": 18560,
+      "PayloadLength": 18639,
       "PayloadDebugContentSnippet": "{\"System.Object\":null,\"Bee.Tun",
       "Inputs": [],
       "Outputs": [
@@ -492,6 +493,7 @@
         "D:/Hobby/CAP_Client/CAP-Project/Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Analytics.dll",
         "D:/Hobby/CAP_Client/CAP-Project/Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.dll",
         "D:/Hobby/CAP_Client/CAP-Project/Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.AppleCore.dll",
+        "D:/Hobby/CAP_Client/CAP-Project/Library/Bee/PlayerScriptAssemblies/UniRx.dll",
         "D:/Hobby/CAP_Client/CAP-Project/Library/Bee/PlayerScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll",
         "D:/Hobby/CAP_Client/CAP-Project/Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.WinRTCore.dll",
         "D:/Hobby/CAP_Client/CAP-Project/Library/Bee/PlayerScriptAssemblies/Unity.Burst.dll",
@@ -1721,6 +1723,18 @@
       "DebugActionIndex": 110
     },
     {
+      "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/UniRx.dll",
+      "DisplayName": "Copying UniRx.dll",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "D:/Hobby/CAP_Client/CAP-Project/Library/Bee/PlayerScriptAssemblies/UniRx.dll"
+      ],
+      "Outputs": [
+        "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/UniRx.dll"
+      ],
+      "DebugActionIndex": 111
+    },
+    {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/UnityEngine.XR.LegacyInputHelpers.dll",
       "DisplayName": "Copying UnityEngine.XR.LegacyInputHelpers.dll",
       "ActionType": "CopyFiles",
@@ -1730,7 +1744,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/UnityEngine.XR.LegacyInputHelpers.dll"
       ],
-      "DebugActionIndex": 111
+      "DebugActionIndex": 112
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/UnityEngine.Purchasing.WinRTCore.dll",
@@ -1742,7 +1756,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/UnityEngine.Purchasing.WinRTCore.dll"
       ],
-      "DebugActionIndex": 112
+      "DebugActionIndex": 113
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.Burst.dll",
@@ -1754,7 +1768,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.Burst.dll"
       ],
-      "DebugActionIndex": 113
+      "DebugActionIndex": 114
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/UnityEngine.Purchasing.SecurityStub.dll",
@@ -1766,7 +1780,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/UnityEngine.Purchasing.SecurityStub.dll"
       ],
-      "DebugActionIndex": 114
+      "DebugActionIndex": 115
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/UnityEngine.Advertisements.dll",
@@ -1778,7 +1792,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/UnityEngine.Advertisements.dll"
       ],
-      "DebugActionIndex": 115
+      "DebugActionIndex": 116
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.Services.Core.Internal.dll",
@@ -1790,7 +1804,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.Services.Core.Internal.dll"
       ],
-      "DebugActionIndex": 116
+      "DebugActionIndex": 117
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.Services.Core.Device.dll",
@@ -1802,7 +1816,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.Services.Core.Device.dll"
       ],
-      "DebugActionIndex": 117
+      "DebugActionIndex": 118
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.Services.Core.Threading.dll",
@@ -1814,7 +1828,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.Services.Core.Threading.dll"
       ],
-      "DebugActionIndex": 118
+      "DebugActionIndex": 119
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.VisualScripting.Core.dll",
@@ -1826,7 +1840,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.VisualScripting.Core.dll"
       ],
-      "DebugActionIndex": 119
+      "DebugActionIndex": 120
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.2D.Animation.Runtime.dll",
@@ -1838,7 +1852,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.2D.Animation.Runtime.dll"
       ],
-      "DebugActionIndex": 120
+      "DebugActionIndex": 121
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.2D.Tilemap.Extras.dll",
@@ -1850,7 +1864,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.2D.Tilemap.Extras.dll"
       ],
-      "DebugActionIndex": 121
+      "DebugActionIndex": 122
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/UnityEngine.UI.dll",
@@ -1862,7 +1876,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/UnityEngine.UI.dll"
       ],
-      "DebugActionIndex": 122
+      "DebugActionIndex": 123
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.Services.Core.Telemetry.dll",
@@ -1874,7 +1888,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.Services.Core.Telemetry.dll"
       ],
-      "DebugActionIndex": 123
+      "DebugActionIndex": 124
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/UnityEngine.SpatialTracking.dll",
@@ -1886,7 +1900,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/UnityEngine.SpatialTracking.dll"
       ],
-      "DebugActionIndex": 124
+      "DebugActionIndex": 125
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.InternalAPIEngineBridge.001.dll",
@@ -1898,7 +1912,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.InternalAPIEngineBridge.001.dll"
       ],
-      "DebugActionIndex": 125
+      "DebugActionIndex": 126
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.2D.Common.Runtime.dll",
@@ -1910,7 +1924,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.2D.Common.Runtime.dll"
       ],
-      "DebugActionIndex": 126
+      "DebugActionIndex": 127
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.Timeline.dll",
@@ -1922,7 +1936,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.Timeline.dll"
       ],
-      "DebugActionIndex": 127
+      "DebugActionIndex": 128
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Purchasing.Common.dll",
@@ -1934,7 +1948,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Purchasing.Common.dll"
       ],
-      "DebugActionIndex": 128
+      "DebugActionIndex": 129
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.Services.Analytics.dll",
@@ -1946,7 +1960,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.Services.Analytics.dll"
       ],
-      "DebugActionIndex": 129
+      "DebugActionIndex": 130
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.Mathematics.dll",
@@ -1958,7 +1972,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.Mathematics.dll"
       ],
-      "DebugActionIndex": 130
+      "DebugActionIndex": 131
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.Services.Core.Registration.dll",
@@ -1970,7 +1984,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.Services.Core.Registration.dll"
       ],
-      "DebugActionIndex": 131
+      "DebugActionIndex": 132
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.VisualScripting.State.dll",
@@ -1982,7 +1996,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.VisualScripting.State.dll"
       ],
-      "DebugActionIndex": 132
+      "DebugActionIndex": 133
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.Collections.LowLevel.ILSupport.dll",
@@ -1994,7 +2008,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.Collections.LowLevel.ILSupport.dll"
       ],
-      "DebugActionIndex": 133
+      "DebugActionIndex": 134
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll",
@@ -2006,7 +2020,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll"
       ],
-      "DebugActionIndex": 134
+      "DebugActionIndex": 135
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.Burst.Unsafe.dll",
@@ -2018,7 +2032,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Unity.Burst.Unsafe.dll"
       ],
-      "DebugActionIndex": 135
+      "DebugActionIndex": 136
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Newtonsoft.Json.dll",
@@ -2030,7 +2044,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Newtonsoft.Json.dll"
       ],
-      "DebugActionIndex": 136
+      "DebugActionIndex": 137
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/websocket-sharp.dll",
@@ -2042,7 +2056,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/websocket-sharp.dll"
       ],
-      "DebugActionIndex": 137
+      "DebugActionIndex": 138
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Runtime.dll",
@@ -2054,7 +2068,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Runtime.dll"
       ],
-      "DebugActionIndex": 138
+      "DebugActionIndex": 139
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/netstandard.dll",
@@ -2066,7 +2080,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/netstandard.dll"
       ],
-      "DebugActionIndex": 139
+      "DebugActionIndex": 140
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Mono.Security.dll",
@@ -2078,7 +2092,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/Mono.Security.dll"
       ],
-      "DebugActionIndex": 140
+      "DebugActionIndex": 141
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.ComponentModel.Composition.dll",
@@ -2090,7 +2104,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.ComponentModel.Composition.dll"
       ],
-      "DebugActionIndex": 141
+      "DebugActionIndex": 142
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Configuration.dll",
@@ -2102,7 +2116,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Configuration.dll"
       ],
-      "DebugActionIndex": 142
+      "DebugActionIndex": 143
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Core.dll",
@@ -2114,7 +2128,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Core.dll"
       ],
-      "DebugActionIndex": 143
+      "DebugActionIndex": 144
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Data.DataSetExtensions.dll",
@@ -2126,7 +2140,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Data.DataSetExtensions.dll"
       ],
-      "DebugActionIndex": 144
+      "DebugActionIndex": 145
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Data.dll",
@@ -2138,7 +2152,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Data.dll"
       ],
-      "DebugActionIndex": 145
+      "DebugActionIndex": 146
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Drawing.dll",
@@ -2150,7 +2164,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Drawing.dll"
       ],
-      "DebugActionIndex": 146
+      "DebugActionIndex": 147
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.EnterpriseServices.dll",
@@ -2162,7 +2176,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.EnterpriseServices.dll"
       ],
-      "DebugActionIndex": 147
+      "DebugActionIndex": 148
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.IO.Compression.FileSystem.dll",
@@ -2174,7 +2188,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.IO.Compression.FileSystem.dll"
       ],
-      "DebugActionIndex": 148
+      "DebugActionIndex": 149
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.IO.Compression.dll",
@@ -2186,7 +2200,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.IO.Compression.dll"
       ],
-      "DebugActionIndex": 149
+      "DebugActionIndex": 150
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Net.Http.dll",
@@ -2198,7 +2212,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Net.Http.dll"
       ],
-      "DebugActionIndex": 150
+      "DebugActionIndex": 151
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Numerics.dll",
@@ -2210,7 +2224,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Numerics.dll"
       ],
-      "DebugActionIndex": 151
+      "DebugActionIndex": 152
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Runtime.Serialization.dll",
@@ -2222,7 +2236,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Runtime.Serialization.dll"
       ],
-      "DebugActionIndex": 152
+      "DebugActionIndex": 153
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Security.dll",
@@ -2234,7 +2248,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Security.dll"
       ],
-      "DebugActionIndex": 153
+      "DebugActionIndex": 154
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.ServiceModel.Internals.dll",
@@ -2246,7 +2260,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.ServiceModel.Internals.dll"
       ],
-      "DebugActionIndex": 154
+      "DebugActionIndex": 155
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Transactions.dll",
@@ -2258,7 +2272,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Transactions.dll"
       ],
-      "DebugActionIndex": 155
+      "DebugActionIndex": 156
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Xml.Linq.dll",
@@ -2270,7 +2284,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Xml.Linq.dll"
       ],
-      "DebugActionIndex": 156
+      "DebugActionIndex": 157
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Xml.dll",
@@ -2282,7 +2296,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.Xml.dll"
       ],
-      "DebugActionIndex": 157
+      "DebugActionIndex": 158
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.dll",
@@ -2294,7 +2308,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/System.dll"
       ],
-      "DebugActionIndex": 158
+      "DebugActionIndex": 159
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/mscorlib.dll",
@@ -2306,14 +2320,14 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Managed/mscorlib.dll"
       ],
-      "DebugActionIndex": 159
+      "DebugActionIndex": 160
     },
     {
       "Annotation": "GenerateNativePluginsForAssemblies Library/Bee/artifacts/WinPlayerBuildProgram/AsyncPluginsFromLinker",
       "DisplayName": "Running Burst Compiler",
       "ActionType": "RunRPCCommand",
-      "PayloadOffset": 18766,
-      "PayloadLength": 17465,
+      "PayloadOffset": 18845,
+      "PayloadLength": 17544,
       "PayloadDebugContentSnippet": "{\"PlayerBuildProgramLibrary.Da",
       "Action": "GenerateNativePluginsForAssemblies",
       "Inputs": [
@@ -2409,6 +2423,7 @@
         "D:/Hobby/CAP_Client/CAP-Project/Library/Bee/PlayerScriptAssemblies/Unity.Services.Core.Analytics.dll",
         "D:/Hobby/CAP_Client/CAP-Project/Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.dll",
         "D:/Hobby/CAP_Client/CAP-Project/Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.AppleCore.dll",
+        "D:/Hobby/CAP_Client/CAP-Project/Library/Bee/PlayerScriptAssemblies/UniRx.dll",
         "D:/Hobby/CAP_Client/CAP-Project/Library/Bee/PlayerScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll",
         "D:/Hobby/CAP_Client/CAP-Project/Library/Bee/PlayerScriptAssemblies/UnityEngine.Purchasing.WinRTCore.dll",
         "D:/Hobby/CAP_Client/CAP-Project/Library/Bee/PlayerScriptAssemblies/Unity.Burst.dll",
@@ -2491,7 +2506,7 @@
           "Recurse": 1
         }
       ],
-      "DebugActionIndex": 160
+      "DebugActionIndex": 161
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Plugins/x86_64/lib_burst_generated.dll",
@@ -2504,22 +2519,22 @@
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Plugins/x86_64/lib_burst_generated.dll"
       ],
       "ToBuildDependencies": [
-        160
+        161
       ],
-      "DebugActionIndex": 161
+      "DebugActionIndex": 162
     },
     {
       "Annotation": "WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info",
       "DisplayName": "Writing app.info",
       "ActionType": "WriteFile",
-      "PayloadOffset": 36320,
+      "PayloadOffset": 36478,
       "PayloadLength": 30,
       "PayloadDebugContentSnippet": "DefaultCompany\nCAP-Project-Dev",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info"
       ],
-      "DebugActionIndex": 162
+      "DebugActionIndex": 163
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/app.info",
@@ -2532,9 +2547,9 @@
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/app.info"
       ],
       "ToBuildDependencies": [
-        162
+        163
       ],
-      "DebugActionIndex": 163
+      "DebugActionIndex": 164
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Resources/unity default resources",
@@ -2546,7 +2561,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev_Data/Resources/unity default resources"
       ],
-      "DebugActionIndex": 164
+      "DebugActionIndex": 165
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/CAP-Project-Dev.exe",
@@ -2558,7 +2573,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/CAP-Project-Dev.exe"
       ],
-      "DebugActionIndex": 165
+      "DebugActionIndex": 166
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
@@ -2570,7 +2585,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll"
       ],
-      "DebugActionIndex": 166
+      "DebugActionIndex": 167
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll",
@@ -2582,7 +2597,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll"
       ],
-      "DebugActionIndex": 167
+      "DebugActionIndex": 168
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser",
@@ -2594,7 +2609,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser"
       ],
-      "DebugActionIndex": 168
+      "DebugActionIndex": 169
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx",
@@ -2606,7 +2621,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx"
       ],
-      "DebugActionIndex": 169
+      "DebugActionIndex": 170
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/2.0/machine.config",
@@ -2618,7 +2633,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/2.0/machine.config"
       ],
-      "DebugActionIndex": 170
+      "DebugActionIndex": 171
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/2.0/settings.map",
@@ -2630,7 +2645,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/2.0/settings.map"
       ],
-      "DebugActionIndex": 171
+      "DebugActionIndex": 172
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/2.0/web.config",
@@ -2642,7 +2657,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/2.0/web.config"
       ],
-      "DebugActionIndex": 172
+      "DebugActionIndex": 173
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser",
@@ -2654,7 +2669,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser"
       ],
-      "DebugActionIndex": 173
+      "DebugActionIndex": 174
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx",
@@ -2666,7 +2681,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx"
       ],
-      "DebugActionIndex": 174
+      "DebugActionIndex": 175
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/4.0/machine.config",
@@ -2678,7 +2693,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/4.0/machine.config"
       ],
-      "DebugActionIndex": 175
+      "DebugActionIndex": 176
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/4.0/settings.map",
@@ -2690,7 +2705,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/4.0/settings.map"
       ],
-      "DebugActionIndex": 176
+      "DebugActionIndex": 177
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/4.0/web.config",
@@ -2702,7 +2717,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/4.0/web.config"
       ],
-      "DebugActionIndex": 177
+      "DebugActionIndex": 178
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser",
@@ -2714,7 +2729,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser"
       ],
-      "DebugActionIndex": 178
+      "DebugActionIndex": 179
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx",
@@ -2726,7 +2741,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx"
       ],
-      "DebugActionIndex": 179
+      "DebugActionIndex": 180
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/4.5/machine.config",
@@ -2738,7 +2753,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/4.5/machine.config"
       ],
-      "DebugActionIndex": 180
+      "DebugActionIndex": 181
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/4.5/settings.map",
@@ -2750,7 +2765,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/4.5/settings.map"
       ],
-      "DebugActionIndex": 181
+      "DebugActionIndex": 182
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/4.5/web.config",
@@ -2762,7 +2777,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/4.5/web.config"
       ],
-      "DebugActionIndex": 182
+      "DebugActionIndex": 183
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/browscap.ini",
@@ -2774,7 +2789,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/browscap.ini"
       ],
-      "DebugActionIndex": 183
+      "DebugActionIndex": 184
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/config",
@@ -2786,7 +2801,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/config"
       ],
-      "DebugActionIndex": 184
+      "DebugActionIndex": 185
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/mconfig/config.xml",
@@ -2798,7 +2813,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/MonoBleedingEdge/etc/mono/mconfig/config.xml"
       ],
-      "DebugActionIndex": 185
+      "DebugActionIndex": 186
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/UnityCrashHandler64.exe",
@@ -2810,7 +2825,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/UnityCrashHandler64.exe"
       ],
-      "DebugActionIndex": 186
+      "DebugActionIndex": 187
     },
     {
       "Annotation": "CopyFiles D:/Hobby/Game-Test-Lobby/UnityPlayer.dll",
@@ -2822,7 +2837,7 @@
       "Outputs": [
         "D:/Hobby/Game-Test-Lobby/UnityPlayer.dll"
       ],
-      "DebugActionIndex": 187
+      "DebugActionIndex": 188
     },
     {
       "Annotation": "Player",
@@ -2987,8 +3002,8 @@
         157,
         158,
         159,
-        161,
-        163,
+        160,
+        162,
         164,
         165,
         166,
@@ -3012,10 +3027,11 @@
         184,
         185,
         186,
-        187
+        187,
+        188
       ],
       "OverwriteOutputs": false,
-      "DebugActionIndex": 188
+      "DebugActionIndex": 189
     }
   ],
   "FileSignatures": [
@@ -3220,7 +3236,7 @@
   ],
         "NamedNodes": {
           "all_tundra_nodes": 0,
-          "Player": 188
+          "Player": 189
         }
 ,  "DefaultNodes": [
     0

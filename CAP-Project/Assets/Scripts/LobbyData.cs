@@ -1,8 +1,6 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,15 +27,15 @@ public class LobbyData : MonoBehaviour
         countList.text = count + "/4";
     }
 
-    public void updateLobby(int index)
+    public void UpdateLobby(int index)
     {
-        countList.text = (index) +"/4";
+        countList.text = (index) + "/4";
         Transform childToChange = LISTDisplay.transform.GetChild(index - 1);
         childToChange.gameObject.GetComponent<SpriteRenderer>().sprite = slotBG;
         Transform firstChild = childToChange.transform.GetChild(0);
         firstChild.gameObject.SetActive(true);
         Transform secondChild = childToChange.transform.GetChild(1);
-        secondChild.gameObject.SetActive(true);
+        //secondChild.gameObject.SetActive(true);
         secondChild.GetComponent<Text>().text = childToChange.gameObject.GetComponent<PlayerAPI>().name;
     }
 }
