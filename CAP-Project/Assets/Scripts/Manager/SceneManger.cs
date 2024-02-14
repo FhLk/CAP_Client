@@ -34,9 +34,9 @@ public class SceneManger : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
-    public void Game()
+    public void Game(Button btn)
     {
-        Transform[] childs = { LIST.transform.GetChild(1), LIST.transform.GetChild(2), LIST.transform.GetChild(3) };
+        Transform[] childs = { LIST.transform.GetChild(1)};
         List<GameObject> list = new List<GameObject>();
         foreach (Transform child in childs)
         {
@@ -45,9 +45,13 @@ public class SceneManger : MonoBehaviour
                 list.Add(child.gameObject);
             }
         }
-        if (list.Count == 3)
+        if (list.Count == 1 && WebsocketCLI.Instance._action.isHost)
         {
-            SceneManager.LoadScene("Board_Cell", LoadSceneMode.Single);
+            SceneManager.LoadScene("Minesweeper");
+        }
+        else if (WebsocketCLI.Instance._action.isJoin)
+        {
+            btn.GetComponentInChildren<Text>().text = "Unready";
         }
     }
 
@@ -62,8 +66,6 @@ public class SceneManger : MonoBehaviour
     {
         if (lobbyID.text != "")
         {
-            //_action.isHost = false;
-            //_action.isJoin = true;
             _websocket.ConnectWebsocket(lobbyID.text);
             StartCoroutine(LoadSceneAsync());
         }

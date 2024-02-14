@@ -107,6 +107,7 @@ public class HexagonTile : MonoBehaviour
             }
             if (this.TileType != 1)
             {
+                WebsocketCLI.Instance.reqDataInGame("30",this.x,this.y);
                 GameObject.Destroy(gameObject);
             }
             UnitManager.Instance.SelectedPlayer.playerClick();

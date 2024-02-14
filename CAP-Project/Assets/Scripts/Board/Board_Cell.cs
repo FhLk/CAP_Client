@@ -15,6 +15,8 @@ public class Board_Cell : MonoBehaviour
     [SerializeField] private int numResets;
     [SerializeField] private int numHearts;
     [SerializeField] private int numSheilds;
+    [SerializeField] private BasePlayer[] players;
+    [SerializeField] private WebsocketCLI _websocket;
 
     public int width;
     public int height;
@@ -53,13 +55,14 @@ public class Board_Cell : MonoBehaviour
         GameManager.Instance.ChangeState(GameState.SpawnPlayer);
         GameManager.Instance.ChangeState(GameState.PlayerTurn);
         board = initBoard;
+        _websocket.reqDataInGame("50", players , board);
     }
 
     private HexagonTile[,] stateDefind(HexagonTile[,] initBoard)
     {
         HexagonTile[,] board = initBoard;
         board = defindeCell(board, numBombs, 1);
-        //board = defindeCell(board, numEvents, 2);
+        board = defindeCell(board, numEvents, 2);
         board = defindeCell(board, numHearts, 3);
         board = defindeCell(board, numResets, 4);
         board = defindeCell(board, numSheilds, 5);

@@ -23,7 +23,7 @@ public class UnitManager : MonoBehaviour
 
     public void SpawnPlayer()
     {
-        int playerCount = 4;
+        int playerCount = 2;
 
         for (int i = 0; i < playerCount; i++)
         {

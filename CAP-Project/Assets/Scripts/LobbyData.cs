@@ -15,7 +15,10 @@ public class LobbyData : MonoBehaviour
     public GameObject LISTDisplay;
     public Text LobbyID;
     public Sprite slotBG;
-
+    private bool isJoin;
+    private bool isHost;
+    [SerializeField] private Button startBTN;
+    
     private void Awake()
     {
         Instance = this;
@@ -24,18 +27,38 @@ public class LobbyData : MonoBehaviour
     {
         id = WebsocketCLI.Instance.GenerateRandomID();
         LobbyID.text = id;
-        countList.text = count + "/4";
+        countList.text = count + "/2";
+        LobbyInterface();
     }
 
     public void UpdateLobby(int index)
     {
-        countList.text = (index) + "/4";
+        countList.text = (index) + "/2";
         Transform childToChange = LISTDisplay.transform.GetChild(index - 1);
         childToChange.gameObject.GetComponent<SpriteRenderer>().sprite = slotBG;
         Transform firstChild = childToChange.transform.GetChild(0);
         firstChild.gameObject.SetActive(true);
         Transform secondChild = childToChange.transform.GetChild(1);
-        //secondChild.gameObject.SetActive(true);
         secondChild.GetComponent<Text>().text = childToChange.gameObject.GetComponent<PlayerAPI>().name;
+    }
+
+    private void LobbyInterface()
+    {
+        isHost = WebsocketCLI.Instance._action.isHost;
+        isJoin = WebsocketCLI.Instance._action.isJoin;
+        if (isHost)
+        {
+            startBTN.GetComponentInChildren<Text>().text = "Start";
+        }
+        else if (isJoin)
+        {
+            startBTN.GetComponentInChildren<Text>().text = "Waiting Host";
+            startBTN.GetComponentInChildren<Text>().color = Color.black;
+            startBTN.interactable = false;
+        }
+        else
+        {
+            startBTN.GetComponentInChildren<Text>().text = "";
+        }
     }
 }

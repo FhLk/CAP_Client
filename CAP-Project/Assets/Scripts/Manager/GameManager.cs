@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public GameState GameState;
     public BasePlayer SelectedPlayer;
     private Text _round;
-    private int _r = 0;
+    public  int _r = 0;
     private int _player = 1;
 
     void Awake()
