@@ -22,7 +22,6 @@ ScriptsOnlyBuild:
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Animation.Runtime.dll:
-    - UnityEngine.U2D.Animation.BufferManager
     - UnityEngine.U2D.Animation.SpriteSkinComposite
     - UnityEngine.U2D.Animation.SpriteSkinUpdateHelper
     Unity.2D.IK.Editor.dll:
@@ -312,6 +311,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5868}
     - Class: 114
+      Script: {instanceID: 7410}
+    - Class: 114
       Script: {instanceID: 8144}
     - Class: 114
       Script: {instanceID: 8632}
@@ -472,7 +473,7 @@ ScriptsOnlyBuild:
     className: ObservableSubmitTrigger
   - hash:
       serializedVersion: 2
-      Hash: 31bf08f2f9bc8fafd6cb49c58b6056af
+      Hash: 2ecd1d78dcb99de0a48608a02ea9f061
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: UIManager
@@ -1300,7 +1301,7 @@ ScriptsOnlyBuild:
     className: UnityOnTriggerExitMessageListener
   - hash:
       serializedVersion: 2
-      Hash: e49c63ffc1da7354747fd9e4a17e0d10
+      Hash: 1b509ea2be4036c482510ac1d2b750b9
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: PlayerAction
@@ -1384,7 +1385,7 @@ ScriptsOnlyBuild:
     className: LifecycleNotifier
   - hash:
       serializedVersion: 2
-      Hash: f3a55d006a95d6baad4cc7838228044e
+      Hash: 9fff35b0676c706982ff8973a0836e5b
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: BasePlayer
@@ -1438,7 +1439,7 @@ ScriptsOnlyBuild:
     className: AspectRatioFitter
   - hash:
       serializedVersion: 2
-      Hash: 4a48cfb5a467bb68e9536f08a3e0f501
+      Hash: 6a073fead39ab38cf898c0caf5ef5761
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: GameManager
@@ -1462,7 +1463,7 @@ ScriptsOnlyBuild:
     className: UnityUtil
   - hash:
       serializedVersion: 2
-      Hash: c23b357e4f3e02aa47d3dd552c63532c
+      Hash: 530907a018ffa044132dc72da9aa5e7d
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: LobbyData
@@ -1804,7 +1805,7 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
-      Hash: dd98736024ea0946871f4d99a4291351
+      Hash: 905eee66587cb7e0aa810edd18b9a128
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Board_Cell
@@ -1834,7 +1835,7 @@ ScriptsOnlyBuild:
     className: SwingArmModel
   - hash:
       serializedVersion: 2
-      Hash: 6789aa46bdc7e2776f8e6af3a78ab288
+      Hash: e6e1709a8e5e5a5ca02e56ea94af59d8
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: PlayerAPI
