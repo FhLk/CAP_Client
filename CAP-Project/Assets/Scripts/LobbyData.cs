@@ -10,7 +10,6 @@ public class LobbyData : MonoBehaviour
     public string id;
     int[] listPlayer = { 1, 2, 3 };
     private int count = 1;
-    public GameObject[] LIST;
     public Text countList;
     public GameObject LISTDisplay;
     public Text LobbyID;

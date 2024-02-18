@@ -9,8 +9,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using WebSocketSharp;
-using static WebsocketCLI;
-
 
 public class WebsocketCLI : MonoBehaviour
 {
@@ -31,7 +29,12 @@ public class WebsocketCLI : MonoBehaviour
     class ReceiveData
     {
         public Lobby lobby { get; set; }
+        public int x { get; set; }
+        public int y { get; set; }
         public string type { get; set; }
+        public int playerIndex { get; set; }
+
+        public int round { get; set; }
     }
 
     public class Lobby
@@ -61,10 +64,6 @@ public class WebsocketCLI : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-    }
-
-    void Start()
-    {
         if (SceneManager.GetActiveScene().name == "Lobby")
         {
             lobbyId = GenerateRandomID();
@@ -119,11 +118,7 @@ public class WebsocketCLI : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "Menu")
         {
-            reqData("09", lobbyId, null);
-        }
-        else if (SceneManager.GetActiveScene().name == "Minesweeper")
-        {
-            reqData("90", lobbyId, null);
+            reqData("20", lobbyId, null);
         }
         throw new NotImplementedException();
     }
@@ -136,6 +131,7 @@ public class WebsocketCLI : MonoBehaviour
     private ReceiveData resData(string json)
     {
         ReceiveData receiveData = JsonConvert.DeserializeObject<ReceiveData>(json);
+        Debug.Log(receiveData.round);
         if (receiveData.type == "11")
         {
             LobbyData.Instance.UpdateLobby(receiveData.lobby.players.Count);
@@ -145,10 +141,21 @@ public class WebsocketCLI : MonoBehaviour
             isFound = true;
             _websocket.Close();
         }
-        else if (receiveData.type == "91")
+        else if (receiveData.type == "31")
         {
-            reqData("50", "123", null);
+            Board_Cell.Instance.removeCell(receiveData.x, receiveData.y);
         }
+        else if (receiveData.type == "61")
+        {
+            SceneManager.LoadScene("Minesweeper");
+        }
+        else if (receiveData.type == "71")
+        {
+            _action.playerTurn = receiveData.playerIndex;
+            _action.round = receiveData.round;
+            GameManager.Instance.ChangeState(GameState.NextPlayerTurn);
+        }
+
         return receiveData;
     }
 
@@ -186,19 +193,31 @@ public class WebsocketCLI : MonoBehaviour
             string json = JsonConvert.SerializeObject(dataReq);
             _websocket.Send(json);
         }
+        else if(type == "60")
+        {
+            dataReq.Add("type", type);
+
+            string json = JsonConvert.SerializeObject(dataReq);
+            _websocket.Send(json);
+        }
     }
+
     private class GameData
     {
         public string type;
-        public int playerTurn;
+        public int round;
         public BoardData[,] board;
         public Player[] players;
     }
 
     private class BoardData
     {
-        public bool is_blocked;
+        public bool destroy;
         public Item item;
+    }
+
+    private class Item
+    {
     }
 
     public void reqDataInGame(string type, BasePlayer[] players, HexagonTile[,] board)
@@ -209,8 +228,8 @@ public class WebsocketCLI : MonoBehaviour
             foreach (HexagonTile cell in board) 
             {
                 b[cell.x, cell.y] = new BoardData();
-                b[cell.x,cell.y].is_blocked = !cell.isActive;
-                b[cell.x,cell.y].item = null;
+                b[cell.x,cell.y].destroy = !cell.isActive;
+                b[cell.x,cell.y].item = new Item();
             }
 
             Player[] p = new Player[] {
@@ -221,7 +240,7 @@ public class WebsocketCLI : MonoBehaviour
             {
                 type = type,
                 board = b,
-                playerTurn = GameManager.Instance._r,
+                round = GameManager.Instance._r,
                 players = p
             });
             _websocket.Send(json);
@@ -233,9 +252,23 @@ public class WebsocketCLI : MonoBehaviour
         if (type == "30")
         {
             dataReq.Add("type", type);
-            dataReq.Add("playerIndex", 0);
+            dataReq.Add("playerIndex", UnitManager.Instance.SelectedPlayer.indexPlayer);
             dataReq.Add("x", x);
             dataReq.Add("y", y);
+            string json = JsonConvert.SerializeObject(dataReq);
+            _websocket.Send(json);
+        }
+    }
+
+    public void reqDataInGame(string type, string lobbyId)
+    {
+        Dictionary<string, object> dataReq = new Dictionary<string, object>();
+        if (type == "70")
+        {
+            dataReq.Add("type", type);
+            dataReq.Add("lobbyId", lobbyId);
+            dataReq.Add("round",_action.round);
+            dataReq.Add("playerIndex", UnitManager.Instance.SelectedPlayer.indexPlayer);
             string json = JsonConvert.SerializeObject(dataReq);
             _websocket.Send(json);
         }

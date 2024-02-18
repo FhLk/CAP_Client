@@ -10,9 +10,18 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
     [SerializeField] public BasePlayer SelectedPlayer;
     [SerializeField] public GameObject UI;
+    [SerializeField] public Text player_text;
     void Awake()
     {
         Instance = this;
+        if (WebsocketCLI.Instance._action.isHost)
+        {
+            player_text.text = "player_1";
+        }
+        else if(WebsocketCLI.Instance._action.isJoin)
+        {
+            player_text.text = "Joiner_1";
+        }
     }
 
     public void showTurnOfWho(int _p)
@@ -20,7 +29,7 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < UI.transform.childCount - 1; i++)
         {
             Transform player = UI.transform.GetChild(i);
-            if (_p-1 != i)
+            if (_p != i)
             {
                 player.GetComponent<BasePlayer>().GetComponent<SpriteRenderer>().color = new Color(0.6037736f, 0.6037736f, 0.6037736f);
             }

@@ -16,12 +16,6 @@ public class SceneManger : MonoBehaviour
     [SerializeField] private WebsocketCLI _websocket;
     public PlayerAction _action;
 
-    class ReceiveData
-    {
-        public string lobby { get; set; }
-        public string type { get; set; }
-    }
-
     public void Main()
     {
         SceneManager.LoadScene("Main");
@@ -31,6 +25,7 @@ public class SceneManger : MonoBehaviour
     {
         _action.isJoin = false;
         _action.isHost = false;
+        _action.playerTurn = -1;
         SceneManager.LoadScene("Menu");
     }
 
@@ -47,6 +42,7 @@ public class SceneManger : MonoBehaviour
         }
         if (list.Count == 1 && WebsocketCLI.Instance._action.isHost)
         {
+            WebsocketCLI.Instance.reqData("60","123",null);
             SceneManager.LoadScene("Minesweeper");
         }
         else if (WebsocketCLI.Instance._action.isJoin)
@@ -58,6 +54,7 @@ public class SceneManger : MonoBehaviour
     public void Lobby()
     {
         _action.isHost = true;
+        _action.playerTurn = 0;
         _action.isJoin = false;
         SceneManager.LoadScene("Lobby");
     }
@@ -82,9 +79,9 @@ public class SceneManger : MonoBehaviour
         {
             _action.isHost = false;
             _action.isJoin = true;
+            _action.playerTurn = 0;
             SceneManager.LoadScene("Lobby");
         }
-        // ... (ทำงานเพิ่มเติมหลังจากโหลดเสร็จสิ้น)
     }
 
     public void LeaderBoard()

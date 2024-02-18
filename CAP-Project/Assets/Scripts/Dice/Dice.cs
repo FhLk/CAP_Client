@@ -19,6 +19,10 @@ public class Dice : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        if (WebsocketCLI.Instance._action.isJoin )
+        {
+            faceDice.enabled = false;
+        }
     }
 
     void Start()
@@ -27,6 +31,26 @@ public class Dice : MonoBehaviour
         for (int i = 0; i < _diced.Count; i++)
         {
             _dic.Add(i + 1, _diced[i]);
+        }
+    }
+
+    void Update()
+    {
+        if (WebsocketCLI.Instance._action.isHost && WebsocketCLI.Instance._action.playerTurn == 0)
+        {
+            faceDice.enabled = true;
+        }
+        else if(WebsocketCLI.Instance._action.isHost && WebsocketCLI.Instance._action.playerTurn != 0)
+        {
+            faceDice.enabled = false;
+        }
+        if(WebsocketCLI.Instance._action.isJoin && WebsocketCLI.Instance._action.playerTurn == 1)
+        {
+            faceDice.enabled = true;
+        }
+        else if(WebsocketCLI.Instance._action.isJoin && WebsocketCLI.Instance._action.playerTurn != 1)
+        {
+            faceDice.enabled = false;
         }
     }
 

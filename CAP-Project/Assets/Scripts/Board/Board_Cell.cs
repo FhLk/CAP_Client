@@ -15,12 +15,12 @@ public class Board_Cell : MonoBehaviour
     [SerializeField] private int numResets;
     [SerializeField] private int numHearts;
     [SerializeField] private int numSheilds;
-    [SerializeField] private BasePlayer[] players;
+    [SerializeField] public BasePlayer[] players;
     [SerializeField] private WebsocketCLI _websocket;
 
     public int width;
     public int height;
-    private HexagonTile[,] board;
+    public HexagonTile[,] board;
     private int[] cellTypes = { 0,1,2,3,4,5 };
 
     float xOffset = 1f;
@@ -51,11 +51,13 @@ public class Board_Cell : MonoBehaviour
         initBoard = stateDefind(initBoard);
 
         _cam.transform.position = new Vector3((float)width / 1.958f - 0.5f, (float)height / 2.5f - 1.0f, -10);
-
+        board = initBoard;
+        if (_websocket._action.isHost)
+        {
+            _websocket.reqDataInGame("50", players, board);
+        }
         GameManager.Instance.ChangeState(GameState.SpawnPlayer);
         GameManager.Instance.ChangeState(GameState.PlayerTurn);
-        board = initBoard;
-        _websocket.reqDataInGame("50", players , board);
     }
 
     private HexagonTile[,] stateDefind(HexagonTile[,] initBoard)
@@ -69,10 +71,8 @@ public class Board_Cell : MonoBehaviour
         return board;
     }
 
-    public void removeCell(HexagonTile cell)
+    public void removeCell(int x,int y)
     {
-        int x = cell.x;
-        int y = cell.y;
         if (board[x, y] != null)
         {
             Destroy(board[x, y].gameObject);

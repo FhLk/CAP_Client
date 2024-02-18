@@ -8,5 +8,5 @@ public class PlayerAPI : MonoBehaviour
     public string name;
     public bool pending;
     public int hearts;
-    public bool shield;
+    public int shield;
 }

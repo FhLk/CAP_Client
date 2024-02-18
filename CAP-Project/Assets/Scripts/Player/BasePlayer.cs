@@ -9,6 +9,7 @@ public class BasePlayer : BaseUnit
 {
     public string id;
     public string playerName;
+    public int indexPlayer;
     public int dice;
     private int maxHealth = 4;
     public int maxShield = 1;
@@ -28,7 +29,7 @@ public class BasePlayer : BaseUnit
         }
         for (int i = 0; i < this.hearts; i++)
         {
-            this._base.transform.GetChild(i).gameObject.SetActive(true);
+            //this._base.transform.GetChild(i).gameObject.SetActive(false);
         }
     }
 
@@ -38,7 +39,8 @@ public class BasePlayer : BaseUnit
         if (this.dice == 0)
         {
             Dice.Instance.value = -1;
-            GameManager.Instance.ChangeState(GameState.NextPlayerTurn);
+            WebsocketCLI.Instance.reqDataInGame("70", "123");
+            //GameManager.Instance.ChangeState(GameState.NextPlayerTurn);
         }
     }
 

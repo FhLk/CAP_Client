@@ -10,8 +10,7 @@ public class GameManager : MonoBehaviour
     public GameState GameState;
     public BasePlayer SelectedPlayer;
     private Text _round;
-    public  int _r = 0;
-    private int _player = 1;
+    public int _r;
 
     void Awake()
     {
@@ -31,26 +30,19 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case GameState.GenerateBoard:
-                _player = 1;
                 Board_Cell.Instance.generateBoard();
                 break;
             case GameState.SpawnPlayer:
-                _round.text = $"Round {_r = 1}";
+                _round.text = $"Round {WebsocketCLI.Instance._action.round = _r}";
                 UnitManager.Instance.SpawnPlayer();
                 break;
             case GameState.PlayerTurn:
-                UIManager.Instance.showTurnOfWho(_player);
+                UIManager.Instance.showTurnOfWho(WebsocketCLI.Instance._action.playerTurn);
                 break;
             case GameState.NextPlayerTurn:
-                _player++;
-                if(_player == 5)
-                {
-                    _player = 1;
-                }
-                Transform nextPlayer = UnitManager.Instance._playerList.transform.GetChild(_player-1);
+                Transform nextPlayer = UnitManager.Instance._playerList.transform.GetChild(WebsocketCLI.Instance._action.playerTurn);
                 UnitManager.Instance.SetSelectedPlayer(nextPlayer.GetComponent<BasePlayer>());
-                _r++;
-                _round.text = $"Round {_r}";
+                _round.text = $"Round {WebsocketCLI.Instance._action.round}";
                 ChangeState(GameState.PlayerTurn);
                 break;
             default:

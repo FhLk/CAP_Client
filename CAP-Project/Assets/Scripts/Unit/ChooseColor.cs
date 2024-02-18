@@ -5,5 +5,5 @@ using UnityEngine.UI;
 
 public class ChooseColor : MonoBehaviour
 {
-
+    //Test(Onpress())
 }
