@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHost: 0
   isJoin: 0
+  playerTurn: 0
+  round: 0
