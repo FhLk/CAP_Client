@@ -848,6 +848,9 @@ MonoBehaviour:
   unmute: {fileID: 21300000, guid: 813404a07f299d248ac3f4d17e19ea31, type: 3}
   mute: {fileID: 21300000, guid: 22186df611d8e2849b301675fc1cd745, type: 3}
   LIST: {fileID: 0}
+  lobbyID: {fileID: 0}
+  _websocket: {fileID: 0}
+  _action: {fileID: 11400000, guid: a2dfda24c8ac15347bd938bbd83c38be, type: 2}
 --- !u!4 &1121999555
 Transform:
   m_ObjectHideFlags: 0

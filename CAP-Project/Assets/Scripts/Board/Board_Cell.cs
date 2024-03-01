@@ -16,7 +16,7 @@ public class Board_Cell : MonoBehaviour
     [SerializeField] private int numHearts;
     [SerializeField] private int numSheilds;
     [SerializeField] public BasePlayer[] players;
-    [SerializeField] private WebsocketCLI _websocket;
+    [SerializeField] private WebSocketGame _websocket;
 
     public int width;
     public int height;
@@ -52,10 +52,10 @@ public class Board_Cell : MonoBehaviour
 
         _cam.transform.position = new Vector3((float)width / 1.958f - 0.5f, (float)height / 2.5f - 1.0f, -10);
         board = initBoard;
-        if (_websocket._action.isHost)
+        /*if (_websocket._action.isHost)
         {
             _websocket.reqDataInGame("50", players, board);
-        }
+        }*/
         GameManager.Instance.ChangeState(GameState.SpawnPlayer);
         GameManager.Instance.ChangeState(GameState.PlayerTurn);
     }

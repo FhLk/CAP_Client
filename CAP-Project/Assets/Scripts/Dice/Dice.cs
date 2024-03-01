@@ -19,10 +19,10 @@ public class Dice : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        if (WebsocketCLI.Instance._action.isJoin )
+        /*if (WebsocketCLI.Instance._action.isJoin )
         {
             faceDice.enabled = false;
-        }
+        }*/
     }
 
     void Start()
@@ -36,7 +36,7 @@ public class Dice : MonoBehaviour
 
     void Update()
     {
-        if (WebsocketCLI.Instance._action.isHost && WebsocketCLI.Instance._action.playerTurn == 0)
+        /*if (WebsocketCLI.Instance._action.isHost && WebsocketCLI.Instance._action.playerTurn == 0)
         {
             faceDice.enabled = true;
         }
@@ -51,20 +51,13 @@ public class Dice : MonoBehaviour
         else if(WebsocketCLI.Instance._action.isJoin && WebsocketCLI.Instance._action.playerTurn != 1)
         {
             faceDice.enabled = false;
-        }
+        }*/
     }
 
     public void OnButtonPress()
     {
         SelectedPlayer = UnitManager.Instance.SelectedPlayer;
         StartCoroutine(ShowRandomNumber());
-        //if (SelectedPlayer.dice == 0)
-        //{
-        //int n = randomDice();
-        //faceDice.GetComponent<Image>().sprite = _dic[n];
-        //sendDice(n, SelectedPlayer);
-        //this.value = n;
-        //}
     }
 
     private int randomDice()
@@ -79,7 +72,6 @@ public class Dice : MonoBehaviour
     }
     IEnumerator ShowRandomNumber()
     {
-        // แสดงเลขสุ่มชั่วคราว
         for (int i = 0; i < 30; i++)
         {
             int randomNumber = Random.Range(1, 7);

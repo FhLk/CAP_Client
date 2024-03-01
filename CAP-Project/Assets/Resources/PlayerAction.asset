@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e877890a739baf648a330c3db8add8b2, type: 3}
   m_Name: PlayerAction
   m_EditorClassIdentifier: 
-  isHost: 0
+  isHost: 1
   isJoin: 0
-  playerTurn: 0
+  playerTurn: -1
   round: 0
