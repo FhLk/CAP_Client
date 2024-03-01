@@ -5,23 +5,16 @@ ScriptsOnlyBuild:
     - PlayerAction
     - ScriptableUnit
     Assembly-CSharp.dll:
-    - BasePlayer
-    - Board_Cell
-    - Dice
-    - GameManager
-    - HexagonTile
     - LobbyData
-    - MouseManager
     - PlayerAPI
     - PlayerAction
     - PopupManager
     - SceneManger
-    - UIManager
-    - UnitManager
-    - WebsocketCLI
+    - WebsocketLobby
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Animation.Runtime.dll:
+    - UnityEngine.U2D.Animation.BufferManager
     - UnityEngine.U2D.Animation.SpriteSkinComposite
     - UnityEngine.U2D.Animation.SpriteSkinUpdateHelper
     Unity.2D.IK.Editor.dll:
@@ -124,18 +117,6 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: SceneManger
     methodName: Menu
-  - assembly: Assembly-CSharp
-    fullTypeName: Dice
-    methodName: OnButtonPress
-  - assembly: Assembly-CSharp
-    fullTypeName: MouseManager
-    methodName: onResetBoard
-  - assembly: Assembly-CSharp
-    fullTypeName: UnitManager
-    methodName: DecreaseHeart
-  - assembly: Assembly-CSharp
-    fullTypeName: UnitManager
-    methodName: IncreaseHeart
   sceneClasses:
     Assets/Scenes/Lobby.unity:
     - Class: 1
@@ -169,15 +150,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3622}
     - Class: 114
-      Script: {instanceID: 7410}
+      Script: {instanceID: 7414}
     - Class: 114
-      Script: {instanceID: 8968}
+      Script: {instanceID: 8972}
     - Class: 114
-      Script: {instanceID: 9270}
+      Script: {instanceID: 9274}
     - Class: 114
-      Script: {instanceID: 10726}
+      Script: {instanceID: 10730}
     - Class: 114
-      Script: {instanceID: 11406}
+      Script: {instanceID: 11410}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -236,96 +217,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4320}
     - Class: 114
-      Script: {instanceID: 5574}
+      Script: {instanceID: 5576}
     - Class: 114
-      Script: {instanceID: 5758}
+      Script: {instanceID: 5760}
     - Class: 114
-      Script: {instanceID: 6206}
+      Script: {instanceID: 6210}
     - Class: 114
-      Script: {instanceID: 7410}
+      Script: {instanceID: 7414}
     - Class: 114
-      Script: {instanceID: 7424}
+      Script: {instanceID: 7428}
     - Class: 114
-      Script: {instanceID: 8144}
+      Script: {instanceID: 8148}
     - Class: 114
-      Script: {instanceID: 8778}
+      Script: {instanceID: 8782}
     - Class: 114
-      Script: {instanceID: 9270}
-    - Class: 114
-      Script: {instanceID: 10726}
-    - Class: 115
-      Script: {instanceID: 0}
-    - Class: 128
-      Script: {instanceID: 0}
-    - Class: 157
-      Script: {instanceID: 0}
-    - Class: 196
-      Script: {instanceID: 0}
-    - Class: 212
-      Script: {instanceID: 0}
-    - Class: 213
-      Script: {instanceID: 0}
-    - Class: 222
-      Script: {instanceID: 0}
-    - Class: 223
-      Script: {instanceID: 0}
-    - Class: 224
-      Script: {instanceID: 0}
-    Assets/Scenes/Minesweeper/Minesweeper.unity:
-    - Class: 1
-      Script: {instanceID: 0}
-    - Class: 4
-      Script: {instanceID: 0}
-    - Class: 20
-      Script: {instanceID: 0}
-    - Class: 21
-      Script: {instanceID: 0}
-    - Class: 28
-      Script: {instanceID: 0}
-    - Class: 48
-      Script: {instanceID: 0}
-    - Class: 60
-      Script: {instanceID: 0}
-    - Class: 81
-      Script: {instanceID: 0}
-    - Class: 104
-      Script: {instanceID: 0}
-    - Class: 114
-      Script: {instanceID: 1590}
-    - Class: 114
-      Script: {instanceID: 1594}
-    - Class: 114
-      Script: {instanceID: 1598}
-    - Class: 114
-      Script: {instanceID: 1600}
-    - Class: 114
-      Script: {instanceID: 1682}
-    - Class: 114
-      Script: {instanceID: 2422}
-    - Class: 114
-      Script: {instanceID: 3218}
-    - Class: 114
-      Script: {instanceID: 3306}
-    - Class: 114
-      Script: {instanceID: 3622}
-    - Class: 114
-      Script: {instanceID: 5868}
-    - Class: 114
-      Script: {instanceID: 7410}
-    - Class: 114
-      Script: {instanceID: 8144}
-    - Class: 114
-      Script: {instanceID: 8632}
-    - Class: 114
-      Script: {instanceID: 9270}
-    - Class: 114
-      Script: {instanceID: 10698}
-    - Class: 114
-      Script: {instanceID: 10726}
-    - Class: 114
-      Script: {instanceID: 11078}
-    - Class: 114
-      Script: {instanceID: 11186}
+      Script: {instanceID: 9274}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -575,7 +481,7 @@ ScriptsOnlyBuild:
     className: ObservableCancelTrigger
   - hash:
       serializedVersion: 2
-      Hash: 137d0f793f8bcd328c97a99e51d6cce8
+      Hash: d50ede0822b193d793046d8d352de3a0
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: SceneManger
@@ -1053,6 +959,12 @@ ScriptsOnlyBuild:
     assemblyName: UniRx
     namespaceName: UniRx.Triggers
     className: ObservablePointerEnterTrigger
+  - hash:
+      serializedVersion: 2
+      Hash: 7149c6e1b424af2d2c4fd228e114e5d9
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: WebSocketGame
   - hash:
       serializedVersion: 2
       Hash: 6298a10412e94e11ad85ac6148c9dda1
@@ -1778,7 +1690,7 @@ ScriptsOnlyBuild:
       Hash: 0578a476573cd8b85e3a2b13ed2a1456
     assemblyName: Assembly-CSharp
     namespaceName: 
-    className: WebsocketCLI
+    className: WebsocketLobby
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -1805,7 +1717,7 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
-      Hash: 905eee66587cb7e0aa810edd18b9a128
+      Hash: 9ee93b7efb677bb5f1e4f040f023df83
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Board_Cell
@@ -1835,7 +1747,7 @@ ScriptsOnlyBuild:
     className: SwingArmModel
   - hash:
       serializedVersion: 2
-      Hash: e6e1709a8e5e5a5ca02e56ea94af59d8
+      Hash: 91f71e7887ae6fa70efade06339ba7c3
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: PlayerAPI
@@ -2017,5 +1929,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/Lobby.unity
-  - Assets/Scenes/Minesweeper/Minesweeper.unity
   playerPath: D:/Hobby/Game-Test-Lobby/CAP-Project-Dev.exe
