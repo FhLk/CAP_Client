@@ -27,7 +27,7 @@
       "DisplayName": "Writing 6097564273297756792.rsp",
       "ActionType": "WriteFile",
       "PayloadOffset": 83,
-      "PayloadLength": 7580,
+      "PayloadLength": 7652,
       "PayloadDebugContentSnippet": "-a=\"D:\\Hobby\\CAP_Client\\CAP-Pr",
       "Inputs": [],
       "Outputs": [
@@ -45,6 +45,7 @@
         "Assets/Packages/WebSocketSharp-netstandard.1.0.1/lib/netstandard2.0/websocket-sharp.dll",
         "Library/ScriptAssemblies/Assembly-CSharp.dll",
         "Library/ScriptAssemblies/Purchasing.Common.dll",
+        "Library/ScriptAssemblies/Tests.dll",
         "Library/ScriptAssemblies/UniRx.dll",
         "Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll",
         "Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll",
@@ -292,6 +293,9 @@
     },
     {
       "File": "Library/ScriptAssemblies/Purchasing.Common.dll"
+    },
+    {
+      "File": "Library/ScriptAssemblies/Tests.dll"
     },
     {
       "File": "Library/ScriptAssemblies/UniRx.dll"
