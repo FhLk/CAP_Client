@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAPI : MonoBehaviour
 {
     public string id;
-    public string name;
+    public string playerName;
     public bool pending;
     public int hearts;
     public int shield;

@@ -14,14 +14,14 @@ public class UIManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        if (WebsocketCLI.Instance._action.isHost)
+        /*if (WebsocketCLI.Instance._action.isHost)
         {
             player_text.text = "player_1";
         }
         else if(WebsocketCLI.Instance._action.isJoin)
         {
             player_text.text = "Joiner_1";
-        }
+        }*/
     }
 
     public void showTurnOfWho(int _p)

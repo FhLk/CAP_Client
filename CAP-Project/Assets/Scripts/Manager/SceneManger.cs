@@ -13,7 +13,7 @@ public class SceneManger : MonoBehaviour
     [SerializeField] private Sprite mute;
     [SerializeField] private GameObject LIST;
     [SerializeField] private InputField lobbyID;
-    [SerializeField] private WebsocketCLI _websocket;
+    [SerializeField] private WebsocketLobby _websocket;
     public PlayerAction _action;
 
     public void Main()
@@ -40,14 +40,9 @@ public class SceneManger : MonoBehaviour
                 list.Add(child.gameObject);
             }
         }
-        if (list.Count == 1 && WebsocketCLI.Instance._action.isHost)
+        if (list.Count == 1 && WebsocketLobby.Instance._action.isHost)
         {
-            WebsocketCLI.Instance.reqData("60","123",null);
             SceneManager.LoadScene("Minesweeper");
-        }
-        else if (WebsocketCLI.Instance._action.isJoin)
-        {
-            btn.GetComponentInChildren<Text>().text = "Unready";
         }
     }
 
@@ -63,24 +58,15 @@ public class SceneManger : MonoBehaviour
     {
         if (lobbyID.text != "")
         {
-            _websocket.ConnectWebsocket(lobbyID.text);
-            StartCoroutine(LoadSceneAsync());
+            _action.isHost = false;
+            _action.isJoin = true;
+            _action.playerTurn = 0;
+            //findLobbyById();
+            SceneManager.LoadScene("Lobby");
         }
         else
         {
             Debug.Log("Please Enter Lobby ID.");
-        }
-    }
-
-    IEnumerator LoadSceneAsync()
-    {
-        yield return new WaitForSeconds(1f);
-        if (_websocket.isFound)
-        {
-            _action.isHost = false;
-            _action.isJoin = true;
-            _action.playerTurn = 0;
-            SceneManager.LoadScene("Lobby");
         }
     }
 

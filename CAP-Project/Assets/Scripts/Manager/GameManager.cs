@@ -33,16 +33,16 @@ public class GameManager : MonoBehaviour
                 Board_Cell.Instance.generateBoard();
                 break;
             case GameState.SpawnPlayer:
-                _round.text = $"Round {WebsocketCLI.Instance._action.round = _r}";
+                //_round.text = $"Round {WebsocketCLI.Instance._action.round = _r}";
                 UnitManager.Instance.SpawnPlayer();
                 break;
             case GameState.PlayerTurn:
-                UIManager.Instance.showTurnOfWho(WebsocketCLI.Instance._action.playerTurn);
+                //UIManager.Instance.showTurnOfWho(WebsocketCLI.Instance._action.playerTurn);
                 break;
             case GameState.NextPlayerTurn:
-                Transform nextPlayer = UnitManager.Instance._playerList.transform.GetChild(WebsocketCLI.Instance._action.playerTurn);
+                Transform nextPlayer = UnitManager.Instance._playerList.transform.GetChild(WebSocketGame.Instance.GetInstanceID());
                 UnitManager.Instance.SetSelectedPlayer(nextPlayer.GetComponent<BasePlayer>());
-                _round.text = $"Round {WebsocketCLI.Instance._action.round}";
+                //_round.text = $"Round {WebsocketCLI.Instance._action.round}";
                 ChangeState(GameState.PlayerTurn);
                 break;
             default:

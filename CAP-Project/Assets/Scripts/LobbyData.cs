@@ -9,7 +9,7 @@ public class LobbyData : MonoBehaviour
     public static LobbyData Instance;
     public string id;
     int[] listPlayer = { 1, 2, 3 };
-    private int count = 1;
+    private int count = 0;
     public Text countList;
     public GameObject LISTDisplay;
     public Text LobbyID;
@@ -24,7 +24,7 @@ public class LobbyData : MonoBehaviour
     }
     public void Start()
     {
-        id = WebsocketCLI.Instance.GenerateRandomID();
+        id = WebsocketLobby.Instance.lobbyId;
         LobbyID.text = id;
         countList.text = count + "/2";
         LobbyInterface();
@@ -32,19 +32,28 @@ public class LobbyData : MonoBehaviour
 
     public void UpdateLobby(int index)
     {
-        countList.text = (index) + "/2";
-        Transform childToChange = LISTDisplay.transform.GetChild(index - 1);
+        count = index;
+        countList.text = (count) + "/2";
+        for (int i = 0; i < count; i++) 
+        {
+            enableGameobject(i);
+        }
+    }
+
+    private void enableGameobject(int i)
+    {
+        Transform childToChange = LISTDisplay.transform.GetChild(i);
         childToChange.gameObject.GetComponent<SpriteRenderer>().sprite = slotBG;
         Transform firstChild = childToChange.transform.GetChild(0);
         firstChild.gameObject.SetActive(true);
         Transform secondChild = childToChange.transform.GetChild(1);
-        secondChild.GetComponent<Text>().text = childToChange.gameObject.GetComponent<PlayerAPI>().name;
+        secondChild.GetComponent<Text>().text = childToChange.gameObject.GetComponent<PlayerAPI>().playerName;
     }
 
     private void LobbyInterface()
     {
-        isHost = WebsocketCLI.Instance._action.isHost;
-        isJoin = WebsocketCLI.Instance._action.isJoin;
+        isHost = WebsocketLobby.Instance._action.isHost;
+        isJoin = WebsocketLobby.Instance._action.isJoin;
         if (isHost)
         {
             startBTN.GetComponentInChildren<Text>().text = "Start";

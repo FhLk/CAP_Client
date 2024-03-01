@@ -39,8 +39,7 @@ public class BasePlayer : BaseUnit
         if (this.dice == 0)
         {
             Dice.Instance.value = -1;
-            WebsocketCLI.Instance.reqDataInGame("70", "123");
-            //GameManager.Instance.ChangeState(GameState.NextPlayerTurn);
+            //WebsocketCLI.Instance.reqDataInGame("70", "123");
         }
     }
 
