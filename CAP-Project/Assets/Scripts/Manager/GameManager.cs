@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public BasePlayer SelectedPlayer;
     private Text _round;
     public int _r;
+    private HexagonTile[,] _board;
 
     void Awake()
     {
@@ -32,17 +33,20 @@ public class GameManager : MonoBehaviour
             case GameState.GenerateBoard:
                 Board_Cell.Instance.generateBoard();
                 break;
+            case GameState.ReqToServer:
+                WebSocketGame.Instance.reqBoard("50", Board_Cell.Instance.board);
+                break;
             case GameState.SpawnPlayer:
-                //_round.text = $"Round {WebsocketCLI.Instance._action.round = _r}";
-                UnitManager.Instance.SpawnPlayer();
+                _round.text = $"Round {WebSocketGame.Instance.role.round = _r}";
+                UnitManager.Instance.SpawnPlayer(); 
                 break;
             case GameState.PlayerTurn:
-                //UIManager.Instance.showTurnOfWho(WebsocketCLI.Instance._action.playerTurn);
+                UIManager.Instance.showTurnOfWho(WebSocketGame.Instance.role.playerTurn);
                 break;
             case GameState.NextPlayerTurn:
-                Transform nextPlayer = UnitManager.Instance._playerList.transform.GetChild(WebSocketGame.Instance.GetInstanceID());
+                Transform nextPlayer = UnitManager.Instance._playerList.transform.GetChild(WebSocketGame.Instance.role.playerTurn);
                 UnitManager.Instance.SetSelectedPlayer(nextPlayer.GetComponent<BasePlayer>());
-                //_round.text = $"Round {WebsocketCLI.Instance._action.round}";
+                _round.text = $"Round {WebSocketGame.Instance.role.round}";
                 ChangeState(GameState.PlayerTurn);
                 break;
             default:
@@ -53,7 +57,8 @@ public class GameManager : MonoBehaviour
 public enum GameState
 {
     GenerateBoard = 0,
-    SpawnPlayer = 1,
-    PlayerTurn = 2,
-    NextPlayerTurn = 3,
+    ReqToServer = 1,
+    SpawnPlayer = 2,
+    PlayerTurn = 3,
+    NextPlayerTurn = 4,
 }

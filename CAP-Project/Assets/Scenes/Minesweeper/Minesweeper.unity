@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 305285732}
   - component: {fileID: 305285733}
   m_Layer: 0
-  m_Name: Websocket
+  m_Name: WebsocketGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -294,9 +294,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f4cfcfd46fc53a429b792087cdcf21e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players:
-  - {fileID: 0}
-  - {fileID: 0}
+  url: ws://localhost:80/ws/lobby
+  lobbyId: 
+  win: {fileID: 11400000, guid: b05323a80d3d63c44a4d39817d6053d0, type: 2}
+  role: {fileID: 11400000, guid: a2dfda24c8ac15347bd938bbd83c38be, type: 2}
 --- !u!1 &518527323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,9 +1125,8 @@ MonoBehaviour:
   unmute: {fileID: 0}
   mute: {fileID: 0}
   LIST: {fileID: 0}
-  lobbyID: {fileID: 0}
   _websocket: {fileID: 0}
-  _action: {fileID: 11400000, guid: a2dfda24c8ac15347bd938bbd83c38be, type: 2}
+  role: {fileID: 11400000, guid: a2dfda24c8ac15347bd938bbd83c38be, type: 2}
 --- !u!4 &1260137424
 Transform:
   m_ObjectHideFlags: 0
@@ -1136,7 +1136,7 @@ Transform:
   m_GameObject: {fileID: 1260137422}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.265625, y: 6.635497, z: 6915.872}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1365,7 +1365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hexPrefab: {fileID: 6985524287965517987, guid: 51501e954d77813409c83960666a0b33, type: 3}
   _cam: {fileID: 686800965}
-  numBombs: 0
+  numBombs: 5
   numEvents: 0
   numResets: 0
   numHearts: 0
@@ -1386,11 +1386,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -9179947960325073459, guid: bcd1793fb82fd0d48a42d212e0010e9f, type: 3}
       propertyPath: id
-      value: p2
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: -9179947960325073459, guid: bcd1793fb82fd0d48a42d212e0010e9f, type: 3}
       propertyPath: playerName
-      value: Joiner_1
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: -9179947960325073459, guid: bcd1793fb82fd0d48a42d212e0010e9f, type: 3}
       propertyPath: indexPlayer
@@ -1694,11 +1694,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -9179947960325073459, guid: bcd1793fb82fd0d48a42d212e0010e9f, type: 3}
       propertyPath: id
-      value: host
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: -9179947960325073459, guid: bcd1793fb82fd0d48a42d212e0010e9f, type: 3}
       propertyPath: playerName
-      value: Player_1
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 390984720788653651, guid: bcd1793fb82fd0d48a42d212e0010e9f, type: 3}
       propertyPath: m_IsActive

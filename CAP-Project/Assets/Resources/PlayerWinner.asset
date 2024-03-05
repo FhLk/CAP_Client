@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e877890a739baf648a330c3db8add8b2, type: 3}
-  m_Name: PlayerAction
+  m_Script: {fileID: 11500000, guid: f8402f5b2d1b9d849a3cc8527e25a459, type: 3}
+  m_Name: PlayerWinner
   m_EditorClassIdentifier: 
-  isHost: 1
-  isJoin: 0
-  playerTurn: -1
-  round: 0
+  id: 
+  playerName: 

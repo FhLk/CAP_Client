@@ -14,14 +14,7 @@ public class UIManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        /*if (WebsocketCLI.Instance._action.isHost)
-        {
-            player_text.text = "player_1";
-        }
-        else if(WebsocketCLI.Instance._action.isJoin)
-        {
-            player_text.text = "Joiner_1";
-        }*/
+        player_text.text = WebsocketLobby.Instance.role.playerName;
     }
 
     public void showTurnOfWho(int _p)

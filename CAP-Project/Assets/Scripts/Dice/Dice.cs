@@ -19,10 +19,10 @@ public class Dice : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        /*if (WebsocketCLI.Instance._action.isJoin )
+        if (WebSocketGame.Instance.role.isJoin)
         {
             faceDice.enabled = false;
-        }*/
+        }
     }
 
     void Start()
@@ -36,22 +36,22 @@ public class Dice : MonoBehaviour
 
     void Update()
     {
-        /*if (WebsocketCLI.Instance._action.isHost && WebsocketCLI.Instance._action.playerTurn == 0)
+        if (WebSocketGame.Instance.role.isHost && WebSocketGame.Instance.role.playerTurn == 0)
         {
             faceDice.enabled = true;
         }
-        else if(WebsocketCLI.Instance._action.isHost && WebsocketCLI.Instance._action.playerTurn != 0)
+        else if(WebSocketGame.Instance.role.isHost && WebSocketGame.Instance.role.playerTurn != 0)
         {
             faceDice.enabled = false;
         }
-        if(WebsocketCLI.Instance._action.isJoin && WebsocketCLI.Instance._action.playerTurn == 1)
+        if(WebSocketGame.Instance.role.isJoin && WebSocketGame.Instance.role.playerTurn == 1)
         {
             faceDice.enabled = true;
         }
-        else if(WebsocketCLI.Instance._action.isJoin && WebsocketCLI.Instance._action.playerTurn != 1)
+        else if(WebSocketGame.Instance.role.isJoin && WebSocketGame.Instance.role.playerTurn != 1)
         {
             faceDice.enabled = false;
-        }*/
+        }
     }
 
     public void OnButtonPress()

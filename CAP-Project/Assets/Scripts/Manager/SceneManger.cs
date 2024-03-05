@@ -8,13 +8,18 @@ using WebSocketSharp;
 
 public class SceneManger : MonoBehaviour
 {
+    public static SceneManger Instance;
     [SerializeField] private GameObject sound;
     [SerializeField] private Sprite unmute;
     [SerializeField] private Sprite mute;
     [SerializeField] private GameObject LIST;
-    [SerializeField] private InputField lobbyID;
     [SerializeField] private WebsocketLobby _websocket;
-    public PlayerAction _action;
+    public PlayerRole role;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     public void Main()
     {
@@ -23,15 +28,16 @@ public class SceneManger : MonoBehaviour
 
     public void Menu()
     {
-        _action.isJoin = false;
-        _action.isHost = false;
-        _action.playerTurn = -1;
+        role.isJoin = false;
+        role.isHost = false;
+        role.playerTurn = -1;
         SceneManager.LoadScene("Menu");
     }
 
     public void Game(Button btn)
     {
-        Transform[] childs = { LIST.transform.GetChild(1)};
+        _websocket.reqStartGame("60");
+        /*Transform[] childs = { LIST.transform.GetChild(1)};
         List<GameObject> list = new List<GameObject>();
         foreach (Transform child in childs)
         {
@@ -40,27 +46,28 @@ public class SceneManger : MonoBehaviour
                 list.Add(child.gameObject);
             }
         }
-        if (list.Count == 1 && WebsocketLobby.Instance._action.isHost)
+        if (list.Count == 1 && _websocket.role.isHost)
         {
-            SceneManager.LoadScene("Minesweeper");
-        }
+           
+        }*/
     }
 
     public void Lobby()
     {
-        _action.isHost = true;
-        _action.playerTurn = 0;
-        _action.isJoin = false;
+        role.isHost = true;
+        role.playerTurn = 0;
+        role.isJoin = false;
         SceneManager.LoadScene("Lobby");
     }
 
-    public void JoinLobby()
+    public void JoinLobby(InputField lobbyID)
     {
         if (lobbyID.text != "")
         {
-            _action.isHost = false;
-            _action.isJoin = true;
-            _action.playerTurn = 0;
+            role.isHost = false;
+            role.isJoin = true;
+            role.playerTurn = 0;
+            role.lobbyId = lobbyID.text;
             //findLobbyById();
             SceneManager.LoadScene("Lobby");
         }

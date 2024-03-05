@@ -52,8 +52,8 @@ public class LobbyData : MonoBehaviour
 
     private void LobbyInterface()
     {
-        isHost = WebsocketLobby.Instance._action.isHost;
-        isJoin = WebsocketLobby.Instance._action.isJoin;
+        isHost = WebsocketLobby.Instance.role.isHost;
+        isJoin = WebsocketLobby.Instance.role.isJoin;
         if (isHost)
         {
             startBTN.GetComponentInChildren<Text>().text = "Start";
