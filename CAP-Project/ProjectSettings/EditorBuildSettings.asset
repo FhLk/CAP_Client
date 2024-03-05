@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minesweeper/Minesweeper.unity
     guid: 0b17b11823fe5b24ab56a5123e43e855
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/End.unity
     guid: 29bbbe2646069384c9f6175b04b562d2
   m_configObjects: {}
