@@ -2,15 +2,27 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp:
     - BasePlayer
-    - PlayerAction
+    - PlayerRole
     - ScriptableUnit
+    - WinnerData
     Assembly-CSharp.dll:
+    - BasePlayer
+    - Board_Cell
+    - Dice
+    - GameManager
+    - HexagonTile
     - LobbyData
+    - MouseManager
     - PlayerAPI
-    - PlayerAction
+    - PlayerRole
     - PopupManager
     - SceneManger
+    - UIManager
+    - UnitManager
+    - Victory
+    - WebSocketGame
     - WebsocketLobby
+    - WinnerData
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Animation.Runtime.dll:
@@ -97,9 +109,6 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.SpriteState
   methodsToPreserve:
   - assembly: Assembly-CSharp
-    fullTypeName: SceneManger
-    methodName: Main
-  - assembly: Assembly-CSharp
     fullTypeName: PopupManager
     methodName: openWindow
   - assembly: Assembly-CSharp
@@ -117,7 +126,80 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: SceneManger
     methodName: Menu
+  - assembly: Assembly-CSharp
+    fullTypeName: Dice
+    methodName: OnButtonPress
+  - assembly: Assembly-CSharp
+    fullTypeName: MouseManager
+    methodName: onResetBoard
+  - assembly: Assembly-CSharp
+    fullTypeName: UnitManager
+    methodName: DecreaseHeart
+  - assembly: Assembly-CSharp
+    fullTypeName: UnitManager
+    methodName: IncreaseHeart
+  - assembly: Assembly-CSharp
+    fullTypeName: SceneManger
+    methodName: Lobby
+  - assembly: Assembly-CSharp
+    fullTypeName: SceneManger
+    methodName: Exit
   sceneClasses:
+    Assets/Scenes/End.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1590}
+    - Class: 114
+      Script: {instanceID: 1594}
+    - Class: 114
+      Script: {instanceID: 1598}
+    - Class: 114
+      Script: {instanceID: 1600}
+    - Class: 114
+      Script: {instanceID: 3218}
+    - Class: 114
+      Script: {instanceID: 3306}
+    - Class: 114
+      Script: {instanceID: 3622}
+    - Class: 114
+      Script: {instanceID: 9272}
+    - Class: 114
+      Script: {instanceID: 35030}
+    - Class: 114
+      Script: {instanceID: 36064}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
     Assets/Scenes/Lobby.unity:
     - Class: 1
       Script: {instanceID: 0}
@@ -150,15 +232,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3622}
     - Class: 114
-      Script: {instanceID: 7414}
+      Script: {instanceID: 8970}
     - Class: 114
-      Script: {instanceID: 8972}
+      Script: {instanceID: 9272}
     - Class: 114
-      Script: {instanceID: 9274}
+      Script: {instanceID: 10728}
     - Class: 114
-      Script: {instanceID: 10730}
+      Script: {instanceID: 11408}
     - Class: 114
-      Script: {instanceID: 11410}
+      Script: {instanceID: 11866}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -223,15 +305,92 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 6210}
     - Class: 114
-      Script: {instanceID: 7414}
+      Script: {instanceID: 7426}
     - Class: 114
-      Script: {instanceID: 7428}
+      Script: {instanceID: 8146}
     - Class: 114
-      Script: {instanceID: 8148}
+      Script: {instanceID: 8780}
     - Class: 114
-      Script: {instanceID: 8782}
+      Script: {instanceID: 9272}
     - Class: 114
-      Script: {instanceID: 9274}
+      Script: {instanceID: 11866}
+    - Class: 114
+      Script: {instanceID: 35030}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/Minesweeper/Minesweeper.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 60
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1590}
+    - Class: 114
+      Script: {instanceID: 1594}
+    - Class: 114
+      Script: {instanceID: 1598}
+    - Class: 114
+      Script: {instanceID: 1600}
+    - Class: 114
+      Script: {instanceID: 1682}
+    - Class: 114
+      Script: {instanceID: 2422}
+    - Class: 114
+      Script: {instanceID: 3218}
+    - Class: 114
+      Script: {instanceID: 3306}
+    - Class: 114
+      Script: {instanceID: 3622}
+    - Class: 114
+      Script: {instanceID: 5870}
+    - Class: 114
+      Script: {instanceID: 6004}
+    - Class: 114
+      Script: {instanceID: 8146}
+    - Class: 114
+      Script: {instanceID: 8634}
+    - Class: 114
+      Script: {instanceID: 9272}
+    - Class: 114
+      Script: {instanceID: 10700}
+    - Class: 114
+      Script: {instanceID: 11080}
+    - Class: 114
+      Script: {instanceID: 11188}
+    - Class: 114
+      Script: {instanceID: 11866}
+    - Class: 114
+      Script: {instanceID: 35030}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -481,7 +640,7 @@ ScriptsOnlyBuild:
     className: ObservableCancelTrigger
   - hash:
       serializedVersion: 2
-      Hash: d50ede0822b193d793046d8d352de3a0
+      Hash: fcf00c498886b3983619bff66513e491
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: SceneManger
@@ -961,7 +1120,7 @@ ScriptsOnlyBuild:
     className: ObservablePointerEnterTrigger
   - hash:
       serializedVersion: 2
-      Hash: 7149c6e1b424af2d2c4fd228e114e5d9
+      Hash: 7d53a704525a55d2bbc64f52d94479bd
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: WebSocketGame
@@ -1211,12 +1370,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnTriggerExitMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 1b509ea2be4036c482510ac1d2b750b9
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: PlayerAction
   - hash:
       serializedVersion: 2
       Hash: 1b4a83f2a2f1a4def12cdc9223cce72c
@@ -1687,7 +1840,7 @@ ScriptsOnlyBuild:
     className: UnitManager
   - hash:
       serializedVersion: 2
-      Hash: 0578a476573cd8b85e3a2b13ed2a1456
+      Hash: 79c452b68ea712c283e8880ffdb2952e
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: WebsocketLobby
@@ -1723,7 +1876,7 @@ ScriptsOnlyBuild:
     className: Board_Cell
   - hash:
       serializedVersion: 2
-      Hash: f3b4e96d86ad8af16b7e039acddd1ea4
+      Hash: a8fd66ad8bad482587c5f59fc0688cc0
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: HexagonTile
@@ -1861,6 +2014,12 @@ ScriptsOnlyBuild:
     className: DataPrivacyButton
   - hash:
       serializedVersion: 2
+      Hash: 584b47a21a21d838a8648950580400c7
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: PlayerRole
+  - hash:
+      serializedVersion: 2
       Hash: b6e08e9716184d5736af5af9ffaf1513
     assemblyName: Assembly-CSharp
     namespaceName: TMPro.Examples
@@ -1925,8 +2084,22 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: a2fd61d4a16fba8ccb3959d52ecb4c80
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: WinnerData
+  - hash:
+      serializedVersion: 2
+      Hash: e091425110655306178e8e300b6fb132
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Victory
   platform: 19
   scenePathNames:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/Lobby.unity
+  - Assets/Scenes/Minesweeper/Minesweeper.unity
+  - Assets/Scenes/End.unity
   playerPath: D:/Hobby/Game-Test-Lobby/CAP-Project-Dev.exe

@@ -22,12 +22,12 @@ public class HexagonTile : MonoBehaviour
     public float yOffset;
     public HashSet<HexagonTile> setStart = new HashSet<HexagonTile>();
     public bool isActive;
-    public bool isDisplay;
+    public bool hidden;
 
     void Awake()
     {
         isActive = true;
-        isDisplay = false;
+        hidden = true;
         _recoures = Resources.LoadAll<Sprite>("Cell-Type-Default").ToList();
         for (int i = 0; i < _recoures.Count; i++)
         {
@@ -47,13 +47,9 @@ public class HexagonTile : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (this.TileType == 1 && !isActive && isDisplay)
+        if (this.TileType == 1 && !isActive && !hidden)
         {
             this.transform.GetComponent<SpriteRenderer>().sprite = _cellDisable[this.TileType];
-        }
-        else if (this.TileType != 1 && isActive && isDisplay)
-        {
-            this.transform.GetComponent<SpriteRenderer>().sprite = _cellHover[this.TileType];
         }
         else
         {
@@ -63,13 +59,9 @@ public class HexagonTile : MonoBehaviour
 
     void OnMouseExit()
     {
-        if (this.TileType == 1 && !isActive && isDisplay)
+        if (this.TileType == 1 && !isActive && !hidden)
         {
             this.transform.GetComponent<SpriteRenderer>().sprite = _cellDisable[this.TileType];
-        }
-        else if (this.TileType != 1 && isActive && isDisplay)
-        {
-            this.transform.GetComponent<SpriteRenderer>().sprite = _cellDefault[this.TileType];
         }
         else
         {
@@ -85,9 +77,10 @@ public class HexagonTile : MonoBehaviour
             if (this.TileType == 1)
             {
                 isActive = false;
-                isDisplay = true;
-                UnitManager.Instance.DecreaseHeart();
+                hidden = false;
+                //UnitManager.Instance.DecreaseHeart();
                 this.transform.GetComponent<SpriteRenderer>().sprite = _cellDisable[this.TileType];
+                WebSocketGame.Instance.reqEndGame("80");
             }
             else if(this.TileType == 2)
             {
@@ -107,8 +100,8 @@ public class HexagonTile : MonoBehaviour
             }
             if (this.TileType != 1)
             {
-                //WebsocketCLI.Instance.reqDataInGame("30",this.x,this.y);
-                Destroy(gameObject);
+               WebSocketGame.Instance.reqCell("30",this.x,this.y);
+               Destroy(gameObject);
             }
             UnitManager.Instance.SelectedPlayer.playerClick();
         }
@@ -167,7 +160,7 @@ public class HexagonTile : MonoBehaviour
 
     public void setPrefab(int t)
     {
-        this.transform.GetComponent<SpriteRenderer>().sprite = _cellDefault[t];
+        this.transform.GetComponent<SpriteRenderer>().sprite = _cellDefault[this.TileType];
     }
 
     public void addNeighbors(int x, int y, HexagonTile[,] board)
