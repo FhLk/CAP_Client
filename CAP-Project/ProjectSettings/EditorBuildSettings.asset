@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: bf184868ea1520b44a0990efd4585eec
   - enabled: 1
@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/End.unity
     guid: 29bbbe2646069384c9f6175b04b562d2
+  - enabled: 0
+    path: Assets/Scenes/Thewaypass/Thewaypass.unity
+    guid: 5c01ec053bc43754a9e7181bf84743cb
   m_configObjects: {}

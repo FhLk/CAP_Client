@@ -2,12 +2,11 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp:
     - BasePlayer
-    - PlayerRole
+    - PlayerTheWayPass
     - ScriptableUnit
-    - WinnerData
     Assembly-CSharp.dll:
     - BasePlayer
-    - Board_Cell
+    - BoardMinesweeper
     - Dice
     - GameManager
     - HexagonTile
@@ -19,7 +18,7 @@ ScriptsOnlyBuild:
     - SceneManger
     - UIManager
     - UnitManager
-    - Victory
+    - VictoryData
     - WebSocketGame
     - WebsocketLobby
     - WinnerData
@@ -109,6 +108,12 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.SpriteState
   methodsToPreserve:
   - assembly: Assembly-CSharp
+    fullTypeName: SceneManger
+    methodName: Menu
+  - assembly: Assembly-CSharp
+    fullTypeName: SceneManger
+    methodName: Exit
+  - assembly: Assembly-CSharp
     fullTypeName: PopupManager
     methodName: openWindow
   - assembly: Assembly-CSharp
@@ -171,17 +176,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1600}
     - Class: 114
-      Script: {instanceID: 3218}
+      Script: {instanceID: 3222}
     - Class: 114
-      Script: {instanceID: 3306}
+      Script: {instanceID: 3310}
     - Class: 114
-      Script: {instanceID: 3622}
+      Script: {instanceID: 3626}
     - Class: 114
-      Script: {instanceID: 9272}
+      Script: {instanceID: 9286}
     - Class: 114
-      Script: {instanceID: 35030}
+      Script: {instanceID: 11752}
     - Class: 114
-      Script: {instanceID: 36064}
+      Script: {instanceID: 62364}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -226,21 +231,92 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1600}
     - Class: 114
-      Script: {instanceID: 3218}
+      Script: {instanceID: 3222}
     - Class: 114
-      Script: {instanceID: 3306}
+      Script: {instanceID: 3310}
     - Class: 114
-      Script: {instanceID: 3622}
+      Script: {instanceID: 3626}
     - Class: 114
-      Script: {instanceID: 8970}
+      Script: {instanceID: 8982}
     - Class: 114
-      Script: {instanceID: 9272}
+      Script: {instanceID: 9286}
     - Class: 114
-      Script: {instanceID: 10728}
+      Script: {instanceID: 10742}
     - Class: 114
-      Script: {instanceID: 11408}
+      Script: {instanceID: 11422}
     - Class: 114
-      Script: {instanceID: 11866}
+      Script: {instanceID: 11884}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/Main.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1590}
+    - Class: 114
+      Script: {instanceID: 1594}
+    - Class: 114
+      Script: {instanceID: 1598}
+    - Class: 114
+      Script: {instanceID: 1600}
+    - Class: 114
+      Script: {instanceID: 2570}
+    - Class: 114
+      Script: {instanceID: 2600}
+    - Class: 114
+      Script: {instanceID: 3222}
+    - Class: 114
+      Script: {instanceID: 3310}
+    - Class: 114
+      Script: {instanceID: 3626}
+    - Class: 114
+      Script: {instanceID: 5588}
+    - Class: 114
+      Script: {instanceID: 5774}
+    - Class: 114
+      Script: {instanceID: 6224}
+    - Class: 114
+      Script: {instanceID: 7440}
+    - Class: 114
+      Script: {instanceID: 8160}
+    - Class: 114
+      Script: {instanceID: 8792}
+    - Class: 114
+      Script: {instanceID: 9286}
+    - Class: 114
+      Script: {instanceID: 11884}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -272,8 +348,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
-    - Class: 49
-      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 104
@@ -287,35 +361,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1600}
     - Class: 114
-      Script: {instanceID: 2598}
+      Script: {instanceID: 3222}
     - Class: 114
-      Script: {instanceID: 3218}
+      Script: {instanceID: 3310}
     - Class: 114
-      Script: {instanceID: 3306}
+      Script: {instanceID: 3626}
     - Class: 114
-      Script: {instanceID: 3622}
+      Script: {instanceID: 3696}
     - Class: 114
-      Script: {instanceID: 3692}
+      Script: {instanceID: 4330}
     - Class: 114
-      Script: {instanceID: 4320}
+      Script: {instanceID: 9286}
     - Class: 114
-      Script: {instanceID: 5576}
-    - Class: 114
-      Script: {instanceID: 5760}
-    - Class: 114
-      Script: {instanceID: 6210}
-    - Class: 114
-      Script: {instanceID: 7426}
-    - Class: 114
-      Script: {instanceID: 8146}
-    - Class: 114
-      Script: {instanceID: 8780}
-    - Class: 114
-      Script: {instanceID: 9272}
-    - Class: 114
-      Script: {instanceID: 11866}
-    - Class: 114
-      Script: {instanceID: 35030}
+      Script: {instanceID: 11884}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -366,31 +424,31 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2422}
     - Class: 114
-      Script: {instanceID: 3218}
+      Script: {instanceID: 3222}
     - Class: 114
-      Script: {instanceID: 3306}
+      Script: {instanceID: 3310}
     - Class: 114
-      Script: {instanceID: 3622}
+      Script: {instanceID: 3626}
     - Class: 114
-      Script: {instanceID: 5870}
+      Script: {instanceID: 5884}
     - Class: 114
-      Script: {instanceID: 6004}
+      Script: {instanceID: 6018}
     - Class: 114
-      Script: {instanceID: 8146}
+      Script: {instanceID: 8160}
     - Class: 114
-      Script: {instanceID: 8634}
+      Script: {instanceID: 9286}
     - Class: 114
-      Script: {instanceID: 9272}
+      Script: {instanceID: 10714}
     - Class: 114
-      Script: {instanceID: 10700}
+      Script: {instanceID: 11094}
     - Class: 114
-      Script: {instanceID: 11080}
+      Script: {instanceID: 11202}
     - Class: 114
-      Script: {instanceID: 11188}
+      Script: {instanceID: 11654}
     - Class: 114
-      Script: {instanceID: 11866}
+      Script: {instanceID: 11752}
     - Class: 114
-      Script: {instanceID: 35030}
+      Script: {instanceID: 11884}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -550,6 +608,12 @@ ScriptsOnlyBuild:
     className: UnityOnTriggerEnterMessageListener
   - hash:
       serializedVersion: 2
+      Hash: aa7f7f4907d242c6e83e9b13bc36027c
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: PlayerTheWayPass
+  - hash:
+      serializedVersion: 2
       Hash: 63815508dfd6cf329d5c593ac8e76888
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
@@ -626,6 +690,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.Animation.Runtime
     namespaceName: UnityEngine.U2D.Animation
     className: SkeletonAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 0470ac32904a84bbc110b2bb0c027fc1
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: ListPlayer
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -748,16 +818,16 @@ ScriptsOnlyBuild:
     className: LimbSolver2D
   - hash:
       serializedVersion: 2
-      Hash: 751e5bae2a317288c2ab58d66687092b
-    assemblyName: Unity.VisualScripting.Core
-    namespaceName: Unity.VisualScripting
-    className: UnityOnButtonClickMessageListener
+      Hash: bafdc9359eea014d59b74b86e79559de
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Tile
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
-    className: UnityOnInputFieldEndEditMessageListener
+    className: UnityOnButtonClickMessageListener
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -770,6 +840,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: ColorTile
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: Unity.VisualScripting.Core
+    namespaceName: Unity.VisualScripting
+    className: UnityOnInputFieldEndEditMessageListener
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -802,6 +878,12 @@ ScriptsOnlyBuild:
     className: Bone
   - hash:
       serializedVersion: 2
+      Hash: 143cd64d1db707b9e70ad1a899f0b88d
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: DiceTheWayPass
+  - hash:
+      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: UniRx
     namespaceName: UniRx.Triggers
@@ -812,6 +894,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp
     namespaceName: TMPro.Examples
     className: Benchmark04
+  - hash:
+      serializedVersion: 2
+      Hash: 7d53a704525a55d2bbc64f52d94479bd
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: WebSocketGameTheWayPass
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -946,6 +1034,12 @@ ScriptsOnlyBuild:
     className: UnityOnCollisionExit2DMessageListener
   - hash:
       serializedVersion: 2
+      Hash: f2086d8ee16430a712b6cfee679cc866
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: UnitManagerTheWayPass
+  - hash:
+      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Assembly-CSharp
     namespaceName: 
@@ -1052,6 +1146,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.EventSystems
     className: PhysicsRaycaster
+  - hash:
+      serializedVersion: 2
+      Hash: aa7f7f4907d242c6e83e9b13bc36027c
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: BasePlayerTheWayPass
   - hash:
       serializedVersion: 2
       Hash: 98db835dd0659d490ded675102354289
@@ -1402,7 +1502,7 @@ ScriptsOnlyBuild:
     className: UnityOnBecameInvisibleMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 63de56f4308988ac5fc7b9870990a795
+      Hash: a3e18cf71821f7167841317bc43b8369
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: BaseUnit
@@ -1450,7 +1550,7 @@ ScriptsOnlyBuild:
     className: LifecycleNotifier
   - hash:
       serializedVersion: 2
-      Hash: 9fff35b0676c706982ff8973a0836e5b
+      Hash: 6b65bad04a9879a6379d66a36facfbb6
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: BasePlayer
@@ -1466,12 +1566,6 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp
     namespaceName: TMPro.Examples
     className: Benchmark02
-  - hash:
-      serializedVersion: 2
-      Hash: 751e5bae2a317288c2ab58d66687092b
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Item
   - hash:
       serializedVersion: 2
       Hash: 27e64b6667a13cb51f415dbda9126782
@@ -1502,12 +1596,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: AspectRatioFitter
-  - hash:
-      serializedVersion: 2
-      Hash: 6a073fead39ab38cf898c0caf5ef5761
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: GameManager
   - hash:
       serializedVersion: 2
       Hash: 46ffbaea01259c5c7ee677afefd93ea8
@@ -1556,6 +1644,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnTriggerStay2DMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: aaae88754f3ee16ae37f57c4ae3d9f5c
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: GameMangerTheWayPass
   - hash:
       serializedVersion: 2
       Hash: 751d867553f413cde86fe5db0b02780d
@@ -1870,10 +1964,10 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
-      Hash: 9ee93b7efb677bb5f1e4f040f023df83
+      Hash: e39f45fe0e70b40124b407fdc2ba2c4d
     assemblyName: Assembly-CSharp
     namespaceName: 
-    className: Board_Cell
+    className: BoardMinesweeper
   - hash:
       serializedVersion: 2
       Hash: a8fd66ad8bad482587c5f59fc0688cc0
@@ -1966,10 +2060,16 @@ ScriptsOnlyBuild:
     className: TMP_PhoneNumberValidator
   - hash:
       serializedVersion: 2
-      Hash: 213a43ac20c48a75ee3da45786fea456
+      Hash: dddf026f8f74b3d1ae1d24ed7ba8b453
     assemblyName: Assembly-CSharp
     namespaceName: 
-    className: Board
+    className: BoardTheWayPass
+  - hash:
+      serializedVersion: 2
+      Hash: af4f7cce621381974c332e461173ae90
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: GameManager
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -1982,6 +2082,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp
     namespaceName: TMPro.Examples
     className: VertexColorCycler
+  - hash:
+      serializedVersion: 2
+      Hash: a2fd61d4a16fba8ccb3959d52ecb4c80
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: WinnerData
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -2014,7 +2120,7 @@ ScriptsOnlyBuild:
     className: DataPrivacyButton
   - hash:
       serializedVersion: 2
-      Hash: 584b47a21a21d838a8648950580400c7
+      Hash: d2120f16c0f26d78b601205762672010
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: PlayerRole
@@ -2086,18 +2192,13 @@ ScriptsOnlyBuild:
     className: UnityOnSliderValueChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: a2fd61d4a16fba8ccb3959d52ecb4c80
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: WinnerData
-  - hash:
-      serializedVersion: 2
       Hash: e091425110655306178e8e300b6fb132
     assemblyName: Assembly-CSharp
     namespaceName: 
-    className: Victory
+    className: VictoryData
   platform: 19
   scenePathNames:
+  - Assets/Scenes/Main.unity
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/Lobby.unity
   - Assets/Scenes/Minesweeper/Minesweeper.unity

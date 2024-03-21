@@ -165,12 +165,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 118905454}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7b368db655bd6742977d1e8c70a27ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a6891edb055f0b4c869f09f2d2b37a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   GameState: 0
   SelectedPlayer: {fileID: 0}
   _r: 0
+  listPlayer:
+  - {fileID: 2062667481}
+  - {fileID: 2088943037}
 --- !u!1 &300586096
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,7 +1368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hexPrefab: {fileID: 6985524287965517987, guid: 51501e954d77813409c83960666a0b33, type: 3}
   _cam: {fileID: 686800965}
-  numBombs: 5
+  numBombs: 7
   numEvents: 0
   numResets: 0
   numHearts: 0
@@ -1373,7 +1376,6 @@ MonoBehaviour:
   players:
   - {fileID: 2062667481}
   - {fileID: 2088943037}
-  _websocket: {fileID: 0}
   width: 10
   height: 10
 --- !u!1001 &1915792074
@@ -1386,11 +1388,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -9179947960325073459, guid: bcd1793fb82fd0d48a42d212e0010e9f, type: 3}
       propertyPath: id
-      value: 
+      value: join
       objectReference: {fileID: 0}
     - target: {fileID: -9179947960325073459, guid: bcd1793fb82fd0d48a42d212e0010e9f, type: 3}
       propertyPath: playerName
-      value: 
+      value: p2
       objectReference: {fileID: 0}
     - target: {fileID: -9179947960325073459, guid: bcd1793fb82fd0d48a42d212e0010e9f, type: 3}
       propertyPath: indexPlayer
@@ -1694,11 +1696,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -9179947960325073459, guid: bcd1793fb82fd0d48a42d212e0010e9f, type: 3}
       propertyPath: id
-      value: 
+      value: host
       objectReference: {fileID: 0}
     - target: {fileID: -9179947960325073459, guid: bcd1793fb82fd0d48a42d212e0010e9f, type: 3}
       propertyPath: playerName
-      value: 
+      value: p1
+      objectReference: {fileID: 0}
+    - target: {fileID: -9179947960325073459, guid: bcd1793fb82fd0d48a42d212e0010e9f, type: 3}
+      propertyPath: playerState
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 390984720788653651, guid: bcd1793fb82fd0d48a42d212e0010e9f, type: 3}
       propertyPath: m_IsActive
