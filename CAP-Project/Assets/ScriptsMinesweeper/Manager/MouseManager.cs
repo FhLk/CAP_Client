@@ -19,9 +19,8 @@ public class MouseManager : MonoBehaviour
             GameObject.Destroy(cell.gameObject);
         }
         Dice.Instance.value = -1;
-        UnitManager.Instance.resetAllPlayer();
         UIManager.Instance.showTurnOfWho(1);
-        GameManager.Instance.ChangeState(GameState.GenerateBoard);
+        GameManager.Instance.ChangeStateOnMinesweeper(GameState.GenerateBoard);
     }
 
     // Update is called once per frame

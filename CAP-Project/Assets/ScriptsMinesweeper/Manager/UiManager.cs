@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        player_text.text = WebSocketGame.Instance.role.playerName;
+        //player_text.text = WebSocketGame.Instance.role.playerName;
     }
 
     public void showTurnOfWho(int _p)

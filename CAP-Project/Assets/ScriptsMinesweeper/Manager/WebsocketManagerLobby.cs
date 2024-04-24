@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using WebSocketSharp;
@@ -21,6 +22,8 @@ public class WebsocketLobby : MonoBehaviour
         public string type { get; set; }
         public int playerIndex { get; set; }
         public int round { get; set; }
+
+        public string messages { get; set; }
     }
 
     public class Lobby
@@ -53,14 +56,14 @@ public class WebsocketLobby : MonoBehaviour
         if (role.isHost)
         {
             lobbyId = GenerateRandomID();
+            role.lobbyId = lobbyId;
         }
         else if (role.isJoin)
         {
-            Debug.Log("wow");
             lobbyId = role.lobbyId;
         }
-        Debug.Log(lobbyId);
         _websocket = new WebSocket(_url + "?lobbyId=" + lobbyId);
+        _websocket.SslConfiguration.EnabledSslProtocols = System.Security.Authentication.SslProtocols.Tls12;
         _websocket.OnOpen += OnWebSocketOpen;
         _websocket.OnMessage += OnWebSocketMessage;
         _websocket.Connect();
@@ -116,7 +119,7 @@ public class WebsocketLobby : MonoBehaviour
     private async Task ProcessMessageAsync(string message)
     {
         // Perform asynchronous operations on the message data here
-        await Task.Delay(1000); // Simulate some processing time
+        await Task.Delay(0); // Simulate some processing time
         string data = message;
         messageTo.receiveData = resData(data);
         Debug.Log("Message processing completed.");
@@ -138,16 +141,46 @@ public class WebsocketLobby : MonoBehaviour
         ReceiveData receiveData = JsonConvert.DeserializeObject<ReceiveData>(json);
         if (receiveData.type == "01")
         {
+            role.lobbyId = receiveData.lobby.id;
             LobbyData.Instance.UpdateLobby(receiveData.lobby.players.Count);
+            ChatManager.instance.SendChatMessage("Creating Lobby " + lobbyId, "System");
         }
         else if (receiveData.type == "11")
         {
+            role.lobbyId = receiveData.lobby.id;
             LobbyData.Instance.UpdateLobby(receiveData.lobby.players.Count);
+            //ChatManager.instance.SendChatMessage("Player Join Lobby", "System");
         }
         else if (receiveData.type == "61")
         {
-            SceneManager.LoadScene("Minesweeper");
-            //SceneManager.LoadScene("Thewaypass");
+            if (role._game1 && role.isJoin)
+            {
+                SceneManager.LoadScene("Minesweeper");
+            }
+            else if (role._game2 && role.isJoin)
+            {
+                SceneManager.LoadScene("Thewaypass");
+            }
+        }
+        else if (receiveData.type == "-21")
+        {
+            if (role.isHost)
+            {
+                ChatManager.instance.SendChatMessage("Player Leave Lobby", "System");
+                LobbyData.Instance.UpdateLobby(receiveData.lobby.players.Count);
+            }
+            else if (role.isJoin)
+            {
+                SceneManager.LoadScene("Menu");
+            }
+        }
+        else if (receiveData.type == "-2")
+        {
+            //SceneManager.LoadScene("Menu");
+        }
+        else if(receiveData.type == "-31")
+        {
+            ChatManager.instance.AddMessage(receiveData.messages);
         }
         return receiveData;
     }
@@ -178,14 +211,6 @@ public class WebsocketLobby : MonoBehaviour
             string json = JsonConvert.SerializeObject(dataReq);
             _websocket.Send(json);
         }
-        else if (type == "20")
-        {
-            dataReq.Add("type", type);
-            dataReq.Add("lobbyId", lobbyId);
-
-            string json = JsonConvert.SerializeObject(dataReq);
-            _websocket.Send(json);
-        }
     }
 
     public void reqStartGame(string type)
@@ -193,6 +218,38 @@ public class WebsocketLobby : MonoBehaviour
         Dictionary<string, object> dataReq = new Dictionary<string, object>();
 
         dataReq.Add("type", type);
+
+        string json = JsonConvert.SerializeObject(dataReq);
+        _websocket.Send(json);
+    }
+
+    public void reqLeaveLobby()
+    {
+        if (role.isHost)
+        {
+            _websocket.Close();
+            SceneManager.LoadScene("Menu");
+        }
+        else
+        {
+            Dictionary<string, object> dataReq = new Dictionary<string, object>();
+            Dictionary<string, object> playerData = new Dictionary<string, object>();
+            dataReq.Add("type", "-20");
+            dataReq.Add("lobbyId", lobbyId);
+            playerData.Add("id", role.id);
+            playerData.Add("name", role.name);
+            dataReq.Add("player", playerData);
+
+            string json = JsonConvert.SerializeObject(dataReq);
+            _websocket.Send(json);
+        }
+    }
+
+    public void reqChat(string messages)
+    {
+        Dictionary<string, object> dataReq = new Dictionary<string, object>();
+        dataReq.Add("type", "-30");
+        dataReq.Add("messages", messages);
 
         string json = JsonConvert.SerializeObject(dataReq);
         _websocket.Send(json);

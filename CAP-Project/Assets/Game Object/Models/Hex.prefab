@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6820432961347201563}
+  - component: {fileID: 7732784087669886347}
+  - component: {fileID: -2694600415063266428}
   - component: {fileID: 8427742812248559638}
-  - component: {fileID: 6985524287965517987}
   - component: {fileID: 6517446743612428814}
   m_Layer: 0
   m_Name: Hex
@@ -34,6 +35,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7732784087669886347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311444306144931720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61f61c3145a6e2c4ba0f045aa69687d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileName: Hex_
+  TileType: 0
+  _recoures: []
+  x: 0
+  y: 0
+  xPos: 0
+  yOffset: 0
+  neighbors: []
+  _isWalkable: 0
+  OccupiedUnit: {fileID: 0}
+--- !u!114 &-2694600415063266428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311444306144931720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e55350b268105044a92b87f24518cc0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileName: Hex_
+  TileType: 0
+  _recoures: []
+  x: 0
+  y: 0
+  xPos: 0
+  yOffset: 0
+  neighbors: []
+  isDisable: 0
+  hidden: 0
 --- !u!60 &8427742812248559638
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -85,25 +130,6 @@ PolygonCollider2D:
       - {x: -0.005898656, y: -0.86329854}
       - {x: 1.0985202, y: -0.34317172}
   m_UseDelaunayMesh: 0
---- !u!114 &6985524287965517987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 311444306144931720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e55350b268105044a92b87f24518cc0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TileName: Hex
-  TileType: 0
-  neighbors: []
-  x: 0
-  y: 0
-  xPos: 0
-  yOffset: 0
 --- !u!212 &6517446743612428814
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -13,7 +13,9 @@ public class LobbyData : MonoBehaviour
     public Text countList;
     public GameObject LISTDisplay;
     public Text LobbyID;
-    public Sprite slotBG;
+    public Sprite slot_1;
+    public Sprite slot_2;
+    public Sprite empty;
     private bool isJoin;
     private bool isHost;
     [SerializeField] private Button startBTN;
@@ -32,6 +34,7 @@ public class LobbyData : MonoBehaviour
 
     public void UpdateLobby(int index)
     {
+        disenableGameobject();
         count = index;
         countList.text = (count) + "/2";
         for (int i = 0; i < count; i++) 
@@ -43,11 +46,25 @@ public class LobbyData : MonoBehaviour
     private void enableGameobject(int i)
     {
         Transform childToChange = LISTDisplay.transform.GetChild(i);
-        childToChange.gameObject.GetComponent<SpriteRenderer>().sprite = slotBG;
-        Transform firstChild = childToChange.transform.GetChild(0);
-        firstChild.gameObject.SetActive(true);
-        Transform secondChild = childToChange.transform.GetChild(1);
+        if (i == 0)
+        {
+            childToChange.gameObject.GetComponent<SpriteRenderer>().sprite = slot_1;
+        }
+        else if (i == 1)
+        {
+            childToChange.gameObject.GetComponent<SpriteRenderer>().sprite = slot_2;
+        }
+        Transform secondChild = childToChange.transform.GetChild(0);
         secondChild.GetComponent<Text>().text = childToChange.gameObject.GetComponent<PlayerAPI>().playerName;
+    }
+
+    private void disenableGameobject()
+    {
+        for (int i = 0;i < LISTDisplay.transform.childCount;i++)
+        {
+            Transform childToChange = LISTDisplay.transform.GetChild(i);
+            childToChange.gameObject.GetComponent<SpriteRenderer>().sprite = empty;
+        }
     }
 
     private void LobbyInterface()

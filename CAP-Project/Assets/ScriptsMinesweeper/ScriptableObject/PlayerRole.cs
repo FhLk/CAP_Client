@@ -14,6 +14,8 @@ public class PlayerRole : ScriptableObject
     public string playerName;
     public string id;
     public int isWin = -1; //win = 0, lose = 1
+    public bool _game1;
+    public bool _game2;
 
     void Awake()
     {
@@ -22,5 +24,17 @@ public class PlayerRole : ScriptableObject
         playerTurn = -1;
         lobbyId = string.Empty;
         isWin = -1;
+    }
+
+    public void ChooseGame1()
+    {
+        _game1 = true;
+        _game2 = false;
+    }
+
+    public void ChooseGame2()
+    {
+        _game1 = false;
+        _game2 = true;
     }
 }

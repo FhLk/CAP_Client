@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlayerTheWayPass02
   m_EditorClassIdentifier: 
   Faction: 1
-  UnitPrefab: {fileID: 4368436306921563059, guid: 15c0c52f680c35e4ca8649b9c11d3dd2, type: 3}
+  UnitPrefab: {fileID: 7533336664271380341, guid: 15c0c52f680c35e4ca8649b9c11d3dd2, type: 3}

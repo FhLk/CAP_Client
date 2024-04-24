@@ -11,15 +11,20 @@ public class Dice : MonoBehaviour
     public static Dice Instance;
     private List<Sprite> _diced;
     [SerializeField] public int value = -1;
+    [SerializeField] public Text moveDisplay;
+    public WebsocketGame Websocket;
 
     public BasePlayer SelectedPlayer;
     public Image faceDice;
     private Dictionary<int, Sprite> _dic = new Dictionary<int, Sprite>();
 
+    [SerializeField] public Text walkDisplay;
+    private bool isRandom = false;
+
     void Awake()
     {
         Instance = this;
-        if (WebSocketGame.Instance.role.isJoin)
+        if (Websocket.role.isJoin)
         {
             faceDice.enabled = false;
         }
@@ -36,19 +41,19 @@ public class Dice : MonoBehaviour
 
     void Update()
     {
-        if (WebSocketGame.Instance.role.isHost && WebSocketGame.Instance.role.playerTurn == 0)
+        if (Websocket.role.isHost && Websocket.role.playerTurn == 0)
         {
             faceDice.enabled = true;
         }
-        else if(WebSocketGame.Instance.role.isHost && WebSocketGame.Instance.role.playerTurn != 0)
+        else if(Websocket.role.isHost && Websocket.role.playerTurn != 0)
         {
             faceDice.enabled = false;
         }
-        if(WebSocketGame.Instance.role.isJoin && WebSocketGame.Instance.role.playerTurn == 1)
+        if(Websocket.role.isJoin && Websocket.role.playerTurn == 1)
         {
             faceDice.enabled = true;
         }
-        else if(WebSocketGame.Instance.role.isJoin && WebSocketGame.Instance.role.playerTurn != 1)
+        else if(Websocket.role.isJoin && Websocket.role.playerTurn != 1)
         {
             faceDice.enabled = false;
         }
@@ -57,9 +62,19 @@ public class Dice : MonoBehaviour
     public void OnButtonPress()
     {
         SelectedPlayer = UnitManager.Instance.SelectedPlayer;
-        StartCoroutine(ShowRandomNumber());
+        if (SelectedPlayer.dice == 0 && !isRandom)
+        {
+            isRandom = true;
+            if (Websocket.role._game1)
+            {
+                StartCoroutine(DisplayNumberOnGameMinesweeper());
+            }
+            else
+            {
+                StartCoroutine(DisplayNumberOnGameTheWayPass());
+            }
+        }
     }
-
     private int randomDice()
     {
         int dice = Random.Range(1,7);
@@ -70,7 +85,7 @@ public class Dice : MonoBehaviour
     {
         player.dice = dice;
     }
-    IEnumerator ShowRandomNumber()
+    IEnumerator DisplayNumberOnGameMinesweeper()
     {
         for (int i = 0; i < 30; i++)
         {
@@ -82,6 +97,24 @@ public class Dice : MonoBehaviour
         faceDice.GetComponent<Image>().sprite = _dic[n];
         sendDice(n, SelectedPlayer);
         this.value = n;
+        moveDisplay.text = $"Press   {n}   more times.";
+    }
+
+    IEnumerator DisplayNumberOnGameTheWayPass()
+    {
+        for (int i = 0; i < 30; i++)
+        {
+            int randomNumber = Random.Range(1, 7);
+            faceDice.GetComponent<Image>().sprite = _dic[randomNumber];
+            yield return new WaitForSeconds(0.05f);
+        }
+        isRandom = false;
+        int n = randomDice();
+        faceDice.GetComponent<Image>().sprite = _dic[n];
+        sendDice(n, SelectedPlayer);
+        this.value = n;
+        walkDisplay.text = $"Move    {n}    times.";
+        SelectedPlayer.shadeTileFromPlayer(SelectedPlayer.OccupiedTile);
     }
 }
 

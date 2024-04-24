@@ -10,15 +10,32 @@ public class SceneManger : MonoBehaviour
 {
     public static SceneManger Instance;
     [SerializeField] private GameObject sound;
+    [SerializeField] private GameObject _Title;
     [SerializeField] private Sprite unmute;
     [SerializeField] private Sprite mute;
     [SerializeField] private GameObject LIST;
     [SerializeField] private WebsocketLobby _websocket;
+    [SerializeField] private Sprite title_1;
+    [SerializeField] private Sprite title_2;
     public PlayerRole role;
+    [SerializeField] private string URL;
 
     void Awake()
     {
-        Instance = this;
+        try
+        {
+            Instance = this;
+            if (role._game1)
+            {
+                _Title.gameObject.GetComponent<SpriteRenderer>().sprite = title_1;
+            }
+            else if (role._game2)
+            {
+                _Title.gameObject.GetComponent<SpriteRenderer>().sprite = title_2;
+            }
+        }
+        catch { }
+
     }
 
     public void Main()
@@ -26,16 +43,38 @@ public class SceneManger : MonoBehaviour
         SceneManager.LoadScene("Main");
     }
 
+    public void ChooseGame1()
+    {
+        role._game1 = true;
+        role._game2 = false;
+        Menu();
+    }
+
+    public void ChooseGame2()
+    {
+        role._game1 = false;
+        role._game2 = true;
+        Menu();
+    }
+
     public void Menu()
     {
-        //role.isJoin = false;
-        //role.isHost = false;
-        //role.playerTurn = -1;
+        role.isJoin = false;
+        role.isHost = false;
+        role.playerTurn = -1;
         SceneManager.LoadScene("Menu");
     }
 
     public void Game(Button btn)
     {
+        if (role._game1)
+        {
+            SceneManager.LoadScene("Minesweeper");
+        }
+        else if (role._game2)
+        {
+            SceneManager.LoadScene("Thewaypass");
+        }
         _websocket.reqStartGame("60");
     }
 
@@ -51,16 +90,23 @@ public class SceneManger : MonoBehaviour
     {
         if (lobbyID.text != "")
         {
+            WebsocketScriptable ws = new WebsocketScriptable(URL + "?lobbyId=" + lobbyID.text);
             role.isHost = false;
             role.isJoin = true;
             role.playerTurn = 0;
             role.lobbyId = lobbyID.text;
-            SceneManager.LoadScene("Lobby");
+            ws.ConnectWebsocket();
+            ws.checkLobby(lobbyID.text);
         }
         else
         {
             Debug.Log("Please Enter Lobby ID.");
         }
+    }
+
+    public void CreateContent()
+    {
+        SceneManager.LoadScene("Create");
     }
 
     public void LeaderBoard()

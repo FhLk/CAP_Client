@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 583e06072b94a4341bfcc0d079ef8166, type: 3}
   m_Name: PlayerRole
   m_EditorClassIdentifier: 
-  isHost: 1
-  isJoin: 0
-  playerTurn: 0
-  round: 1
+  isHost: 0
+  isJoin: 1
+  playerTurn: -1
+  round: 0
   lobbyId: 
-  playerName: 
-  id: 
-  isWin: 1
+  playerName: Player_1
+  id: host
+  isWin: -1
+  _game1: 0
+  _game2: 1

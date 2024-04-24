@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7445808922399152436}
   - component: {fileID: 4075777801822982919}
-  - component: {fileID: 4368436306921563059}
+  - component: {fileID: 8295474125115730558}
   m_Layer: 0
   m_Name: PlayerTheWayPass01
   m_TagString: Untagged
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4368436306921563059
+--- !u!114 &8295474125115730558
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,14 +94,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1177870107313936322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a59f6db7f3be5764ab5b732d1259a776, type: 3}
+  m_Script: {fileID: 11500000, guid: 2872c3b071e56f045b225b8007147c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UnitId: 
   OccupiedTile: {fileID: 0}
   Faction: 0
-  id: 
-  playerName: 
+  id: host
+  playerName: Player_1
   indexPlayer: 0
   dice: 0
   playerState: 0
