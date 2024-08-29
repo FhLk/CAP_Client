@@ -102,11 +102,7 @@ MonoBehaviour:
   Faction: 1
   id: join
   playerName: Player_2
-  indexPlayer: 0
+  indexPlayer: 1
   dice: 0
-  maxShield: 1
-  hearts: 0
-  _base: {fileID: 0}
   playerState: 0
-  shield: 0
   isWinner: -1

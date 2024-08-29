@@ -17,6 +17,7 @@ public class UnitManager : MonoBehaviour
     [SerializeField] public GameObject _playerList;
     private HashSet<BasePlayer> players = new HashSet<BasePlayer>();
     [SerializeField] public List<BasePlayer> playerList;
+    [SerializeField] public PlayerRole role;
 
     void Awake()
     {
@@ -40,15 +41,6 @@ public class UnitManager : MonoBehaviour
         SetSelectedPlayer(players.First<BasePlayer>());
     }
 
-    public void SetSelectedPlayer(BasePlayer player)
-    {
-        SelectedPlayer = player;
-        //MouseManager.Instance.PLAYER = player;
-        Dice.Instance.SelectedPlayer = player;
-        GameManager.Instance.SelectedPlayer = player;
-        //UIManager.Instance.SelectedPlayer = player;
-    }
-
     public void SpawnPlayerOnTheWayPass()
     {
         int playerCount = 2;
@@ -64,15 +56,20 @@ public class UnitManager : MonoBehaviour
         SetSelectedPlayer(playerList.First<BasePlayer>());
     }
 
+    public void SetSelectedPlayer(BasePlayer player)
+    {
+        SelectedPlayer = player;
+        Dice.Instance.SelectedPlayer = player;
+        GameManager.Instance.SelectedPlayer = player;
+        if (role._game1)
+        {
+            MouseManager.Instance.PLAYER = player;
+            UIManager.Instance.SelectedPlayer = player;
+        }
+    }
+
     private T GetPrefabUnit<T>(Faction faction) where T : BaseUnit
     {
         return (T)_units.Where(u => u.Faction == faction).First().UnitPrefab;
     }
-
-    //public void SetSelectedPlayerOnTheWayPass(BasePlayer player)
-    //{
-        //SelectedPlayer = player;
-        //GameManager.Instance.SelectedPlayer = player;
-        //Dice.Instance.SelectedPlayer = player;
-    //}
 }

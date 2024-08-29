@@ -20,6 +20,7 @@ public class Dice : MonoBehaviour
 
     [SerializeField] public Text walkDisplay;
     private bool isRandom = false;
+    public TimeManagement timeManagement;
 
     void Awake()
     {
@@ -37,6 +38,7 @@ public class Dice : MonoBehaviour
         {
             _dic.Add(i + 1, _diced[i]);
         }
+        faceDice.sprite = _diced[0];
     }
 
     void Update()
@@ -48,6 +50,7 @@ public class Dice : MonoBehaviour
         else if(Websocket.role.isHost && Websocket.role.playerTurn != 0)
         {
             faceDice.enabled = false;
+            faceDice.sprite = _diced[0];
         }
         if(Websocket.role.isJoin && Websocket.role.playerTurn == 1)
         {
@@ -56,6 +59,7 @@ public class Dice : MonoBehaviour
         else if(Websocket.role.isJoin && Websocket.role.playerTurn != 1)
         {
             faceDice.enabled = false;
+            faceDice.sprite = _diced[0];
         }
     }
 
@@ -93,11 +97,13 @@ public class Dice : MonoBehaviour
             faceDice.GetComponent<Image>().sprite = _dic[randomNumber];
             yield return new WaitForSeconds(0.05f);
         }
+        isRandom = false;
         int n = randomDice();
         faceDice.GetComponent<Image>().sprite = _dic[n];
         sendDice(n, SelectedPlayer);
         this.value = n;
-        moveDisplay.text = $"Press   {n}   more times.";
+        SetText(n);
+        //Websocket.reqRollDice("-40",this.value);
     }
 
     IEnumerator DisplayNumberOnGameTheWayPass()
@@ -113,8 +119,21 @@ public class Dice : MonoBehaviour
         faceDice.GetComponent<Image>().sprite = _dic[n];
         sendDice(n, SelectedPlayer);
         this.value = n;
-        walkDisplay.text = $"Move    {n}    times.";
+        SetText(n);
         SelectedPlayer.shadeTileFromPlayer(SelectedPlayer.OccupiedTile);
+        //Websocket.reqRollDice("-40", this.value);
+    }
+
+    public void SetText(int value)
+    {
+        if (UnitManager.Instance.role._game1)
+        {
+            moveDisplay.text = $"Press   {value}   more times.";
+        }
+        else if (UnitManager.Instance.role._game2)
+        {
+            walkDisplay.text = $"Move    {value}    times.";
+        }
     }
 }
 

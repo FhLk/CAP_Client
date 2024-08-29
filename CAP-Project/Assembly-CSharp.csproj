@@ -126,6 +126,7 @@
     <Compile Include="Assets\ScriptsMinesweeper\Tile\Item.cs" />
     <Compile Include="Assets\ScriptsMinesweeper\Tile\Tile.cs" />
     <Compile Include="Assets\ScriptsChat\ChatManager.cs" />
+    <Compile Include="Assets\ScriptTimer\TimeManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\ScriptsMinesweeper\Player\BasePlayer.cs" />
     <Compile Include="Assets\ScriptsMinesweeper\Unit\ChooseColor.cs" />

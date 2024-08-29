@@ -440,6 +440,7 @@
 "Assets/ScriptsMinesweeper/Unit/ChooseColor.cs"
 "Assets/ScriptsMinesweeper/Unit/ScriptableUnit.cs"
 "Assets/ScriptsMinesweeper/VictoryData.cs"
+"Assets/ScriptTimer/TimeManager.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark02.cs"

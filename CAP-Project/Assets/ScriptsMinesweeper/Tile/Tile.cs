@@ -95,4 +95,26 @@ public class Tile : MonoBehaviour
             }
         }
     }
+
+    public void CellClick(HexagonClick cell)
+    {
+        if (GameManager.Instance.GameState != GameState.PlayerTurn) return;
+        if (Dice.Instance.value != -1 && !cell.isDisable)
+        {
+            if (cell.TileType == 1)
+            {
+                cell.isDisable = true;
+                cell.hidden = false;
+                cell.disableTile();
+                WebSocketMinsweeper.Instance.reqCell("30", cell.x, cell.y, cell.TileType);
+
+            }
+            if (cell.TileType != 1)
+            {
+                WebSocketMinsweeper.Instance.reqCell("30", cell.x, cell.y, cell.TileType);
+                Destroy(cell.gameObject);
+            }
+            UnitManager.Instance.SelectedPlayer.playerClick();
+        }
+    }
 }

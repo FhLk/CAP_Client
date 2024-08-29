@@ -21,7 +21,6 @@ public class PlayerRole : ScriptableObject
     {
         isHost = false;
         isJoin = false;
-        playerTurn = -1;
         lobbyId = string.Empty;
         isWin = -1;
     }

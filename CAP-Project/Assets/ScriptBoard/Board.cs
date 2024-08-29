@@ -6,7 +6,7 @@ public class Board : MonoBehaviour
 {
     static Board Instance;
     public Dictionary<string, Tile> _tiles;
-    [SerializeField] public HexagonWalk hexPrefab;
+    [SerializeField] public Tile hexPrefab;
     [SerializeField] public Transform _cam;
     public WebsocketGame websocket;
 
@@ -49,11 +49,17 @@ public class Board : MonoBehaviour
     public void stateRequest(int num)
     {
 
-        if (websocket.role.isHost)
+        if (websocket.role.isJoin)
         {
-            websocket.reqBomb("90", this.height, this.width, num);
+            if (websocket.role._game1)
+            {
+                websocket.reqBomb("90", this.height, this.width, num);
+            }
+            else if (websocket.role._game2)
+            {
+                websocket.reqLadder("90", this.height, this.width, num);
+            }
         }
-
     }
 
     public void disableCell(Tile tile)
@@ -172,7 +178,14 @@ public class Board : MonoBehaviour
         hex_go.name = namePrefix + x + "_" + y;
         hex_go.TileType = type;
         hex_go.TileName = namePrefix;
-        hex_go.setPrefab(type);
+        if (hex_go.TileType == 1)
+        {
+            hex_go.setPrefab(0);
+        }
+        else
+        {
+            hex_go.setPrefab(type);
+        }
         this._tiles[hex_go.name] = hex_go;
         hex_go.transform.SetParent(this.transform);
         hex_go.transform.GetComponent<SpriteRenderer>().sortingOrder = -1;

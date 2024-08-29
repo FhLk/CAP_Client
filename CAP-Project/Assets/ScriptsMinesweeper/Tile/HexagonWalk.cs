@@ -32,8 +32,6 @@ public class HexagonWalk : Tile
         {
             this.transform.GetComponent<SpriteRenderer>().sprite = _cellDefault[this.TileType];
         }
-
-        
     }
 
     void OnMouseExit()
@@ -50,8 +48,10 @@ public class HexagonWalk : Tile
         if (GameManager.Instance.GameState != GameState.PlayerTurn) return;
         if (OccupiedUnit == null && this._isWalkable)
         {
+            Debug.Log("wow");
             if (UnitManager.Instance.SelectedPlayer != null && Dice.Instance.value > 0)
             {
+                Debug.Log("wow2");
                 SetUnit(UnitManager.Instance.SelectedPlayer);
                 if (this.TileType == 3)
                 {

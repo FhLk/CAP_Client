@@ -32,7 +32,6 @@ public class WebSocketTheWayPass : WebsocketGame
     }
 
     public static WebSocketTheWayPass Instance;
-    private WebSocket ws;
 
 
 
@@ -44,7 +43,6 @@ public class WebSocketTheWayPass : WebsocketGame
 
     public void reqEndGame(string type)
     {
-        Debug.Log("wow");
         Dictionary<string, object> dataReq = new Dictionary<string, object>();
         Dictionary<string, object> playerData = new Dictionary<string, object>();
         role.isWin = 1;
@@ -55,7 +53,7 @@ public class WebSocketTheWayPass : WebsocketGame
         playerData.Add("name", winPlayer.playerName);
         dataReq.Add("player", playerData);
         string json = JsonConvert.SerializeObject(dataReq);
-        ws.Send(json);
+        this.sendRequestEnd(json); 
     }
 
 }

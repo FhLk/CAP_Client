@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class BasePlayer : BaseUnit
 {
     public string id;
@@ -18,6 +15,7 @@ public class BasePlayer : BaseUnit
     private void Awake()
     {
         this.dice = 0;
+
     }
 
     public void playerClick()
@@ -67,6 +65,43 @@ public class BasePlayer : BaseUnit
                 {
                     n.setPrefab(n.TileType);
                 }
+            }
+        }
+    }
+
+    public void disableTileFromPlayer(Tile tile)
+    {
+        if (tile != null)
+        {
+            set.Clear();
+            set.Add(tile);
+            foreach (HexagonWalk n in tile.neighbors)
+            {
+                n._isWalkable = false;
+                set.Add(n);
+                n.setPrefab(n.TileType);
+                if (n.OccupiedUnit != null || (n.x == 0 && n.y == 0))
+                {
+                    n.setPrefab(n.TileType);
+                }
+            }
+        }
+    }
+    public void RandomCell(int clickTime)
+    {
+        for (int i = 0; i < clickTime; i++) 
+        {
+            int numbersChilds = GameManager.Instance.initBoard.transform.childCount;
+            int indexChild = Random.Range(0, numbersChilds);
+            Tile randomClick = GameManager.Instance.initBoard.transform.GetChild(indexChild).gameObject.GetComponent<HexagonClick>();
+            if (randomClick.TileType == 1)
+            {
+                randomClick.CellClick(randomClick.gameObject.GetComponent<HexagonClick>());
+                break;
+            }
+            else
+            {
+                randomClick.CellClick(randomClick.gameObject.GetComponent<HexagonClick>());
             }
         }
     }

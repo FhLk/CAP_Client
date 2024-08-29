@@ -60,24 +60,6 @@ public class HexagonClick : Tile
 
     void OnMouseDown()
     {
-        if (GameManager.Instance.GameState != GameState.PlayerTurn) return;
-        if (Dice.Instance.value != -1 && !this.isDisable)
-        {
-            if (this.TileType == 1)
-            {
-                isDisable = true;
-                hidden = false;
-                disableTile();
-                WebSocketMinsweeper.Instance.reqCell("30", x, y, TileType);
-                
-            }
-
-            if (this.TileType != 1)
-            {
-                WebSocketMinsweeper.Instance.reqCell("30", x, y, TileType);
-                Destroy(gameObject);
-            }
-            UnitManager.Instance.SelectedPlayer.playerClick();
-        }
+        CellClick(this);
     }
 }

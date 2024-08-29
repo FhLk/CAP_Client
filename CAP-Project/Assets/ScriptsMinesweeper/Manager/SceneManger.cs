@@ -62,6 +62,7 @@ public class SceneManger : MonoBehaviour
         role.isJoin = false;
         role.isHost = false;
         role.playerTurn = -1;
+        role.isWin = -1;
         SceneManager.LoadScene("Menu");
     }
 

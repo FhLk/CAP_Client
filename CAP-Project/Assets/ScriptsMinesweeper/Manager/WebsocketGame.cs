@@ -10,7 +10,7 @@ using WebSocketSharp;
 public class WebsocketGame : MonoBehaviour
 {
     private WebSocket ws;
-    [SerializeField] public string url; // Replace with your server URL
+    [SerializeField] public string url;
     [SerializeField] public string lobbyId;
     public WinnerData win;
     public PlayerRole role;
@@ -38,6 +38,8 @@ public class WebsocketGame : MonoBehaviour
         public Item[,] ladder { get; set; }
 
         public int tile_type { get; set; }
+
+        public bool time { get; set; }
     }
 
 
@@ -87,9 +89,13 @@ public class WebsocketGame : MonoBehaviour
     private void OnWebSocketOpen(object sender, EventArgs e)
     {
         Debug.Log("WebSocket connection opened!");
-        if (role._game2)
+        if (role._game1)
         {
-            TheWayPass.Instance.stateRequest();
+            Minesweeper.Instance.stateRequest(Minesweeper.Instance.numBombs);
+        }
+        else if (role._game2)
+        {
+            TheWayPass.Instance.stateRequest(TheWayPass.Instance.numLadders);
         }
         //reqLadder("90", BoardTheWayPass.Instance.height, BoardTheWayPass.Instance.width, BoardTheWayPass.Instance.numLadders);
         //reqGenerateBoard("90",Board_Cell.Instance.height,Board_Cell.Instance.width);
@@ -106,7 +112,7 @@ public class WebsocketGame : MonoBehaviour
     private async Task ProcessMessageAsync(string message)
     {
         // Perform asynchronous operations on the message data here
-        await Task.Delay(0); // Simulate some processing time
+        await Task.Delay(10); // Simulate some processing time
         string data = message;
         if (role._game1)
         {
@@ -218,6 +224,16 @@ public class WebsocketGame : MonoBehaviour
         ws.Send(json);
     }
 
+    public void reqRollDice(string type,int dice)
+    {
+        Dictionary<string, object> dataReq = new Dictionary<string, object>();
+        dataReq.Add("type", type);
+        dataReq.Add("time", true);
+        dataReq.Add("dice", dice);
+        string json = JsonConvert.SerializeObject(dataReq);
+        ws.Send(json);
+    }
+
     private void resDataOnTheWayPass(string json)
     {
         ReceiveData receiveData = JsonConvert.DeserializeObject<ReceiveData>(json);
@@ -230,6 +246,7 @@ public class WebsocketGame : MonoBehaviour
         {
             if (role.isJoin && receiveData.playerIndex == 0)
             {
+                
                 TheWayPass.Instance.board[receiveData.x, receiveData.y].gameObject.GetComponent<HexagonWalk>().SetUnit(UnitManager.Instance.SelectedPlayer);
             }
             else if (role.isHost && receiveData.playerIndex == 1)
@@ -254,14 +271,23 @@ public class WebsocketGame : MonoBehaviour
             Debug.Log("Game End");
             win.id = receiveData.player.id;
             win.playerName = receiveData.player.name;
+            role.isWin = 0;
+            GameManager.Instance.timeManagement.TimerOn = false;
 
             SceneManager.LoadScene("End");
         }
         else if (receiveData.type == "-2")
         {
-            Debug.Log("Player Disconnect");
-            ws.Close();
-            SceneManager.LoadScene("Main");
+            if (role.isWin == -1)
+            {
+                Debug.Log("Player Disconnect");
+                ws.Close();
+                SceneManager.LoadScene("Main");
+            }
+        }
+        else if (receiveData.type == "-41")
+        {
+            GameManager.Instance.timeManagement.ClockOnOff();
         }
     }
 
@@ -299,12 +325,30 @@ public class WebsocketGame : MonoBehaviour
             Invoke("endGame", 2);
 
         }
-        if (receiveData.type == "91")
+        else if (receiveData.type == "91")
         {
             Minesweeper.Instance.bombs = receiveData.bomb;
             Minesweeper.Instance.stateDefind();
             GameManager.Instance.ChangeStateOnMinesweeper(GameState.ReqToServer);
         }
+        else if (receiveData.type == "-41")
+        {
+           GameManager.Instance.timeManagement.ClockOnOff();
+        }
+        else if (receiveData.type == "-2")
+        {
+            if (role.isWin == -1)
+            {
+                Debug.Log("Player Disconnect");
+                ws.Close();
+                SceneManager.LoadScene("Main");
+            }
+        }
+    }
+
+    public void sendRequestEnd(string json)
+    {
+        ws.Send(json);
     }
 
 }

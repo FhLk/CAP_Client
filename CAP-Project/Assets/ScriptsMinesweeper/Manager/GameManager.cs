@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public Board initBoard;
     [SerializeField] public List<BasePlayer> listPlayer;
     public WebsocketGame websocket;
+    public TimeManagement timeManagement;
 
     void Awake()
     {
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
                 UIManager.Instance.showTurnOfWho(WebSocketMinsweeper.Instance.role.playerTurn);
                 break;
             case GameState.NextPlayerTurn:
+                //timeManagement.resetTimer();
                 Transform nextPlayer = UnitManager.Instance._playerList.transform.GetChild(WebSocketMinsweeper.Instance.role.playerTurn);
                 UnitManager.Instance.SetSelectedPlayer(nextPlayer.GetComponent<BasePlayer>());
                 _round.text = $"Round {WebSocketMinsweeper.Instance.role.round}";
@@ -74,11 +76,8 @@ public class GameManager : MonoBehaviour
         {
             case GameState.GenerateBoard:
                 _board = initBoard.generateBoard();
-                GameManager.Instance.ChangeStateOnTheWayPass(GameState.SpawnPlayer);
-                GameManager.Instance.ChangeStateOnTheWayPass(GameState.PlayerTurn);
                 break;
             case GameState.ReqToServer:
-                Debug.Log("wow");
                 WebSocketTheWayPass.Instance.reqBoard("50", _board);
                 break;
             case GameState.SpawnPlayer:
@@ -87,6 +86,7 @@ public class GameManager : MonoBehaviour
             case GameState.PlayerTurn:
                 break;
             case GameState.NextPlayerTurn:
+                //timeManagement.resetTimer();
                 BasePlayer nextPlayer = UnitManager.Instance.playerList[SelectedPlayer.indexPlayer == 1 ? 0 : 1];
                 UnitManager.Instance.SetSelectedPlayer(nextPlayer);
                 ChangeStateOnTheWayPass(GameState.PlayerTurn);

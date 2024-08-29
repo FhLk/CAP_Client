@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHost: 0
   isJoin: 1
-  playerTurn: -1
-  round: 0
+  playerTurn: 0
+  round: 9
   lobbyId: 
-  playerName: Player_1
-  id: host
+  playerName: 
+  id: 
   isWin: -1
   _game1: 0
   _game2: 1

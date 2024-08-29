@@ -20,6 +20,7 @@ ScriptsOnlyBuild:
     - PopupManager
     - SceneManger
     - TheWayPass
+    - TimeManagement
     - UIManager
     - UnitManager
     - VictoryData
@@ -142,6 +143,9 @@ ScriptsOnlyBuild:
     fullTypeName: SceneManger
     methodName: JoinLobby
   - assembly: Assembly-CSharp
+    fullTypeName: SceneManger
+    methodName: JoinLobby
+  - assembly: Assembly-CSharp
     fullTypeName: PopupManager
     methodName: closeWindow
   - assembly: Assembly-CSharp
@@ -167,7 +171,7 @@ ScriptsOnlyBuild:
     methodName: closeWindow
   - assembly: Assembly-CSharp
     fullTypeName: SceneManger
-    methodName: Exit
+    methodName: Main
   - assembly: Assembly-CSharp
     fullTypeName: PopupManager
     methodName: openWindow
@@ -340,13 +344,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3696}
     - Class: 114
-      Script: {instanceID: 5362}
+      Script: {instanceID: 5358}
     - Class: 114
-      Script: {instanceID: 6870}
+      Script: {instanceID: 6872}
     - Class: 114
-      Script: {instanceID: 7418}
+      Script: {instanceID: 7420}
     - Class: 114
-      Script: {instanceID: 8984}
+      Script: {instanceID: 8986}
     - Class: 114
       Script: {instanceID: 9288}
     - Class: 114
@@ -417,17 +421,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3626}
     - Class: 114
-      Script: {instanceID: 5586}
+      Script: {instanceID: 5582}
     - Class: 114
-      Script: {instanceID: 5770}
+      Script: {instanceID: 5766}
     - Class: 114
-      Script: {instanceID: 6220}
+      Script: {instanceID: 6222}
     - Class: 114
-      Script: {instanceID: 7442}
+      Script: {instanceID: 7444}
     - Class: 114
-      Script: {instanceID: 8162}
+      Script: {instanceID: 8164}
     - Class: 114
-      Script: {instanceID: 8794}
+      Script: {instanceID: 8796}
     - Class: 114
       Script: {instanceID: 9288}
     - Class: 114
@@ -484,7 +488,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3696}
     - Class: 114
-      Script: {instanceID: 4330}
+      Script: {instanceID: 4328}
     - Class: 114
       Script: {instanceID: 9288}
     - Class: 114
@@ -520,6 +524,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 60
+      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 104
@@ -543,19 +549,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3626}
     - Class: 114
-      Script: {instanceID: 4330}
+      Script: {instanceID: 3730}
     - Class: 114
-      Script: {instanceID: 5880}
+      Script: {instanceID: 4328}
     - Class: 114
-      Script: {instanceID: 6014}
+      Script: {instanceID: 5876}
     - Class: 114
-      Script: {instanceID: 8162}
+      Script: {instanceID: 6010}
+    - Class: 114
+      Script: {instanceID: 6022}
+    - Class: 114
+      Script: {instanceID: 8164}
     - Class: 114
       Script: {instanceID: 9288}
     - Class: 114
       Script: {instanceID: 10720}
     - Class: 114
       Script: {instanceID: 11100}
+    - Class: 114
+      Script: {instanceID: 11208}
     - Class: 114
       Script: {instanceID: 11660}
     - Class: 114
@@ -616,13 +628,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3730}
     - Class: 114
-      Script: {instanceID: 4208}
+      Script: {instanceID: 4206}
     - Class: 114
-      Script: {instanceID: 4330}
+      Script: {instanceID: 4328}
     - Class: 114
-      Script: {instanceID: 5880}
+      Script: {instanceID: 5876}
     - Class: 114
-      Script: {instanceID: 8162}
+      Script: {instanceID: 6022}
     - Class: 114
       Script: {instanceID: 9288}
     - Class: 114
@@ -1360,7 +1372,7 @@ ScriptsOnlyBuild:
     className: ObservableScrollTrigger
   - hash:
       serializedVersion: 2
-      Hash: 2a2123bd2ac2caa683e30e755227a2fc
+      Hash: f4c5d51d0d438e159b325b2c2c055796
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Dice
@@ -1396,6 +1408,18 @@ ScriptsOnlyBuild:
     className: WebSocketMinsweeper
   - hash:
       serializedVersion: 2
+      Hash: c1838bf8f0810978e31c5c8b322e827a
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: TimeManagement
+  - hash:
+      serializedVersion: 2
+      Hash: d2f468e87389060ff7e48b31b379e522
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Tile
+  - hash:
+      serializedVersion: 2
       Hash: 6298a10412e94e11ad85ac6148c9dda1
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
@@ -1406,6 +1430,12 @@ ScriptsOnlyBuild:
     assemblyName: UniRx
     namespaceName: UniRx.Triggers
     className: ObservablePointerDownTrigger
+  - hash:
+      serializedVersion: 2
+      Hash: ef90bc9fa9554296bbbb1d9f70f62ed7
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: WebsocketGame
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -1582,7 +1612,7 @@ ScriptsOnlyBuild:
     className: UnityOnTriggerStayMessageListener
   - hash:
       serializedVersion: 2
-      Hash: cb66f505326afb2e62f11476d64da56a
+      Hash: 344bcd25b4e5ff026ef683d3586bcf8c
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Board
@@ -2122,7 +2152,7 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
-      Hash: 9212fcfe7de2e0501016ef08d3691d93
+      Hash: f9548760ae21bf5e47b59b78b0429668
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: UnitManager
@@ -2158,7 +2188,7 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
-      Hash: 5de12e2de8d6d7c4e2b9e0f84dacd49e
+      Hash: 12dde9aaeb1cefb9ed5405662be92dc3
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Minesweeper
@@ -2254,13 +2284,13 @@ ScriptsOnlyBuild:
     className: TMP_PhoneNumberValidator
   - hash:
       serializedVersion: 2
-      Hash: def266b88f12b9c3282841cf3b6ce93a
+      Hash: b5ce7851c5f4c6420e129f0c139361a6
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: TheWayPass
   - hash:
       serializedVersion: 2
-      Hash: 57e99880349151ef097d4b957d43f142
+      Hash: d889417cf170f50ee351e6a6918ff54f
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: GameManager
@@ -2384,18 +2414,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: d2f468e87389060ff7e48b31b379e522
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Tile
-  - hash:
-      serializedVersion: 2
-      Hash: ef90bc9fa9554296bbbb1d9f70f62ed7
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: WebsocketGame
   platform: 19
   scenePathNames:
   - Assets/Scenes/Main.unity
@@ -2405,4 +2423,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Minesweeper/Minesweeper.unity
   - Assets/Scenes/Thewaypass/Thewaypass.unity
   - Assets/Scenes/End.unity
-  playerPath: D:/Hobby/Gaming-Gram-Optimize/Gaming-Gram.exe
+  playerPath: D:/Hobby/Gaming-Gram-DDay/Gaming-Gram.exe

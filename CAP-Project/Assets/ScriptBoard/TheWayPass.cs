@@ -14,14 +14,6 @@ public class TheWayPass : Board
     {
         Instance = this;
     }
-
-    public void stateRequest()
-    {
-        if (WebSocketTheWayPass.Instance.role.isJoin)
-        {
-            websocket.reqLadder("90", this.height, this.width, this.numLadders);
-        }
-    }
     public void stateDefind()
     {
         defindeFinallCell();
@@ -32,6 +24,7 @@ public class TheWayPass : Board
     public void defindeFinallCell()
     {
         Tile finalCell = board[this.width - 1, this.height - 1];
+        //Tile finalCell = board[0,0];
         Destroy(finalCell.gameObject);
         board[finalCell.x, finalCell.y] = CreateTile(finalCell.x, finalCell.y, finalCell.xPos, finalCell.yOffset, board[finalCell.x, finalCell.y].setName(2), 2);
         updateNeighbor(board[finalCell.x, finalCell.y], board);
